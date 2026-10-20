@@ -285,3 +285,75 @@ def test_failure_review_rejects_false_binding(tmp_path,field,value):
     review[field]=value
     (tmp_path/'failure-review.json').write_text(json.dumps(review))
     with pytest.raises(ValueError):validated_failure_review(tmp_path,job)
+
+
+def phase_log(path,events):
+    path.parent.mkdir(parents=True,exist_ok=True)
+    path.write_text('upstream diagnostic text\n'+ '\n'.join(json.dumps({'transport_phase':name,'epoch':stamp}) for name,stamp in events)+'\nnot JSON\n')
+
+
+def test_operational_stages_export_without_changing_scoring(tmp_path):
+    series(tmp_path);directory=attempt(tmp_path,1,False,True)
+    verification=json.loads((directory/'verification.json').read_text())
+    verification['trials'][0]['replay']['elapsed_seconds']=80.5
+    put(directory/'verification.json',verification)
+    phases=[('create_start',10),('worker_exec_start',11),('worker_exec_ready',20),('worker_initial_response',30),
+            ('sandbox_commit_start',100),('sandbox_commit_complete',103),('artifact_readback_start',104),('artifact_readback_complete',110)]
+    phase_log(directory/'modal-transport.log',phases)
+    phase_log(directory/'verification/modal-transport.log',[(n,v+200) for n,v in phases])
+    result=export_results(tmp_path)['series'][0]['attempts'][0]
+    operational=result['operational_timing']
+    for key in ('original_transport','replay_transport'):
+        row=operational[key]
+        assert row['setup_seconds']==20 and row['worker_exec_ready_seconds']==9
+        assert row['commit_seconds']==3 and row['artifact_readback_seconds']==6
+        assert row['ignored_non_json_lines']==2 and row['status']=='measured'
+    assert operational['replay_execution_seconds']==80.5
+    assert operational['replay_execution_coverage']['source']=='verification.json'
+    assert operational['end_to_end_seconds'] is None
+    assert result['official_success'] is False and result['timing']['active_seconds']==12
+    assert result['timing']['wall_seconds']==15
+
+
+@pytest.mark.parametrize('events,status',[
+    ([('create_start',1)],'missing_event'),
+    ([('create_start',1),('create_start',2),('worker_initial_response',3)],'duplicate_event'),
+    ([('create_start',1),('worker_initial_response',2),('worker_initial_response',3)],'duplicate_event'),
+    ([('create_start',True),('worker_initial_response',3)],'invalid_epoch'),
+    ([('create_start',float('nan')),('worker_initial_response',3)],'invalid_epoch'),
+    ([('create_start',3),('worker_initial_response',2)],'negative_interval'),
+    ([('worker_initial_response',3),('create_start',1)],'invalid_event_order'),
+])
+def test_invalid_operational_pairs_never_guess_elapsed(tmp_path,events,status):
+    from roboswe.adaptive_results import _operational_timing
+    phase_log(tmp_path/'modal-transport.log',events)
+    result=_operational_timing(tmp_path,{})
+    assert result['original_transport']['setup_seconds'] is None
+    assert result['original_transport']['coverage']['setup_seconds']['status']==status
+    assert result['replay_transport']['setup_seconds'] is None
+    assert result['replay_transport']['coverage']['setup_seconds']['status']=='source_missing'
+    assert result['replay_execution_seconds'] is None
+
+
+def test_duplicate_unrelated_phase_does_not_invalidate_pair(tmp_path):
+    from roboswe.adaptive_results import _operational_timing
+    phase_log(tmp_path/'modal-transport.log',[('create_start',0),('artifact_file_verified',1),('artifact_file_verified',2),('worker_initial_response',3)])
+    result=_operational_timing(tmp_path,{})['original_transport']
+    assert result['setup_seconds']==3
+    assert result['commit_seconds'] is None
+
+
+@pytest.mark.parametrize('value',[True,-1,float('inf'),'10'])
+def test_invalid_replay_elapsed_remains_null(tmp_path,value):
+    from roboswe.adaptive_results import _operational_timing
+    result=_operational_timing(tmp_path,{'kind':'independent_code_replay','trials':[{'replay':{'elapsed_seconds':value}}]})
+    assert result['replay_execution_seconds'] is None
+    assert result['replay_execution_coverage']['status']=='invalid_elapsed'
+
+
+def test_multiple_replay_trials_not_implicitly_summed(tmp_path):
+    from roboswe.adaptive_results import _operational_timing
+    trial={'replay':{'elapsed_seconds':10}}
+    result=_operational_timing(tmp_path,{'kind':'independent_code_replay','trials':[trial,trial]})
+    assert result['replay_execution_seconds'] is None
+    assert result['replay_execution_coverage']['status']=='missing_or_ambiguous_trial'

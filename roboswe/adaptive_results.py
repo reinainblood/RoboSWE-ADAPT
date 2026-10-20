@@ -136,6 +136,70 @@ def _timing(directory, report):
     }
 
 
+def _transport_timing(directory, filename):
+    """Pair unique logged host epochs; diagnostic text is not a timing event."""
+    path=directory/filename
+    pairs={
+        'setup_seconds':('create_start','worker_initial_response'),
+        'worker_exec_ready_seconds':('worker_exec_start','worker_exec_ready'),
+        'commit_seconds':('sandbox_commit_start','sandbox_commit_complete'),
+        'artifact_readback_seconds':('artifact_readback_start','artifact_readback_complete'),
+    }
+    events={}; non_json=0; non_event=0
+    if path.is_file():
+        for index,line in enumerate(path.read_text(errors='replace').splitlines()):
+            if not line.strip():continue
+            try:row=json.loads(line)
+            except (ValueError,TypeError):
+                non_json+=1;continue
+            if not isinstance(row,dict) or not isinstance(row.get('transport_phase'),str):
+                non_event+=1;continue
+            events.setdefault(row['transport_phase'],[]).append((index,row.get('epoch')))
+    values={}; coverage={}
+    for field,(start,end) in pairs.items():
+        before,after=events.get(start,[]),events.get(end,[])
+        value=None
+        if not path.is_file():status='source_missing'
+        elif len(before)>1 or len(after)>1:status='duplicate_event'
+        elif not before or not after:status='missing_event'
+        elif _number(before[0][1]) is None or _number(after[0][1]) is None:status='invalid_epoch'
+        elif before[0][0]>=after[0][0]:status='invalid_event_order'
+        elif after[0][1]<before[0][1]:status='negative_interval'
+        else:
+            value=after[0][1]-before[0][1]
+            if _number(value) is None:value=None;status='invalid_interval'
+            else:status='measured'
+        values[field]=value
+        coverage[field]={'status':status,'start_event':start,'end_event':end,
+                         'start_event_count':len(before),'end_event_count':len(after)}
+    return {**values,'source':filename,'source_present':path.is_file(),
+            'status':'measured' if all(v is not None for v in values.values()) else 'partial_or_unavailable',
+            'coverage':coverage,'ignored_non_json_lines':non_json,'ignored_non_event_json_lines':non_event,
+            'scope':'Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time.'}
+
+
+def _operational_timing(directory, verification):
+    trials=verification.get('trials',[])
+    replay_seconds=None
+    if not verification:status='source_missing'
+    elif verification.get('kind')!='independent_code_replay':status='unsupported_verification_kind'
+    elif not isinstance(trials,list) or len(trials)!=1 or not isinstance(trials[0],dict):status='missing_or_ambiguous_trial'
+    else:
+        replay=trials[0].get('replay')
+        value=replay.get('elapsed_seconds') if isinstance(replay,dict) else None
+        replay_seconds=_number(value)
+        if value is None:status='elapsed_missing'
+        elif replay_seconds is None:status='invalid_elapsed'
+        else:status='measured' if verification.get('reproduced') is True else 'measured_unverified'
+    return {'original_transport':_transport_timing(directory,'modal-transport.log'),
+            'replay_transport':_transport_timing(directory,'verification/modal-transport.log'),
+            'replay_execution_seconds':replay_seconds,
+            'replay_execution_coverage':{'status':status,'source':'verification.json',
+                'field':'trials[0].replay.elapsed_seconds','scope':'Trusted replay task elapsed time, including code/container/RPC work; separate from original active score and not model inference or pure code compute.'},
+            'end_to_end_seconds':None,'end_to_end_status':'not_recorded',
+            'scope':'Operational stages are separate from original scored active time. No full pipeline completion event is recorded: job.finished_at precedes replay/archive, and archive.verified_at precedes restore-test/receipt publication. No end-to-end estimate is substituted.'}
+
+
 def validated_failure_review(directory, job=None):
     """Validate an additive review of a stopped historical OpenRouter refusal.
 
@@ -233,6 +297,7 @@ def _attempt(directory, job):
         'passive_wait_control_steps': _number(report.get('passive_wait_control_steps')),
         'code_errors': _number(report.get('code_errors')),
         'timing': timing,
+        'operational_timing':_operational_timing(directory,verification),
         'evidence': {'report': report != {}, 'verification': verification != {}, 'replay_valid': valid,
                      'files': {name: {'path': str(directory / name), 'sha256': hashlib.sha256((directory / name).read_bytes()).hexdigest()}
                                for name in ('job.json', 'report.json', 'verification.json') if (directory / name).exists()}},
