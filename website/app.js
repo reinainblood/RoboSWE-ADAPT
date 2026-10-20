@@ -55,6 +55,7 @@ function renderResults(data){
    for(const [folder,job,label] of [['beverage-argon-trial-02','20261020T131409Z-24893adde2','Trial 2: verified failure ↗'],['beverage-argon-trial-03','20261020T135653Z-abbb79f2ad','Trial 3: verified success ↗']]){const link=resultElement('a',label,'episode-link');link.href=`episodes/${folder}/#${job}`;article.append(link)}
   }
   if(row.series_id==='20261020T172747Z-ab32071f77'){const link=resultElement('a','Trial 2: verified failure ↗','episode-link');link.href='episodes/hotdog-opus-trial-02/#20261020T181702Z-79d88e1c95';article.append(link)}
+  if(row.series_id==='20261020T172747Z-ab32071f77'){const link=resultElement('a','Trial 3: verified failure ↗','episode-link');link.href='episodes/hotdog-opus-trial-03/#20261020T190741Z-06e26cff6f';article.append(link)}
   if(row.series_id==='20261020T130317Z-20ccc4226b'){
    for(const [folder,job,label] of [['beverage-opus-trial-01','20261020T130317Z-d06e1d70d3','Trial 1: verified failure ↗'],['beverage-opus-trial-02','20261020T135735Z-7882496ac8','Trial 2: verified failure ↗'],['beverage-opus-trial-03','20261020T150039Z-2411916e03','Trial 3: verified failure ↗'],['beverage-opus-trial-04','20261020T153422Z-360afcffad','Trial 4: verified failure ↗'],['beverage-opus-trial-05','20261020T160340Z-7227003a7c','Trial 5: verified failure ↗']]){const link=resultElement('a',label,'episode-link');link.href=`episodes/${folder}/#${job}`;article.append(link)}
   }

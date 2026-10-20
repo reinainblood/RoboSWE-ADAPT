@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "origin": "https://roboswe.com",
-  "generated_at": "2026-10-20T19:08:21.557831+00:00",
+  "generated_at": "2026-10-20T19:57:51.341984+00:00",
   "scope": "Already-public curated media and episode exports only; no raw private job directory",
   "assets": [
     {
@@ -739,6 +739,72 @@
     {
       "path": "episodes/hotdog-opus-trial-02/review.js",
       "url": "https://roboswe.com/episodes/hotdog-opus-trial-02/review.js",
+      "bytes": 10273,
+      "sha256": "27e6323e44c3d4104039fe81469c8fe573b895b138abfb7e854962d6e01e1991"
+    },
+    {
+      "path": "episodes/hotdog-opus-trial-03/episode-overlay.js",
+      "url": "https://roboswe.com/episodes/hotdog-opus-trial-03/episode-overlay.js",
+      "bytes": 2307,
+      "sha256": "a483b86cf779251670ad63b201bf0cace82c4d6f100b05782a97bc9c19ec0b5a"
+    },
+    {
+      "path": "episodes/hotdog-opus-trial-03/index.html",
+      "url": "https://roboswe.com/episodes/hotdog-opus-trial-03/",
+      "bytes": 7635,
+      "sha256": "9f193a88d9ce721aa64ba9246feb72792e34e72c022f17fbb4079ec761af6b09"
+    },
+    {
+      "path": "episodes/hotdog-opus-trial-03/jobs/20261020T190741Z-06e26cff6f/atif.json",
+      "url": "https://roboswe.com/episodes/hotdog-opus-trial-03/jobs/20261020T190741Z-06e26cff6f/atif.json",
+      "bytes": 824355,
+      "sha256": "0d9fdf12282659f16425caa0ee50e3afce1e2ca7ce5021ac70bb1dfa8e2df5c2"
+    },
+    {
+      "path": "episodes/hotdog-opus-trial-03/jobs/20261020T190741Z-06e26cff6f/episode.json",
+      "url": "https://roboswe.com/episodes/hotdog-opus-trial-03/jobs/20261020T190741Z-06e26cff6f/episode.json",
+      "bytes": 1772965,
+      "sha256": "d324cd1eb61a70fe55d3c17d50b3d28b84c7ef1b0273900a8cb31bbe860e6a10"
+    },
+    {
+      "path": "episodes/hotdog-opus-trial-03/jobs/20261020T190741Z-06e26cff6f/video-camera-0-simulation.mp4",
+      "url": "https://roboswe.com/episodes/hotdog-opus-trial-03/jobs/20261020T190741Z-06e26cff6f/video-camera-0-simulation.mp4",
+      "bytes": 9410690,
+      "sha256": "6e2d638b025d6a46e0c48cf87ab3d7a4e95ae2e752747f900ea000bc80a187a1"
+    },
+    {
+      "path": "episodes/hotdog-opus-trial-03/jobs/20261020T190741Z-06e26cff6f/video-camera-1-simulation.mp4",
+      "url": "https://roboswe.com/episodes/hotdog-opus-trial-03/jobs/20261020T190741Z-06e26cff6f/video-camera-1-simulation.mp4",
+      "bytes": 13380923,
+      "sha256": "461386b19d4661dec575314ab8456c094b2121fb7f239193de166a3ce0d37483"
+    },
+    {
+      "path": "episodes/hotdog-opus-trial-03/jobs/20261020T190741Z-06e26cff6f/video-camera-2-simulation.mp4",
+      "url": "https://roboswe.com/episodes/hotdog-opus-trial-03/jobs/20261020T190741Z-06e26cff6f/video-camera-2-simulation.mp4",
+      "bytes": 12303254,
+      "sha256": "d324d8efae93ffd5c1df6f81754f2e849e9a8ce3a26f0e2c6333a5636f2eefcd"
+    },
+    {
+      "path": "episodes/hotdog-opus-trial-03/jobs/20261020T190741Z-06e26cff6f/video-overview-simulation.mp4",
+      "url": "https://roboswe.com/episodes/hotdog-opus-trial-03/jobs/20261020T190741Z-06e26cff6f/video-overview-simulation.mp4",
+      "bytes": 467042,
+      "sha256": "86740df510d0df3ccca8ee0374e8e3501926085e478195be97318ebeec900b74"
+    },
+    {
+      "path": "episodes/hotdog-opus-trial-03/manifest.json",
+      "url": "https://roboswe.com/episodes/hotdog-opus-trial-03/manifest.json",
+      "bytes": 4356,
+      "sha256": "ae1c2296d637b8467a0f7ec651eb2ee9a4a95d7ce91aa7107c62248446246d4b"
+    },
+    {
+      "path": "episodes/hotdog-opus-trial-03/review-jobs.json",
+      "url": "https://roboswe.com/episodes/hotdog-opus-trial-03/review-jobs.json",
+      "bytes": 209,
+      "sha256": "3c6495ac5e89de4cf78f2c932ed361044474a13dd54fa20bddca784f66d403ba"
+    },
+    {
+      "path": "episodes/hotdog-opus-trial-03/review.js",
+      "url": "https://roboswe.com/episodes/hotdog-opus-trial-03/review.js",
       "bytes": 10273,
       "sha256": "27e6323e44c3d4104039fe81469c8fe573b895b138abfb7e854962d6e01e1991"
     },
