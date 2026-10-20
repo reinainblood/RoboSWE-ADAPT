@@ -48,7 +48,7 @@ function renderTurn(t,index){
  left.append(rawDetails('Observation, prior feedback and native actions',{observation_before:t.input?.observation,feedback_before:t.input?.feedback,control_steps_before:t.control_steps_before,control_steps_after:t.control_steps_after,robot_actions:t.robot_actions}));
  const providerSummary=(t.reasoning||[]).some(trace=>trace?.representation==='provider_generated_summary');
  right.append(el('h3',providerSummary?'Provider-generated thinking summary':'Provider-exposed reasoning'));
- if(providerSummary)right.append(el('p',"This is the provider's readable summary. Original returned blocks and signatures are retained in the episode record.",'muted readable-text'));
+ if(providerSummary)right.append(el('p',"This is the provider's readable summary. Original returned blocks and signatures are retained in the source run; public exports represent opaque signatures by hashes.",'muted readable-text'));
  const reasoning=reasoningView(t.reasoning);
  for(const text of reasoning.texts)right.append(el('div',text,'reasoning-text'));
  if(!reasoning.texts.length)right.append(el('p','No readable provider reasoning was returned for this turn. The public action rationale is shown separately.','muted readable-text'));
