@@ -1,0 +1,385 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="The RoboSWE-ADAPT methods draft: background, task selection, five-trial protocol, harness, verification and proposed evaluation measures."><title>RoboSWE-ADAPT — Draft preprint</title><link rel="stylesheet" href="paper.css"></head><body><a class="skip" href="#paper">Skip to paper</a><nav class="paper-bar" aria-label="Paper navigation"><a class="brand" href="/">RoboSWE <span>ADAPT</span></a><a href="/#results">Benchmark &amp; results ↗</a></nav><main id="paper"><p class="draft-label">DRAFT PREPRINT · METHODS</p><p class="draft-note">Background and methods draft. Evaluation results will be added after the trial series are complete. Not yet submitted to arXiv.</p><div class="paper-links"><a href="source.tex" download>Download TeX source</a><a href="citation.bib" download>Citation (BibTeX)</a><button type="button" id="print-paper">Print / save PDF</button></div>
+<header id="title-block-header">
+<h1 class="title">RoboSWE-ADAPT: Adaptive Development of Action Programs
+Through Trials</h1>
+<p class="author">Kirsten Ruge</p>
+<p class="date">Methods draft — October 20, 2026</p>
+<div class="abstract">
+<h2 class="abstract-title">Abstract</h2>
+<p>Robot tasks offer a concrete test of whether a coding agent can turn
+feedback into better executable behavior. RoboSWE-ADAPT is a benchmark
+under development for adaptive development of action programs through
+repeated trials in RoboCasa365. For each task, an agent receives five
+attempts from the same admitted initial scene, retaining its authored
+code and interaction history while the physical environment resets. The
+interface exposes camera observations, robot sensors, and bounded native
+controller actions through an isolated code executor. A trusted
+simulator evaluates task predicates, and a separate replay checks
+whether the recorded execution reproduces the result. Exact interaction
+histories are archived in SQLite; bounded context windows slide without
+replacing prior exchanges with generated summaries. The initial
+candidate catalogue combines demanding household activities with shorter
+calibration tasks. We describe the task-selection process, execution
+interface, verification architecture, and proposed measurements of
+successful adaptation and recovery. This manuscript presents the
+benchmark design and methods before the release evaluation.</p>
+</div>
+</header>
+<h2 id="introduction">Introduction</h2>
+<p>A coding agent controlling a robot must connect several kinds of
+reasoning: interpreting visual observations, choosing a sequence of
+actions, expressing those actions as executable programs, and revising
+its approach when the world does not behave as expected. A dropped
+object or missed grasp is both a failure of the current action and
+useful evidence for the next one. Repeated attempts make this
+development process observable.</p>
+<p>RoboSWE-ADAPT asks a focused question: how effectively can an agent
+develop a reusable action program for a household task over five trials?
+The physical scene resets between trials, while the agent retains its
+program library and conversation. Model parameters remain fixed. This
+setting measures adaptation of the agent system, including its code and
+available experience, rather than weight training.</p>
+<p>The benchmark builds on RoboCasa365’s household environments and
+success predicates. Its contribution is an evaluation protocol and
+execution harness for coding agents: a controlled boundary between
+authored code and trusted simulation, a retained-development sequence,
+reproducible verification, and an inspectable record of decisions and
+physical actions. The intended release includes runnable task manifests,
+a command-line pipeline, and a browser-based evidence viewer. The
+current paper describes these methods; evaluation outcomes will be added
+only after the new protocol has produced complete runs.</p>
+<h2 id="background-and-related-work">Background and Related Work</h2>
+<h3 id="simulation-and-household-manipulation.">Simulation and household
+manipulation.</h3>
+<p>RoboCasa provides simulated household environments and demonstrations
+for generalist robot learning <span class="citation"><a href="#ref-robocasa2024" aria-label="Reference 1">[1]</a></span>. RoboCasa365 extends this foundation
+to 365 tasks, including 65 atomic and 300 composite tasks <span class="citation"><a href="#ref-robocasa365" aria-label="Reference 2">[2]</a></span>. RoboSWE-ADAPT uses
+selected task implementations from this ecosystem, retaining their
+provenance. The underlying robosuite framework provides modular robot
+models and controller interfaces on MuJoCo <span class="citation"><a href="#ref-robosuite" aria-label="Reference 3">[3]</a></span>. We evaluate program development above
+that interface, rather than introduce a new physics engine or claim a
+replacement for RoboCasa’s policy-learning evaluations.</p>
+<h3 id="programs-as-embodied-policies.">Programs as embodied
+policies.</h3>
+<p>Code as Policies demonstrates language-model-generated programs that
+compose perception and control APIs <span class="citation"><a href="#ref-codepolicies" aria-label="Reference 4">[4]</a></span>. Voyager develops an executable skill
+library through interaction and feedback in Minecraft <span class="citation"><a href="#ref-voyager" aria-label="Reference 5">[5]</a></span>. These works motivate
+treating authored programs as inspectable, reusable products of
+interaction. RoboSWE-ADAPT concentrates on repeated execution of a fixed
+household task with a controlled physical reset and bounded budgets.</p>
+<h3 id="learning-from-feedback-without-weight-updates.">Learning from
+feedback without weight updates.</h3>
+<p>Reflexion uses feedback and retained linguistic reflection to improve
+subsequent trials <span class="citation"><a href="#ref-reflexion" aria-label="Reference 6">[6]</a></span>.
+Our protocol preserves interaction history and code, allowing
+participants to use available experience without requiring a particular
+reflection method. Since multiple retained resources change together,
+improvements in this setting alone do not identify a causal effect of
+conversational memory. A matched fresh-context control would be required
+to isolate that contribution.</p>
+<h3 id="executable-agent-evaluation.">Executable agent evaluation.</h3>
+<p>Terminal-Bench evaluates agents on tasks in executable terminal
+environments <span class="citation"><a href="#ref-terminalbench" aria-label="Reference 7">[7]</a></span>.
+It is an inspiration for a cohesive task runner and inspectable
+trajectories. Here, program execution also changes a physical
+simulation, making camera evidence, control-step accounting, and
+task-state verification part of the evaluation record.</p>
+<h2 id="task-catalogue-and-admission">Task Catalogue and Admission</h2>
+<p>The starting catalogue contains 83 user-selected entries representing
+85 native task names. Two entries propose combining
+<code>GatherMarinadeIngredients</code> with <code>BlendMarinade</code>,
+and <code>ReheatMeal</code> with <code>ReturnHeatedFood</code>. These
+compositions are candidates, not yet admitted custom environments. A
+composed task must preserve one continuous scene and receive its own
+identifier, instruction, budgets, and verifier review.</p>
+<p>Selection used the official composite-task catalogue’s subtask
+counts, skill labels, demonstration durations, and videos <span class="citation"><a href="#ref-taskcatalogue" aria-label="Reference 8">[8]</a></span>. The column labeled
+Horizon displays rounded median demonstration duration in seconds, drawn
+from <code>episode_len_medians_train.json</code>; it is neither the
+registry’s maximum control-step horizon nor a model wall-time limit
+<span class="citation"><a href="#ref-demodurations" aria-label="Reference 9">[9]</a></span>. The harder
+candidates generally have at least six annotated subtasks, more than
+three listed skills, and longer median demonstration durations.
+Approximately twenty shorter candidates have two to five subtasks and
+median demonstration durations below sixty seconds, typically thirty to
+fifty seconds. These criteria describe purposeful curation rather than
+strict eligibility thresholds or empirical difficulty labels. Examples
+include beverage sorting, dishwasher loading, appliance operation, food
+arrangement, and refrigerator organization.</p>
+<p>Admission precedes release scoring. For each scene, the manifest must
+pin the upstream revision, task class, robot, layout, style, seed,
+controller configuration, observations, and execution limits. Checks
+establish that the scene loads, the initial state is valid and does not
+already satisfy success, the interface operates within the chosen
+budgets, and resets match the reference fingerprint. Predicate review
+checks whether the implemented condition matches the task description.
+Median demonstration duration, registry control-step horizon, configured
+control-step budget, and API wall-time budget are recorded as separate
+quantities.</p>
+<p>Candidates with reproducible environment or operational defects may
+be excluded during development. The release manifest will retain
+exclusion reasons and the resulting admitted denominator. Exclusion must
+not depend on a particular model failing a legitimate task. Once a
+comparative evaluation starts, the admitted task set and settings are
+frozen; subsequent repairs produce a versioned protocol rather than
+retroactively changing scores. Earlier exploratory campaigns remain
+separate from this release.</p>
+<h2 id="five-trial-adaptive-protocol">Five-Trial Adaptive Protocol</h2>
+<p>An evaluation unit is a task-scene series of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">T=5</annotation></semantics></math>
+attempts. Attempt one starts with the standard interface instructions
+and an empty authored motion library. Subsequent attempts preserve the
+model’s available interaction history and authored code. Each attempt
+starts a fresh simulator, and its initial fingerprint must match the
+admitted reference before new model input is supplied. A fresh task
+starts a fresh development history; the protocol does not transfer
+task-specific libraries between benchmark tasks.</p>
+<p>The same model pin, observation interface, controller, context
+policy, and budgets apply throughout a series. The experimental runner
+currently supports explicit budgets for active work, total control
+steps, and individual scripts. The remote pilot uses 1,800 active
+seconds, 6,000 control steps, and 50 steps per script, with a 90-second
+script limit. Earlier local development runs used a 60-second script
+limit and are identified separately. These are harness budgets, not
+assertions about upstream task horizons. Release settings are pinned per
+manifest before comparative runs.</p>
+<p>A control step advances the configured controller tick; it is not
+necessarily one physics integrator step. Observing the scene does not
+advance physics. The simulator pauses between requested actions while
+the model reasons. Consequently, we report simulation/control progress
+separately from provider latency, code execution, transport, passive
+waits, replay compute, and end-to-end elapsed time. A successful action
+program is not by itself evidence of real-time physical deployment.</p>
+<p>Failures remain part of the adaptive sequence. A completed
+unsuccessful attempt is not rerun to improve its outcome. Infrastructure
+failures and missing attempts are recorded explicitly, with any recovery
+linked to the original record. Successful and unsuccessful attempts both
+provide experience to the next scheduled trial.</p>
+<h2 id="harness-and-action-interface">Harness and Action Interface</h2>
+<p>The trusted coordinator packages instructions, camera images, sensor
+observations, and operation feedback, then asks the participant for a
+structured decision. Operations include authoring or reading files,
+executing a script, observing, waiting, and finishing. Authored Python
+runs in a networkless Docker sandbox and accesses the robot through a
+restricted bridge. The model receives documented native action
+dimensions, bounds, and coordinate conventions rather than prewritten
+task-solving primitives.</p>
+<p>The simulator owns physical state and task evaluation. The authored
+program does not receive a writable simulator object, an administrative
+reset operation, provider credentials, or authority to set grading
+results. Sensor and image observations are selected by the harness;
+unrestricted internal task state is not passed through as a raw
+environment dump. Script stdout, errors, completed-step counts, and
+timing are recorded as distinct feedback. A successful code return or
+accepted control tick does not establish grasp, target attainment, or
+task completion.</p>
+<p>The public runner accepts a dataset path and model/execution
+configuration through <code>roboswe run</code>, with Docker or Modal
+selected using <code>-e</code>. In the implemented architecture, Modal
+hosts the remote simulator while the coordinator and authored-code
+sandbox remain on the client host. This preserves the same code trust
+boundary across backends. Backend, image identity, hardware allocation,
+and controller frequency belong in the run manifest because they can
+affect timing and reproducibility.</p>
+<h2 id="exact-history-and-context-windows">Exact History and Context
+Windows</h2>
+<p>A coordinator-owned SQLite store archives exact provider message
+blocks with digests, timestamps, and attempt identifiers.
+Provider-exposed thinking and opaque replay fields are retained when
+available; opaque fields are not presented as readable reasoning. The
+viewer can align public reasoning, tool calls, execution output, and
+robot actions without manufacturing missing internal content.</p>
+<p>The context policy reserves output capacity and request overhead
+before inference. For context capacity
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>,
+output reserve
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>O</mi><annotation encoding="application/x-tex">O</annotation></semantics></math>,
+and safety allowance
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
+the input budget is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><mi>C</mi><mo>−</mo><mi>O</mi><mo>−</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">B=C-O-S</annotation></semantics></math>;
+the current allowance is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mn>4096</mn></mrow><annotation encoding="application/x-tex">S=4096</annotation></semantics></math>
+tokens. Request accounting includes instructions, schema, images, and
+conversational content. When necessary, the policy removes the oldest
+complete exchanges until at least 200,000 input accounting units have
+been removed, or more if required to fit. Native-count policies use
+token counts; the experimental OpenRouter policy uses the conservative
+proxy described below. Calls and results remain paired, and system
+instructions remain pinned. An oversized indivisible exchange is an
+error rather than a silently truncated record.</p>
+<p>Sliding removes content from the active request, not the archive. A
+bounded literal-search operation becomes available after the first slide
+and returns excerpts from prior history. Slide events record their
+attempt, time, removed messages, and before/after accounting values and
+the counting method. No provider-generated summary replaces archived
+experience. Direct-provider adapters use native count endpoints with the
+actual request format. For Gemini through OpenRouter, the current policy
+maps the original text, images, response schema, and returned reasoning
+metadata into a Google count-only request. The input estimate starts at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⌈</mo><mn>1.30</mn><mi>N</mi><mo stretchy="false" form="postfix">⌉</mo><mo>+</mo><mn>8192</mn></mrow><annotation encoding="application/x-tex">\lceil 1.30 N \rceil + 8192</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+is the mapped native count. After a response, the multiplier may
+increase to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.1</mn><mi>U</mi><mi>/</mi><mi>N</mi></mrow><annotation encoding="application/x-tex">1.1 U/N</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+is the reported prompt usage; it never decreases within the series.
+Generation sends the original OpenRouter messages unchanged. This
+calibrated estimate is recorded separately from exact native counts
+because OpenRouter may transform the request internally. Earlier
+byte-based estimates are retained only in separately labeled development
+evidence. An overflow stops the run and preserves evidence rather than
+silently retrying. Because this policy can slide earlier than a
+native-count policy, provider comparisons report the policy and slide
+history alongside outcomes. A common archive and sliding rule does not
+guarantee equal retained context or cache discounts across
+providers.</p>
+<h2 id="verification-and-evidence">Verification and Evidence</h2>
+<h3 id="mechanical-evaluation.">Mechanical evaluation.</h3>
+<p>The trusted simulator evaluates the upstream task predicate after
+control actions. Success requires a valid non-successful initial state
+and the configured consecutive success interval. The report preserves
+the observed predicate outcome and duration. Instructions and predicates
+are reviewed together because a reproducible predicate can still be an
+incomplete description of the intended behavior.</p>
+<h3 id="independent-replay.">Independent replay.</h3>
+<p>The adaptive pipeline reruns recorded code operations from the
+complete starting workspace in a fresh workspace and simulator.
+Checkpoints preserve regular files, including generated binary data,
+with content hashes, permissions, and modification timestamps.
+Restoration validates the manifest before writing into an empty
+workspace. Unsupported file types and paths fail checkpoint validation
+explicitly. The same immutable actor image is used for execution and
+replay; trusted checkpoint maintenance runs separately from authored
+programs. Verification records execution agreement and reproduced
+success independently of the participant’s claim. Errors and mismatches
+remain distinct from a verified pass. Replay tests reproducibility of
+the execution; semantic predicate quality is addressed by task review
+and negative controls.</p>
+<h3 id="optional-visual-cross-check.">Optional visual cross-check.</h3>
+<p>A separate judge may inspect synchronized camera views against a
+predicate-specific description and visual evidence guide. It reports
+whether each observable condition is supported, contradicted, or
+unobservable. Mechanical outcomes are compared after the visual
+assessment rather than supplied as the answer to reproduce. A
+contradiction prompts review, while an unobservable condition remains
+unresolved. This audit is optional and supplementary, not the mechanical
+pass gate. Its model, prompt, input views, response, and cost are
+recorded independently.</p>
+<h3 id="threat-model-and-records.">Threat model and records.</h3>
+<p>The boundary protects grading state from ordinary authored-code
+modification and ignores self-reported reward values. Negative tests
+should cover forged administrative operations, fake reports, and
+violations of the task’s physical conditions. Published evidence
+includes code snapshots, model messages, controller traces, verification
+records, and videos. Remote artifact durability requires readback
+against recorded hashes before local eviction; a stored path alone is
+not a durability receipt.</p>
+<h2 id="proposed-evaluation-measures">Proposed Evaluation Measures</h2>
+<p>The following measurement plan separates reliable completion,
+adaptation, and efficiency. It is proposed for release review rather
+than presented as an already frozen composite leaderboard score.</p>
+<p>For a complete valid series, let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>t</mi></msub><mo>∈</mo><mo stretchy="false" form="prefix">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">y_t\in\{0,1\}</annotation></semantics></math>
+denote verified success on attempt
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>.
+Mean success
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><msup><mi>T</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msubsup><mo>∑</mo><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><mi>T</mi></msubsup><msub><mi>y</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">A=T^{-1}\sum_{t=1}^{T}y_t</annotation></semantics></math>
+rewards consistently correct behavior. A stable-acquisition score is
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mfrac><mn>1</mn><mi>T</mi></mfrac><munderover><mo>∑</mo><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><mi>T</mi></munderover><munderover><mo>∏</mo><mrow><mi>j</mi><mo>=</mo><mi>t</mi></mrow><mi>T</mi></munderover><msub><mi>y</mi><mi>j</mi></msub><mo>,</mo></mrow><annotation encoding="application/x-tex">Q=\frac{1}{T}\sum_{t=1}^{T}\prod_{j=t}^{T}y_j,</annotation></semantics></math>
+which equals the final uninterrupted success-streak length divided by
+five. Thus success on every attempt scores one, whereas two failures
+followed by three successes score
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">3/5</annotation></semantics></math>.
+Reporting
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+alongside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math>
+preserves distinctions between early successes and late regressions.
+Missing or invalid attempts are reported separately, not imputed as
+successful or silently removed.</p>
+<p>Control steps and simulated time are compared among successful
+attempts, including paired first-to-last ratios and complete
+trajectories. Fewer steps on a failed attempt do not constitute
+efficiency improvement. A sustained-improvement bonus, if adopted, will
+require a preregistered multi-attempt criterion rather than a single
+large early reduction; its thresholds are left open for review before
+release scoring.</p>
+<p>Within-attempt recovery is a separate proposed diagnostic.
+Independently identified mishaps can be paired with regained task
+progress and recovery time or steps. Unrecovered events are censored at
+the attempt boundary. Raw exception counts are not a headline penalty:
+exploratory mistakes can support later success, and deliberately
+producing extra mishaps must not earn extra credit. Agent explanations
+help interpret a trace but do not alone prove physical recovery or
+accurate attribution.</p>
+<p>Aggregation uses task-level paired comparisons so that five dependent
+attempts are not treated as five independent tasks. Reports should
+include admitted and completed denominators, task-level uncertainty,
+operational failures, and disaggregated timing and cost. Claims that
+retention caused improvement require matched fresh-context controls; the
+initial retained-trial benchmark measures observed adaptation of the
+complete system.</p>
+<h2 id="release-and-reproducibility-plan">Release and Reproducibility
+Plan</h2>
+<p>The release package will connect each admitted task to its scene
+configuration, instruction, upstream predicate revision, observation
+contract, budgets, and replay settings. A single run command produces
+the trial series and verification records; the dashboard presents
+multi-angle videos with aligned code and available reasoning. Static
+exports support inspection without credentials or a running
+simulator.</p>
+<p>The candidate catalogue and experimental execution pipeline are
+available in the development repository. Scene admission, provider
+validation, and the final scoring specification are being completed for
+RoboSWE-ADAPT. The paper will report the new protocol’s empirical
+evaluation after runs finish; historical pilot outcomes are not
+substituted for those measurements.</p>
+<section id="references"><h2>References</h2><ol><li id="ref-robocasa2024"><p>S. Nasiriany, A. Maddukuri, L. Zhang, A. Parikh, A. Lo, A. Joshi, A.
+Mandlekar, and Y. Zhu. <em>RoboCasa: Large-Scale Simulation of Everyday
+Tasks for Generalist Robots</em>. Robotics: Science and Systems, 2024.
+<a href="https://arxiv.org/abs/2406.02523"
+class="uri">https://arxiv.org/abs/2406.02523</a>.</p>
+</li><li id="ref-robocasa365"><p>S. Nasiriany, S. Nasiriany, A. Maddukuri, and Y. Zhu.
+<em>RoboCasa365: A Large-Scale Simulation Framework for Training and
+Benchmarking Generalist Robots</em>. International Conference on
+Learning Representations, 2026. <a
+href="https://arxiv.org/abs/2603.04356"
+class="uri">https://arxiv.org/abs/2603.04356</a>.</p>
+</li><li id="ref-robosuite"><p>Y. Zhu, J. Wong, A. Mandlekar, R. Martín-Martín, A. Joshi, K. Lin, A.
+Maddukuri, S. Nasiriany, and Y. Zhu. <em>robosuite: A Modular Simulation
+Framework and Benchmark for Robot Learning</em>. arXiv:2009.12293,
+version 3, 2025. <a href="https://arxiv.org/abs/2009.12293v3"
+class="uri">https://arxiv.org/abs/2009.12293v3</a>.</p>
+</li><li id="ref-codepolicies"><p>J. Liang, W. Huang, F. Xia, P. Xu, K. Hausman, B. Ichter, P.
+Florence, and A. Zeng. <em>Code as Policies: Language Model Programs for
+Embodied Control</em>. arXiv:2209.07753, 2022. <a
+href="https://arxiv.org/abs/2209.07753"
+class="uri">https://arxiv.org/abs/2209.07753</a>.</p>
+</li><li id="ref-voyager"><p>G. Wang, Y. Xie, Y. Jiang, A. Mandlekar, C. Xiao, Y. Zhu, L. Fan, and
+A. Anandkumar. <em>Voyager: An Open-Ended Embodied Agent with Large
+Language Models</em>. arXiv:2305.16291, 2023. <a
+href="https://arxiv.org/abs/2305.16291"
+class="uri">https://arxiv.org/abs/2305.16291</a>.</p>
+</li><li id="ref-reflexion"><p>N. Shinn, F. Cassano, E. Berman, A. Gopinath, K. Narasimhan, and S.
+Yao. <em>Reflexion: Language Agents with Verbal Reinforcement
+Learning</em>. arXiv:2303.11366, version 4, 2023. <a
+href="https://arxiv.org/abs/2303.11366v4"
+class="uri">https://arxiv.org/abs/2303.11366v4</a>.</p>
+</li><li id="ref-terminalbench"><p>Terminal-Bench contributors. <em>Terminal-Bench</em>. Official
+project website, accessed October 20, 2026. <a
+href="https://www.tbench.ai/"
+class="uri">https://www.tbench.ai/</a>.</p>
+</li><li id="ref-taskcatalogue"><p>RoboCasa core team. <em>Composite Tasks</em>, RoboCasa 1.0.1
+documentation. Accessed October 20, 2026. <a
+href="https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+class="uri">https://robocasa.ai/docs/build/html/tasks/composite_tasks.html</a>.</p>
+</li><li id="ref-demodurations"><p>RoboCasa core team. <em>Composite-task episode lengths</em>,
+generated catalogue metadata. Source:
+<code>episode_len_medians_train.json</code>; accessed October 20, 2026.
+<a
+href="https://robocasa.ai/docs/build/html/static/composite_episode_lengths.js"
+class="uri">https://robocasa.ai/docs/build/html/static/composite_episode_lengths.js</a>.</p>
+</li></ol></section><footer><a href="/">Return to RoboSWE-ADAPT</a></footer></main><script src="paper.js" defer></script></body></html>

@@ -1,0 +1,3706 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-20T15:43:26.617659+00:00",
+  "protocol": "adaptive-public-sqlite-v1",
+  "series": [
+    {
+      "series_id": "20261020T083619Z-f0b03b7329",
+      "task": "BlendIngredients",
+      "protocol": "adaptive-public-sqlite-v1",
+      "protocol_review": {
+        "primary_leaderboard_eligible": false,
+        "classification": "development_context_policy",
+        "reason": "The v1 byte/image estimator shortened the active history at 4.18\u20137.07 times actual token usage. Three slides occurred during the first trial, whose actual prompt never exceeded 177435 tokens.",
+        "mechanical_result_preserved": "First trial verified_fail; no model retry within this series.",
+        "series_stop": "Parent-directed SIGINT after first independent replay completed; remaining planned trials not started as model evaluations.",
+        "future_protocol": "sqlite-sliding-or-google-count-v2 is separately versioned, still approximate and calibrated, not exact native OpenRouter counting.",
+        "evidence_sha256": "8bdf15cb73baf1f22af13ae1a3f0aa6adcf16df33d72d2ae93155e3f2cc307fb"
+      },
+      "recorded_status": "infrastructure_error",
+      "liveness_verified": false,
+      "participant": {
+        "provider": "openrouter",
+        "model": "google/gemini-4-argon",
+        "effort": "high",
+        "context_window": 1048576,
+        "max_output_tokens": 32768
+      },
+      "context_policy": {
+        "method": "sqlite-sliding-or-conservative-v1",
+        "context_window": 1048576,
+        "output_reserve": 32768,
+        "eviction_chunk": 200000,
+        "estimator": "conservative-proxy-units-not-native-tokens",
+        "overhead_reserve": 4096,
+        "provider_compaction": false,
+        "cache_discount_guaranteed": false,
+        "history_file": "jobs/20261020T083619Z-f0b03b7329/history.sqlite"
+      },
+      "context_audit": {
+        "slide_count": 3,
+        "slides": [
+          {
+            "trial": "20261020T083619Z-460161983a",
+            "epoch": 1792486406.516347,
+            "removed_messages": 12,
+            "estimated_removed_tokens": 216255,
+            "estimated_before_tokens": 1094215,
+            "estimated_after_tokens": 877960
+          },
+          {
+            "trial": "20261020T083619Z-460161983a",
+            "epoch": 1792486604.663435,
+            "removed_messages": 8,
+            "estimated_removed_tokens": 259251,
+            "estimated_before_tokens": 1049570,
+            "estimated_after_tokens": 790319
+          },
+          {
+            "trial": "20261020T083619Z-460161983a",
+            "epoch": 1792486845.3057868,
+            "removed_messages": 6,
+            "estimated_removed_tokens": 217471,
+            "estimated_before_tokens": 1029874,
+            "estimated_after_tokens": 812403
+          }
+        ],
+        "reported_prompt_tokens_range": [
+          10961,
+          177435
+        ],
+        "proxy_to_reported_prompt_ratio_range": [
+          4.181530887196034,
+          7.066599762795366
+        ],
+        "scope": "Original provider usage and SQLite slide receipts. Estimated slide units are policy-dependent, not necessarily native tokens. Early sliding can confound comparisons across context policies."
+      },
+      "limits": {
+        "active_seconds": 1800,
+        "control_steps": 6000,
+        "per_script_steps": 50,
+        "per_script_seconds": 60
+      },
+      "execution": {
+        "backend": "docker",
+        "simulator_image": "sha256:cbb5f7cd21880a31e2b1faaefedbb468269c3dfa0c22b79c37fc36dc9c865c04",
+        "code_image": "sha256:e5b644a03c4813de83830cb88c0ba44b30d320b474768dad40a455fc6e1da8b9"
+      },
+      "planned_trials": 5,
+      "verified_trials": 1,
+      "incomplete_trials": 4,
+      "complete": false,
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "job_id": "20261020T083619Z-460161983a",
+          "recorded_status": "verified_fail",
+          "category": "verified_fail",
+          "failure_review": {},
+          "failure_classification": null,
+          "official_success": false,
+          "observed_success": false,
+          "termination_reason": "agent_finish",
+          "budget_censored": false,
+          "control_steps": 849,
+          "passive_wait_control_steps": 0,
+          "code_errors": 1,
+          "timing": {
+            "last_model_call_error_type": null,
+            "active_seconds": 1635.6495954549998,
+            "wall_seconds": null,
+            "passive_wait_seconds": 0,
+            "model_roundtrip_seconds": 1216.884042665828,
+            "operation_roundtrip_seconds": 417.6313854982145,
+            "observation_roundtrip_seconds": 0.6516877133399248,
+            "model_compute_seconds": null,
+            "transport_only_seconds": null,
+            "code_only_seconds": null,
+            "count_service_completed_roundtrip_seconds": null,
+            "count_service_coverage": {
+              "completed_logical_call_receipts": 0,
+              "timed_completed_logical_calls": 0,
+              "missing_duration_receipts": 0,
+              "mirrored_native_receipts_excluded": 0,
+              "failure_event_rows_excluded": 0,
+              "unfinished_call_count": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed logical count-service calls only; mapped/Anthropic totals may include retries and backoff. Failure rows have cumulative elapsed times and are excluded. No count-start log establishes a complete denominator."
+            },
+            "inference_provider_completed_roundtrip_seconds": 1215.8340360405855,
+            "inference_provider_coverage": {
+              "completed_call_receipts": 26,
+              "timed_completed_calls": 26,
+              "missing_duration_receipts": 0,
+              "unidentifiable_rows_excluded": 0,
+              "failed_response_rows_excluded": 0,
+              "recorded_transmissions_started": null,
+              "recorded_unsettled_failures": 0,
+              "recorded_open_transmissions": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed provider-request roundtrips, including transport. Anthropic model-usage elapsed_seconds preferred; otherwise provider-responses elapsed_seconds/seconds. Mirrored logs deduplicated by call/id. Failed and unfinished requests are excluded; no pure model compute is inferred."
+            },
+            "partial_service_receipt_files": [],
+            "scope": "Original attempt only; replay and setup excluded. model_roundtrip_seconds is the model wrapper including context counting, inference, and orchestration, including timed wrapper errors. Service-specific totals are components of that wrapper, not additional elapsed time. Operation roundtrips include transport/orchestration, not pure code execution. Missing/unfinished service latency remains unknown."
+          },
+          "operational_timing": {
+            "original_transport": {
+              "setup_seconds": null,
+              "worker_exec_ready_seconds": null,
+              "commit_seconds": null,
+              "artifact_readback_seconds": null,
+              "source": "modal-transport.log",
+              "source_present": false,
+              "status": "partial_or_unavailable",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "source_missing",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "source_missing",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "commit_seconds": {
+                  "status": "source_missing",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "artifact_readback_seconds": {
+                  "status": "source_missing",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                }
+              },
+              "ignored_non_json_lines": 0,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_transport": {
+              "setup_seconds": null,
+              "worker_exec_ready_seconds": null,
+              "commit_seconds": null,
+              "artifact_readback_seconds": null,
+              "source": "verification/modal-transport.log",
+              "source_present": false,
+              "status": "partial_or_unavailable",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "source_missing",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "source_missing",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "commit_seconds": {
+                  "status": "source_missing",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "artifact_readback_seconds": {
+                  "status": "source_missing",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                }
+              },
+              "ignored_non_json_lines": 0,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_execution_seconds": 454.9455235820001,
+            "replay_execution_coverage": {
+              "status": "measured",
+              "source": "verification.json",
+              "field": "trials[0].replay.elapsed_seconds",
+              "scope": "Trusted replay task elapsed time, including code/container/RPC work; separate from original active score and not model inference or pure code compute."
+            },
+            "end_to_end_seconds": null,
+            "end_to_end_status": "not_recorded",
+            "scope": "Operational stages are separate from original scored active time. No full pipeline completion event is recorded: job.finished_at precedes replay/archive, and archive.verified_at precedes restore-test/receipt publication. No end-to-end estimate is substituted."
+          },
+          "evidence": {
+            "report": true,
+            "verification": true,
+            "replay_valid": true,
+            "files": {
+              "job.json": {
+                "path": "jobs/20261020T083619Z-460161983a/job.json",
+                "sha256": "a20dc191724c6b6ba495f3806d3330ece07cc54096145a27e8ed5a3b5dfc5e37"
+              },
+              "report.json": {
+                "path": "jobs/20261020T083619Z-460161983a/report.json",
+                "sha256": "e4faabd4691db6969b6564b58563bb7c857a5b4173f70cbfe511f791a4b56415"
+              },
+              "verification.json": {
+                "path": "jobs/20261020T083619Z-460161983a/verification.json",
+                "sha256": "9d2a68aa3d7d709767b0e6c6dd74163cfe6a5553dbc177b8cd5d74e3d3f62b3b"
+              }
+            }
+          }
+        },
+        {
+          "attempt_number": 2,
+          "job_id": "20261020T091136Z-eb8a7c1d54",
+          "recorded_status": "infrastructure_error",
+          "category": "infrastructure_failure",
+          "failure_review": {},
+          "failure_classification": null,
+          "official_success": null,
+          "observed_success": null,
+          "termination_reason": null,
+          "budget_censored": false,
+          "control_steps": null,
+          "passive_wait_control_steps": null,
+          "code_errors": null,
+          "timing": {
+            "last_model_call_error_type": null,
+            "active_seconds": null,
+            "wall_seconds": null,
+            "passive_wait_seconds": null,
+            "model_roundtrip_seconds": null,
+            "operation_roundtrip_seconds": null,
+            "observation_roundtrip_seconds": null,
+            "model_compute_seconds": null,
+            "transport_only_seconds": null,
+            "code_only_seconds": null,
+            "count_service_completed_roundtrip_seconds": null,
+            "count_service_coverage": {
+              "completed_logical_call_receipts": 0,
+              "timed_completed_logical_calls": 0,
+              "missing_duration_receipts": 0,
+              "mirrored_native_receipts_excluded": 0,
+              "failure_event_rows_excluded": 0,
+              "unfinished_call_count": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed logical count-service calls only; mapped/Anthropic totals may include retries and backoff. Failure rows have cumulative elapsed times and are excluded. No count-start log establishes a complete denominator."
+            },
+            "inference_provider_completed_roundtrip_seconds": null,
+            "inference_provider_coverage": {
+              "completed_call_receipts": 0,
+              "timed_completed_calls": 0,
+              "missing_duration_receipts": 0,
+              "unidentifiable_rows_excluded": 0,
+              "failed_response_rows_excluded": 0,
+              "recorded_transmissions_started": null,
+              "recorded_unsettled_failures": 0,
+              "recorded_open_transmissions": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed provider-request roundtrips, including transport. Anthropic model-usage elapsed_seconds preferred; otherwise provider-responses elapsed_seconds/seconds. Mirrored logs deduplicated by call/id. Failed and unfinished requests are excluded; no pure model compute is inferred."
+            },
+            "partial_service_receipt_files": [],
+            "scope": "Original attempt only; replay and setup excluded. model_roundtrip_seconds is the model wrapper including context counting, inference, and orchestration, including timed wrapper errors. Service-specific totals are components of that wrapper, not additional elapsed time. Operation roundtrips include transport/orchestration, not pure code execution. Missing/unfinished service latency remains unknown."
+          },
+          "operational_timing": {
+            "original_transport": {
+              "setup_seconds": null,
+              "worker_exec_ready_seconds": null,
+              "commit_seconds": null,
+              "artifact_readback_seconds": null,
+              "source": "modal-transport.log",
+              "source_present": false,
+              "status": "partial_or_unavailable",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "source_missing",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "source_missing",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "commit_seconds": {
+                  "status": "source_missing",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "artifact_readback_seconds": {
+                  "status": "source_missing",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                }
+              },
+              "ignored_non_json_lines": 0,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_transport": {
+              "setup_seconds": null,
+              "worker_exec_ready_seconds": null,
+              "commit_seconds": null,
+              "artifact_readback_seconds": null,
+              "source": "verification/modal-transport.log",
+              "source_present": false,
+              "status": "partial_or_unavailable",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "source_missing",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "source_missing",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "commit_seconds": {
+                  "status": "source_missing",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "artifact_readback_seconds": {
+                  "status": "source_missing",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                }
+              },
+              "ignored_non_json_lines": 0,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_execution_seconds": null,
+            "replay_execution_coverage": {
+              "status": "source_missing",
+              "source": "verification.json",
+              "field": "trials[0].replay.elapsed_seconds",
+              "scope": "Trusted replay task elapsed time, including code/container/RPC work; separate from original active score and not model inference or pure code compute."
+            },
+            "end_to_end_seconds": null,
+            "end_to_end_status": "not_recorded",
+            "scope": "Operational stages are separate from original scored active time. No full pipeline completion event is recorded: job.finished_at precedes replay/archive, and archive.verified_at precedes restore-test/receipt publication. No end-to-end estimate is substituted."
+          },
+          "evidence": {
+            "report": false,
+            "verification": false,
+            "replay_valid": false,
+            "files": {
+              "job.json": {
+                "path": "jobs/20261020T091136Z-eb8a7c1d54/job.json",
+                "sha256": "e9fbda5a643d863a11d445700c10a0cacfbf711ddcfb36c7500172cf07b18789"
+              }
+            }
+          }
+        },
+        {
+          "attempt_number": 3,
+          "job_id": null,
+          "category": "not_started",
+          "official_success": null
+        },
+        {
+          "attempt_number": 4,
+          "job_id": null,
+          "category": "not_started",
+          "official_success": null
+        },
+        {
+          "attempt_number": 5,
+          "job_id": null,
+          "category": "not_started",
+          "official_success": null
+        }
+      ],
+      "success_curve": [
+        false,
+        null,
+        null,
+        null,
+        null
+      ],
+      "category_counts": {
+        "verified_fail": 1,
+        "infrastructure_failure": 1,
+        "not_started": 3
+      },
+      "descriptive_metrics": {
+        "verified_success_count": 0,
+        "verified_success_fraction_of_planned": 0.0,
+        "eventual_success_fraction_bounds": [
+          0.0,
+          0.8
+        ],
+        "complete_series_success_fraction": null,
+        "terminal_success_streak": null,
+        "adjacent_success_pairs": [],
+        "uncertainty": "Bounds reflect incomplete outcomes, not a confidence interval. Retained trials are dependent; no causal learning estimate or independent-trial binomial interval.",
+        "composite_improvement_score": null
+      }
+    },
+    {
+      "series_id": "20261020T091224Z-d45d77bdd7",
+      "task": "BlendIngredients",
+      "protocol": "adaptive-public-sqlite-v1",
+      "protocol_review": {},
+      "recorded_status": "infrastructure_error",
+      "liveness_verified": false,
+      "participant": {
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "context_window": 1000000,
+        "max_output_tokens": 32768
+      },
+      "context_policy": {
+        "method": "sqlite-sliding-v1",
+        "context_window": 1000000,
+        "output_reserve": 32768,
+        "eviction_chunk": 200000,
+        "estimator": "required-model-aware-token-counter",
+        "overhead_reserve": 4096,
+        "provider_compaction": false,
+        "cache_discount_guaranteed": false,
+        "history_file": "jobs/20261020T091224Z-d45d77bdd7/history.sqlite"
+      },
+      "context_audit": {
+        "slide_count": 0,
+        "slides": [],
+        "reported_prompt_tokens_range": [
+          9330,
+          955379
+        ],
+        "proxy_to_reported_prompt_ratio_range": null,
+        "scope": "Original provider usage and SQLite slide receipts. Estimated slide units are policy-dependent, not necessarily native tokens. Early sliding can confound comparisons across context policies."
+      },
+      "limits": {
+        "active_seconds": 1800,
+        "control_steps": 6000,
+        "per_script_steps": 50,
+        "per_script_seconds": 60
+      },
+      "execution": {
+        "backend": "docker",
+        "simulator_image": "sha256:cbb5f7cd21880a31e2b1faaefedbb468269c3dfa0c22b79c37fc36dc9c865c04",
+        "code_image": "sha256:e5b644a03c4813de83830cb88c0ba44b30d320b474768dad40a455fc6e1da8b9"
+      },
+      "planned_trials": 5,
+      "verified_trials": 2,
+      "incomplete_trials": 3,
+      "complete": false,
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "job_id": "20261020T091224Z-ef3ef12904",
+          "recorded_status": "verified_fail",
+          "category": "verified_fail",
+          "failure_review": {},
+          "failure_classification": null,
+          "official_success": false,
+          "observed_success": false,
+          "termination_reason": "agent_finish",
+          "budget_censored": false,
+          "control_steps": 1387,
+          "passive_wait_control_steps": 0,
+          "code_errors": 1,
+          "timing": {
+            "last_model_call_error_type": null,
+            "active_seconds": 1550.7575909149996,
+            "wall_seconds": null,
+            "passive_wait_seconds": 0,
+            "model_roundtrip_seconds": 829.4993488746695,
+            "operation_roundtrip_seconds": 718.8991597122513,
+            "observation_roundtrip_seconds": 1.5086924596689641,
+            "model_compute_seconds": null,
+            "transport_only_seconds": null,
+            "code_only_seconds": null,
+            "count_service_completed_roundtrip_seconds": 91.17562337778509,
+            "count_service_coverage": {
+              "completed_logical_call_receipts": 55,
+              "timed_completed_logical_calls": 55,
+              "missing_duration_receipts": 0,
+              "mirrored_native_receipts_excluded": 0,
+              "failure_event_rows_excluded": 0,
+              "unfinished_call_count": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed logical count-service calls only; mapped/Anthropic totals may include retries and backoff. Failure rows have cumulative elapsed times and are excluded. No count-start log establishes a complete denominator."
+            },
+            "inference_provider_completed_roundtrip_seconds": 734.1791531220078,
+            "inference_provider_coverage": {
+              "completed_call_receipts": 55,
+              "timed_completed_calls": 55,
+              "missing_duration_receipts": 0,
+              "unidentifiable_rows_excluded": 0,
+              "failed_response_rows_excluded": 0,
+              "recorded_transmissions_started": null,
+              "recorded_unsettled_failures": 0,
+              "recorded_open_transmissions": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed provider-request roundtrips, including transport. Anthropic model-usage elapsed_seconds preferred; otherwise provider-responses elapsed_seconds/seconds. Mirrored logs deduplicated by call/id. Failed and unfinished requests are excluded; no pure model compute is inferred."
+            },
+            "partial_service_receipt_files": [],
+            "scope": "Original attempt only; replay and setup excluded. model_roundtrip_seconds is the model wrapper including context counting, inference, and orchestration, including timed wrapper errors. Service-specific totals are components of that wrapper, not additional elapsed time. Operation roundtrips include transport/orchestration, not pure code execution. Missing/unfinished service latency remains unknown."
+          },
+          "operational_timing": {
+            "original_transport": {
+              "setup_seconds": null,
+              "worker_exec_ready_seconds": null,
+              "commit_seconds": null,
+              "artifact_readback_seconds": null,
+              "source": "modal-transport.log",
+              "source_present": false,
+              "status": "partial_or_unavailable",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "source_missing",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "source_missing",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "commit_seconds": {
+                  "status": "source_missing",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "artifact_readback_seconds": {
+                  "status": "source_missing",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                }
+              },
+              "ignored_non_json_lines": 0,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_transport": {
+              "setup_seconds": null,
+              "worker_exec_ready_seconds": null,
+              "commit_seconds": null,
+              "artifact_readback_seconds": null,
+              "source": "verification/modal-transport.log",
+              "source_present": false,
+              "status": "partial_or_unavailable",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "source_missing",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "source_missing",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "commit_seconds": {
+                  "status": "source_missing",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "artifact_readback_seconds": {
+                  "status": "source_missing",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                }
+              },
+              "ignored_non_json_lines": 0,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_execution_seconds": 688.246204565,
+            "replay_execution_coverage": {
+              "status": "measured",
+              "source": "verification.json",
+              "field": "trials[0].replay.elapsed_seconds",
+              "scope": "Trusted replay task elapsed time, including code/container/RPC work; separate from original active score and not model inference or pure code compute."
+            },
+            "end_to_end_seconds": null,
+            "end_to_end_status": "not_recorded",
+            "scope": "Operational stages are separate from original scored active time. No full pipeline completion event is recorded: job.finished_at precedes replay/archive, and archive.verified_at precedes restore-test/receipt publication. No end-to-end estimate is substituted."
+          },
+          "evidence": {
+            "report": true,
+            "verification": true,
+            "replay_valid": true,
+            "files": {
+              "job.json": {
+                "path": "jobs/20261020T091224Z-ef3ef12904/job.json",
+                "sha256": "c01296f97195615caafe2ca67f0bf4c2f38b740687e359e023927b36ab03919a"
+              },
+              "report.json": {
+                "path": "jobs/20261020T091224Z-ef3ef12904/report.json",
+                "sha256": "3a160be56a4b6b1f307cafab9d0910422bccd8793aac64bccbb318ad430399a4"
+              },
+              "verification.json": {
+                "path": "jobs/20261020T091224Z-ef3ef12904/verification.json",
+                "sha256": "9561e4fc0c974d22569db200c8c055638078a2b1c1ccd2e990b49389e4464e55"
+              }
+            }
+          }
+        },
+        {
+          "attempt_number": 2,
+          "job_id": "20261020T095010Z-1f85b6241a",
+          "recorded_status": "verified_fail",
+          "category": "verified_fail",
+          "failure_review": {},
+          "failure_classification": null,
+          "official_success": false,
+          "observed_success": false,
+          "termination_reason": "agent_finish",
+          "budget_censored": false,
+          "control_steps": 1240,
+          "passive_wait_control_steps": 0,
+          "code_errors": 4,
+          "timing": {
+            "last_model_call_error_type": null,
+            "active_seconds": 1292.7043297139999,
+            "wall_seconds": null,
+            "passive_wait_seconds": 0,
+            "model_roundtrip_seconds": 693.9097164943814,
+            "operation_roundtrip_seconds": 597.0084407483228,
+            "observation_roundtrip_seconds": 1.0687343319877982,
+            "model_compute_seconds": null,
+            "transport_only_seconds": null,
+            "code_only_seconds": null,
+            "count_service_completed_roundtrip_seconds": 113.46796591533348,
+            "count_service_coverage": {
+              "completed_logical_call_receipts": 40,
+              "timed_completed_logical_calls": 40,
+              "missing_duration_receipts": 0,
+              "mirrored_native_receipts_excluded": 0,
+              "failure_event_rows_excluded": 0,
+              "unfinished_call_count": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed logical count-service calls only; mapped/Anthropic totals may include retries and backoff. Failure rows have cumulative elapsed times and are excluded. No count-start log establishes a complete denominator."
+            },
+            "inference_provider_completed_roundtrip_seconds": 573.2275123321451,
+            "inference_provider_coverage": {
+              "completed_call_receipts": 40,
+              "timed_completed_calls": 40,
+              "missing_duration_receipts": 0,
+              "unidentifiable_rows_excluded": 0,
+              "failed_response_rows_excluded": 0,
+              "recorded_transmissions_started": null,
+              "recorded_unsettled_failures": 0,
+              "recorded_open_transmissions": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed provider-request roundtrips, including transport. Anthropic model-usage elapsed_seconds preferred; otherwise provider-responses elapsed_seconds/seconds. Mirrored logs deduplicated by call/id. Failed and unfinished requests are excluded; no pure model compute is inferred."
+            },
+            "partial_service_receipt_files": [],
+            "scope": "Original attempt only; replay and setup excluded. model_roundtrip_seconds is the model wrapper including context counting, inference, and orchestration, including timed wrapper errors. Service-specific totals are components of that wrapper, not additional elapsed time. Operation roundtrips include transport/orchestration, not pure code execution. Missing/unfinished service latency remains unknown."
+          },
+          "operational_timing": {
+            "original_transport": {
+              "setup_seconds": null,
+              "worker_exec_ready_seconds": null,
+              "commit_seconds": null,
+              "artifact_readback_seconds": null,
+              "source": "modal-transport.log",
+              "source_present": false,
+              "status": "partial_or_unavailable",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "source_missing",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "source_missing",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "commit_seconds": {
+                  "status": "source_missing",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "artifact_readback_seconds": {
+                  "status": "source_missing",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                }
+              },
+              "ignored_non_json_lines": 0,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_transport": {
+              "setup_seconds": null,
+              "worker_exec_ready_seconds": null,
+              "commit_seconds": null,
+              "artifact_readback_seconds": null,
+              "source": "verification/modal-transport.log",
+              "source_present": false,
+              "status": "partial_or_unavailable",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "source_missing",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "source_missing",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "commit_seconds": {
+                  "status": "source_missing",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "artifact_readback_seconds": {
+                  "status": "source_missing",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                }
+              },
+              "ignored_non_json_lines": 0,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_execution_seconds": 578.5998117189993,
+            "replay_execution_coverage": {
+              "status": "measured",
+              "source": "verification.json",
+              "field": "trials[0].replay.elapsed_seconds",
+              "scope": "Trusted replay task elapsed time, including code/container/RPC work; separate from original active score and not model inference or pure code compute."
+            },
+            "end_to_end_seconds": null,
+            "end_to_end_status": "not_recorded",
+            "scope": "Operational stages are separate from original scored active time. No full pipeline completion event is recorded: job.finished_at precedes replay/archive, and archive.verified_at precedes restore-test/receipt publication. No end-to-end estimate is substituted."
+          },
+          "evidence": {
+            "report": true,
+            "verification": true,
+            "replay_valid": true,
+            "files": {
+              "job.json": {
+                "path": "jobs/20261020T095010Z-1f85b6241a/job.json",
+                "sha256": "62dd93cb28baac489548f9b41375cc87e0d9be69f3ff2a711d0f148658284871"
+              },
+              "report.json": {
+                "path": "jobs/20261020T095010Z-1f85b6241a/report.json",
+                "sha256": "5099144ceaee96b894711086f3952afdd2b6f9876983cbf4f7c1aa7e1eaf8142"
+              },
+              "verification.json": {
+                "path": "jobs/20261020T095010Z-1f85b6241a/verification.json",
+                "sha256": "424d1fd6412d0c9667c4f1891d05507f8c9450e6b257e812794c497aa4b47a27"
+              }
+            }
+          }
+        },
+        {
+          "attempt_number": 3,
+          "job_id": "20261020T102156Z-a1e31d7462",
+          "recorded_status": "infrastructure_error",
+          "category": "infrastructure_failure",
+          "failure_review": {},
+          "failure_classification": null,
+          "official_success": null,
+          "observed_success": null,
+          "termination_reason": null,
+          "budget_censored": false,
+          "control_steps": null,
+          "passive_wait_control_steps": null,
+          "code_errors": null,
+          "timing": {
+            "last_model_call_error_type": "RuntimeError",
+            "active_seconds": null,
+            "wall_seconds": null,
+            "passive_wait_seconds": null,
+            "model_roundtrip_seconds": 930.2738118316047,
+            "operation_roundtrip_seconds": 566.2182851699181,
+            "observation_roundtrip_seconds": 1.0248108757659793,
+            "model_compute_seconds": null,
+            "transport_only_seconds": null,
+            "code_only_seconds": null,
+            "count_service_completed_roundtrip_seconds": 177.74014145834371,
+            "count_service_coverage": {
+              "completed_logical_call_receipts": 41,
+              "timed_completed_logical_calls": 41,
+              "missing_duration_receipts": 0,
+              "mirrored_native_receipts_excluded": 0,
+              "failure_event_rows_excluded": 0,
+              "unfinished_call_count": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed logical count-service calls only; mapped/Anthropic totals may include retries and backoff. Failure rows have cumulative elapsed times and are excluded. No count-start log establishes a complete denominator."
+            },
+            "inference_provider_completed_roundtrip_seconds": 711.5019377060235,
+            "inference_provider_coverage": {
+              "completed_call_receipts": 41,
+              "timed_completed_calls": 41,
+              "missing_duration_receipts": 0,
+              "unidentifiable_rows_excluded": 0,
+              "failed_response_rows_excluded": 0,
+              "recorded_transmissions_started": null,
+              "recorded_unsettled_failures": 0,
+              "recorded_open_transmissions": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed provider-request roundtrips, including transport. Anthropic model-usage elapsed_seconds preferred; otherwise provider-responses elapsed_seconds/seconds. Mirrored logs deduplicated by call/id. Failed and unfinished requests are excluded; no pure model compute is inferred."
+            },
+            "partial_service_receipt_files": [],
+            "scope": "Original attempt only; replay and setup excluded. model_roundtrip_seconds is the model wrapper including context counting, inference, and orchestration, including timed wrapper errors. Service-specific totals are components of that wrapper, not additional elapsed time. Operation roundtrips include transport/orchestration, not pure code execution. Missing/unfinished service latency remains unknown."
+          },
+          "operational_timing": {
+            "original_transport": {
+              "setup_seconds": null,
+              "worker_exec_ready_seconds": null,
+              "commit_seconds": null,
+              "artifact_readback_seconds": null,
+              "source": "modal-transport.log",
+              "source_present": false,
+              "status": "partial_or_unavailable",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "source_missing",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "source_missing",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "commit_seconds": {
+                  "status": "source_missing",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "artifact_readback_seconds": {
+                  "status": "source_missing",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                }
+              },
+              "ignored_non_json_lines": 0,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_transport": {
+              "setup_seconds": null,
+              "worker_exec_ready_seconds": null,
+              "commit_seconds": null,
+              "artifact_readback_seconds": null,
+              "source": "verification/modal-transport.log",
+              "source_present": false,
+              "status": "partial_or_unavailable",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "source_missing",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "source_missing",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "commit_seconds": {
+                  "status": "source_missing",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "artifact_readback_seconds": {
+                  "status": "source_missing",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                }
+              },
+              "ignored_non_json_lines": 0,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_execution_seconds": null,
+            "replay_execution_coverage": {
+              "status": "source_missing",
+              "source": "verification.json",
+              "field": "trials[0].replay.elapsed_seconds",
+              "scope": "Trusted replay task elapsed time, including code/container/RPC work; separate from original active score and not model inference or pure code compute."
+            },
+            "end_to_end_seconds": null,
+            "end_to_end_status": "not_recorded",
+            "scope": "Operational stages are separate from original scored active time. No full pipeline completion event is recorded: job.finished_at precedes replay/archive, and archive.verified_at precedes restore-test/receipt publication. No end-to-end estimate is substituted."
+          },
+          "evidence": {
+            "report": false,
+            "verification": false,
+            "replay_valid": false,
+            "files": {
+              "job.json": {
+                "path": "jobs/20261020T102156Z-a1e31d7462/job.json",
+                "sha256": "17f2876046a7aaceb9b38f929a4b6774b270c317e7f794f79704b3302ac62bf5"
+              }
+            }
+          }
+        },
+        {
+          "attempt_number": 4,
+          "job_id": null,
+          "category": "not_started",
+          "official_success": null
+        },
+        {
+          "attempt_number": 5,
+          "job_id": null,
+          "category": "not_started",
+          "official_success": null
+        }
+      ],
+      "success_curve": [
+        false,
+        false,
+        null,
+        null,
+        null
+      ],
+      "category_counts": {
+        "verified_fail": 2,
+        "infrastructure_failure": 1,
+        "not_started": 2
+      },
+      "descriptive_metrics": {
+        "verified_success_count": 0,
+        "verified_success_fraction_of_planned": 0.0,
+        "eventual_success_fraction_bounds": [
+          0.0,
+          0.6
+        ],
+        "complete_series_success_fraction": null,
+        "terminal_success_streak": null,
+        "adjacent_success_pairs": [],
+        "uncertainty": "Bounds reflect incomplete outcomes, not a confidence interval. Retained trials are dependent; no causal learning estimate or independent-trial binomial interval.",
+        "composite_improvement_score": null
+      }
+    },
+    {
+      "series_id": "20261020T105702Z-9ef43916e5",
+      "task": "ToastBagel",
+      "protocol": "adaptive-public-sqlite-v1",
+      "protocol_review": {},
+      "recorded_status": "infrastructure_error",
+      "liveness_verified": false,
+      "participant": {
+        "provider": "openrouter",
+        "model": "google/gemini-4-argon",
+        "effort": "high",
+        "context_window": 1048576,
+        "max_output_tokens": 32768
+      },
+      "context_policy": {
+        "method": "sqlite-sliding-or-google-count-v2",
+        "context_window": 1048576,
+        "output_reserve": 32768,
+        "eviction_chunk": 200000,
+        "estimator": "conservative-proxy-units-not-native-tokens",
+        "overhead_reserve": 4096,
+        "provider_compaction": false,
+        "cache_discount_guaranteed": false,
+        "history_file": "jobs/20261020T105702Z-9ef43916e5/history.sqlite"
+      },
+      "context_audit": {
+        "slide_count": 0,
+        "slides": [],
+        "reported_prompt_tokens_range": [
+          0,
+          412484
+        ],
+        "proxy_to_reported_prompt_ratio_range": [
+          1.1113673084132614,
+          2.0475496447440333
+        ],
+        "scope": "Original provider usage and SQLite slide receipts. Estimated slide units are policy-dependent, not necessarily native tokens. Early sliding can confound comparisons across context policies."
+      },
+      "limits": {
+        "active_seconds": 1800,
+        "control_steps": 6000,
+        "per_script_steps": 50,
+        "per_script_seconds": 90
+      },
+      "execution": {
+        "backend": "modal",
+        "simulator_image": "im-0iTedHXlAPPJmg5ot3gBZ2",
+        "code_image": "sha256:e5b644a03c4813de83830cb88c0ba44b30d320b474768dad40a455fc6e1da8b9",
+        "modal_environment": "FDR",
+        "artifact_transfer": "remote-video"
+      },
+      "planned_trials": 5,
+      "verified_trials": 1,
+      "incomplete_trials": 4,
+      "complete": false,
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "job_id": "20261020T105702Z-ba1714496d",
+          "recorded_status": "verified_fail",
+          "category": "verified_fail",
+          "failure_review": {},
+          "failure_classification": null,
+          "official_success": false,
+          "observed_success": false,
+          "termination_reason": "task_deadline",
+          "budget_censored": true,
+          "control_steps": 527,
+          "passive_wait_control_steps": 0,
+          "code_errors": 1,
+          "timing": {
+            "last_model_call_error_type": null,
+            "active_seconds": 1800.4507590090002,
+            "wall_seconds": null,
+            "passive_wait_seconds": 0,
+            "model_roundtrip_seconds": 1364.3014694135636,
+            "operation_roundtrip_seconds": 431.077243082691,
+            "observation_roundtrip_seconds": 3.887765164952725,
+            "model_compute_seconds": null,
+            "transport_only_seconds": null,
+            "code_only_seconds": null,
+            "count_service_completed_roundtrip_seconds": 39.533885000273585,
+            "count_service_coverage": {
+              "completed_logical_call_receipts": 38,
+              "timed_completed_logical_calls": 38,
+              "missing_duration_receipts": 0,
+              "mirrored_native_receipts_excluded": 0,
+              "failure_event_rows_excluded": 0,
+              "unfinished_call_count": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed logical count-service calls only; mapped/Anthropic totals may include retries and backoff. Failure rows have cumulative elapsed times and are excluded. No count-start log establishes a complete denominator."
+            },
+            "inference_provider_completed_roundtrip_seconds": 1324.836356208194,
+            "inference_provider_coverage": {
+              "completed_call_receipts": 19,
+              "timed_completed_calls": 19,
+              "missing_duration_receipts": 0,
+              "unidentifiable_rows_excluded": 0,
+              "failed_response_rows_excluded": 0,
+              "recorded_transmissions_started": null,
+              "recorded_unsettled_failures": 0,
+              "recorded_open_transmissions": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed provider-request roundtrips, including transport. Anthropic model-usage elapsed_seconds preferred; otherwise provider-responses elapsed_seconds/seconds. Mirrored logs deduplicated by call/id. Failed and unfinished requests are excluded; no pure model compute is inferred."
+            },
+            "partial_service_receipt_files": [],
+            "scope": "Original attempt only; replay and setup excluded. model_roundtrip_seconds is the model wrapper including context counting, inference, and orchestration, including timed wrapper errors. Service-specific totals are components of that wrapper, not additional elapsed time. Operation roundtrips include transport/orchestration, not pure code execution. Missing/unfinished service latency remains unknown."
+          },
+          "operational_timing": {
+            "original_transport": {
+              "setup_seconds": 40.40675377845764,
+              "worker_exec_ready_seconds": 6.0694239139556885,
+              "commit_seconds": 0.7301909923553467,
+              "artifact_readback_seconds": 3.496785879135132,
+              "source": "modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_transport": {
+              "setup_seconds": 111.20055079460144,
+              "worker_exec_ready_seconds": 80.86972713470459,
+              "commit_seconds": 0.6929571628570557,
+              "artifact_readback_seconds": 3.621941089630127,
+              "source": "verification/modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_execution_seconds": 447.551621219,
+            "replay_execution_coverage": {
+              "status": "measured",
+              "source": "verification.json",
+              "field": "trials[0].replay.elapsed_seconds",
+              "scope": "Trusted replay task elapsed time, including code/container/RPC work; separate from original active score and not model inference or pure code compute."
+            },
+            "end_to_end_seconds": null,
+            "end_to_end_status": "not_recorded",
+            "scope": "Operational stages are separate from original scored active time. No full pipeline completion event is recorded: job.finished_at precedes replay/archive, and archive.verified_at precedes restore-test/receipt publication. No end-to-end estimate is substituted."
+          },
+          "evidence": {
+            "report": true,
+            "verification": true,
+            "replay_valid": true,
+            "files": {
+              "job.json": {
+                "path": "jobs/20261020T105702Z-ba1714496d/job.json",
+                "sha256": "2841e081314bb7cdf7a0080fd376a353e07346f3317eeada7816384c5c915ca6"
+              },
+              "report.json": {
+                "path": "jobs/20261020T105702Z-ba1714496d/report.json",
+                "sha256": "3934a05daccfd08561ee1947be1644d07e95158da98569dd7249c93656030a34"
+              },
+              "verification.json": {
+                "path": "jobs/20261020T105702Z-ba1714496d/verification.json",
+                "sha256": "efb8ee0b755b6d90bcd3851f1cb0b28c44599c8c329a8f135c665b524d3564c4"
+              }
+            }
+          }
+        },
+        {
+          "attempt_number": 2,
+          "job_id": "20261020T113730Z-da1f8a3bf6",
+          "recorded_status": "infrastructure_error",
+          "category": "provider_model_failure",
+          "failure_review": {
+            "schema_version": 1,
+            "job_id": "20261020T113730Z-da1f8a3bf6",
+            "job_sha256": "e89dd3dd36fa5e5b8aafcb3766324ade84e8c03063f23e51868dad390b40d836",
+            "response_file_sha256": "9457c9cc2fec5fdde6f99480d6e8427a91792f5c09bb876ceb9f75c6070ea4d8",
+            "response_call": 29,
+            "choice_index": 0,
+            "finish_reason": "content_filter",
+            "native_finish_reason": "SAFETY",
+            "classification": "model_refusal",
+            "review_sha256": "ef4ca1f26aeef6613ac602d2be25eb9084d8b8a889f990038ef162448e426d77"
+          },
+          "failure_classification": "model_refusal",
+          "official_success": null,
+          "observed_success": null,
+          "termination_reason": null,
+          "budget_censored": false,
+          "control_steps": null,
+          "passive_wait_control_steps": null,
+          "code_errors": null,
+          "timing": {
+            "last_model_call_error_type": "RuntimeError",
+            "active_seconds": null,
+            "wall_seconds": null,
+            "passive_wait_seconds": null,
+            "model_roundtrip_seconds": 1098.9918016255833,
+            "operation_roundtrip_seconds": 331.4584476677701,
+            "observation_roundtrip_seconds": 1.6741538322530687,
+            "model_compute_seconds": null,
+            "transport_only_seconds": null,
+            "code_only_seconds": null,
+            "count_service_completed_roundtrip_seconds": 25.848383876029402,
+            "count_service_coverage": {
+              "completed_logical_call_receipts": 19,
+              "timed_completed_logical_calls": 19,
+              "missing_duration_receipts": 0,
+              "mirrored_native_receipts_excluded": 0,
+              "failure_event_rows_excluded": 0,
+              "unfinished_call_count": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed logical count-service calls only; mapped/Anthropic totals may include retries and backoff. Failure rows have cumulative elapsed times and are excluded. No count-start log establishes a complete denominator."
+            },
+            "inference_provider_completed_roundtrip_seconds": 1070.5425085853785,
+            "inference_provider_coverage": {
+              "completed_call_receipts": 10,
+              "timed_completed_calls": 10,
+              "missing_duration_receipts": 0,
+              "unidentifiable_rows_excluded": 0,
+              "failed_response_rows_excluded": 0,
+              "recorded_transmissions_started": null,
+              "recorded_unsettled_failures": 0,
+              "recorded_open_transmissions": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed provider-request roundtrips, including transport. Anthropic model-usage elapsed_seconds preferred; otherwise provider-responses elapsed_seconds/seconds. Mirrored logs deduplicated by call/id. Failed and unfinished requests are excluded; no pure model compute is inferred."
+            },
+            "partial_service_receipt_files": [],
+            "scope": "Original attempt only; replay and setup excluded. model_roundtrip_seconds is the model wrapper including context counting, inference, and orchestration, including timed wrapper errors. Service-specific totals are components of that wrapper, not additional elapsed time. Operation roundtrips include transport/orchestration, not pure code execution. Missing/unfinished service latency remains unknown."
+          },
+          "operational_timing": {
+            "original_transport": {
+              "setup_seconds": 43.09395623207092,
+              "worker_exec_ready_seconds": 10.299558877944946,
+              "commit_seconds": 1.6449968814849854,
+              "artifact_readback_seconds": 3.235443115234375,
+              "source": "modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_transport": {
+              "setup_seconds": null,
+              "worker_exec_ready_seconds": null,
+              "commit_seconds": null,
+              "artifact_readback_seconds": null,
+              "source": "verification/modal-transport.log",
+              "source_present": false,
+              "status": "partial_or_unavailable",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "source_missing",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "source_missing",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "commit_seconds": {
+                  "status": "source_missing",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "artifact_readback_seconds": {
+                  "status": "source_missing",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                }
+              },
+              "ignored_non_json_lines": 0,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_execution_seconds": null,
+            "replay_execution_coverage": {
+              "status": "source_missing",
+              "source": "verification.json",
+              "field": "trials[0].replay.elapsed_seconds",
+              "scope": "Trusted replay task elapsed time, including code/container/RPC work; separate from original active score and not model inference or pure code compute."
+            },
+            "end_to_end_seconds": null,
+            "end_to_end_status": "not_recorded",
+            "scope": "Operational stages are separate from original scored active time. No full pipeline completion event is recorded: job.finished_at precedes replay/archive, and archive.verified_at precedes restore-test/receipt publication. No end-to-end estimate is substituted."
+          },
+          "evidence": {
+            "report": false,
+            "verification": false,
+            "replay_valid": false,
+            "files": {
+              "job.json": {
+                "path": "jobs/20261020T113730Z-da1f8a3bf6/job.json",
+                "sha256": "e89dd3dd36fa5e5b8aafcb3766324ade84e8c03063f23e51868dad390b40d836"
+              }
+            }
+          }
+        },
+        {
+          "attempt_number": 3,
+          "job_id": null,
+          "category": "not_started",
+          "official_success": null
+        },
+        {
+          "attempt_number": 4,
+          "job_id": null,
+          "category": "not_started",
+          "official_success": null
+        },
+        {
+          "attempt_number": 5,
+          "job_id": null,
+          "category": "not_started",
+          "official_success": null
+        }
+      ],
+      "success_curve": [
+        false,
+        null,
+        null,
+        null,
+        null
+      ],
+      "category_counts": {
+        "verified_fail": 1,
+        "provider_model_failure": 1,
+        "not_started": 3
+      },
+      "descriptive_metrics": {
+        "verified_success_count": 0,
+        "verified_success_fraction_of_planned": 0.0,
+        "eventual_success_fraction_bounds": [
+          0.0,
+          0.8
+        ],
+        "complete_series_success_fraction": null,
+        "terminal_success_streak": null,
+        "adjacent_success_pairs": [],
+        "uncertainty": "Bounds reflect incomplete outcomes, not a confidence interval. Retained trials are dependent; no causal learning estimate or independent-trial binomial interval.",
+        "composite_improvement_score": null
+      }
+    },
+    {
+      "series_id": "20261020T105702Z-a362574b5c",
+      "task": "ToastBagel",
+      "protocol": "adaptive-public-sqlite-v1",
+      "protocol_review": {},
+      "recorded_status": "infrastructure_error",
+      "liveness_verified": false,
+      "participant": {
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "context_window": 1000000,
+        "max_output_tokens": 32768
+      },
+      "context_policy": {
+        "method": "sqlite-sliding-v1",
+        "context_window": 1000000,
+        "output_reserve": 32768,
+        "eviction_chunk": 200000,
+        "estimator": "required-model-aware-token-counter",
+        "overhead_reserve": 4096,
+        "provider_compaction": false,
+        "cache_discount_guaranteed": false,
+        "history_file": "jobs/20261020T105702Z-a362574b5c/history.sqlite"
+      },
+      "context_audit": {
+        "slide_count": 0,
+        "slides": [],
+        "reported_prompt_tokens_range": [
+          9351,
+          582696
+        ],
+        "proxy_to_reported_prompt_ratio_range": null,
+        "scope": "Original provider usage and SQLite slide receipts. Estimated slide units are policy-dependent, not necessarily native tokens. Early sliding can confound comparisons across context policies."
+      },
+      "limits": {
+        "active_seconds": 1800,
+        "control_steps": 6000,
+        "per_script_steps": 50,
+        "per_script_seconds": 90
+      },
+      "execution": {
+        "backend": "modal",
+        "simulator_image": "im-0iTedHXlAPPJmg5ot3gBZ2",
+        "code_image": "sha256:e5b644a03c4813de83830cb88c0ba44b30d320b474768dad40a455fc6e1da8b9",
+        "modal_environment": "FDR",
+        "artifact_transfer": "remote-video"
+      },
+      "planned_trials": 5,
+      "verified_trials": 1,
+      "incomplete_trials": 4,
+      "complete": false,
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "job_id": "20261020T105702Z-a9081835ff",
+          "recorded_status": "verified_fail",
+          "category": "verified_fail",
+          "failure_review": {},
+          "failure_classification": null,
+          "official_success": false,
+          "observed_success": false,
+          "termination_reason": "agent_finish",
+          "budget_censored": false,
+          "control_steps": 949,
+          "passive_wait_control_steps": 0,
+          "code_errors": 2,
+          "timing": {
+            "last_model_call_error_type": null,
+            "active_seconds": 1655.3817824710002,
+            "wall_seconds": null,
+            "passive_wait_seconds": 0,
+            "model_roundtrip_seconds": 877.1870427941903,
+            "operation_roundtrip_seconds": 769.3980358382687,
+            "observation_roundtrip_seconds": 7.71497612958774,
+            "model_compute_seconds": null,
+            "transport_only_seconds": null,
+            "code_only_seconds": null,
+            "count_service_completed_roundtrip_seconds": 72.64452874939889,
+            "count_service_coverage": {
+              "completed_logical_call_receipts": 48,
+              "timed_completed_logical_calls": 48,
+              "missing_duration_receipts": 0,
+              "mirrored_native_receipts_excluded": 0,
+              "failure_event_rows_excluded": 0,
+              "unfinished_call_count": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed logical count-service calls only; mapped/Anthropic totals may include retries and backoff. Failure rows have cumulative elapsed times and are excluded. No count-start log establishes a complete denominator."
+            },
+            "inference_provider_completed_roundtrip_seconds": 801.6775204543956,
+            "inference_provider_coverage": {
+              "completed_call_receipts": 48,
+              "timed_completed_calls": 48,
+              "missing_duration_receipts": 0,
+              "unidentifiable_rows_excluded": 0,
+              "failed_response_rows_excluded": 0,
+              "recorded_transmissions_started": 48,
+              "recorded_unsettled_failures": 0,
+              "recorded_open_transmissions": 0,
+              "status": "complete_for_recorded_transmissions",
+              "scope": "Completed provider-request roundtrips, including transport. Anthropic model-usage elapsed_seconds preferred; otherwise provider-responses elapsed_seconds/seconds. Mirrored logs deduplicated by call/id. Failed and unfinished requests are excluded; no pure model compute is inferred."
+            },
+            "partial_service_receipt_files": [],
+            "scope": "Original attempt only; replay and setup excluded. model_roundtrip_seconds is the model wrapper including context counting, inference, and orchestration, including timed wrapper errors. Service-specific totals are components of that wrapper, not additional elapsed time. Operation roundtrips include transport/orchestration, not pure code execution. Missing/unfinished service latency remains unknown."
+          },
+          "operational_timing": {
+            "original_transport": {
+              "setup_seconds": 39.19815492630005,
+              "worker_exec_ready_seconds": 6.944361925125122,
+              "commit_seconds": 0.7519440650939941,
+              "artifact_readback_seconds": 4.136291742324829,
+              "source": "modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_transport": {
+              "setup_seconds": 139.06983613967896,
+              "worker_exec_ready_seconds": 107.0525450706482,
+              "commit_seconds": 1.029771089553833,
+              "artifact_readback_seconds": 4.838960886001587,
+              "source": "verification/modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_execution_seconds": 933.476624775,
+            "replay_execution_coverage": {
+              "status": "measured",
+              "source": "verification.json",
+              "field": "trials[0].replay.elapsed_seconds",
+              "scope": "Trusted replay task elapsed time, including code/container/RPC work; separate from original active score and not model inference or pure code compute."
+            },
+            "end_to_end_seconds": null,
+            "end_to_end_status": "not_recorded",
+            "scope": "Operational stages are separate from original scored active time. No full pipeline completion event is recorded: job.finished_at precedes replay/archive, and archive.verified_at precedes restore-test/receipt publication. No end-to-end estimate is substituted."
+          },
+          "evidence": {
+            "report": true,
+            "verification": true,
+            "replay_valid": true,
+            "files": {
+              "job.json": {
+                "path": "jobs/20261020T105702Z-a9081835ff/job.json",
+                "sha256": "f9e5792be43c8ce6ed6e566407b5eb4786a15a034511e3322a652fb74c9f8237"
+              },
+              "report.json": {
+                "path": "jobs/20261020T105702Z-a9081835ff/report.json",
+                "sha256": "7a3ee9b86f7dbbadf11d82ce1b9830550324d4b304a2a9532431e9eed2bbdfd3"
+              },
+              "verification.json": {
+                "path": "jobs/20261020T105702Z-a9081835ff/verification.json",
+                "sha256": "6f0ede3a58ea8ccc47cb3c0f4a781f1d04a2caff6548c4a86fa0079c9ca05dcf"
+              }
+            }
+          }
+        },
+        {
+          "attempt_number": 2,
+          "job_id": "20261020T114352Z-4cf964bdc4",
+          "recorded_status": "verification_invalid",
+          "category": "verification_invalid",
+          "failure_review": {},
+          "failure_classification": null,
+          "official_success": null,
+          "observed_success": false,
+          "termination_reason": "agent_finish",
+          "budget_censored": false,
+          "control_steps": 932,
+          "passive_wait_control_steps": 0,
+          "code_errors": 1,
+          "timing": {
+            "last_model_call_error_type": null,
+            "active_seconds": 1626.162779456,
+            "wall_seconds": null,
+            "passive_wait_seconds": 0,
+            "model_roundtrip_seconds": 871.0444686636329,
+            "operation_roundtrip_seconds": 747.6874987520278,
+            "observation_roundtrip_seconds": 6.019753712695092,
+            "model_compute_seconds": null,
+            "transport_only_seconds": null,
+            "code_only_seconds": null,
+            "count_service_completed_roundtrip_seconds": 107.15803741384298,
+            "count_service_coverage": {
+              "completed_logical_call_receipts": 35,
+              "timed_completed_logical_calls": 35,
+              "missing_duration_receipts": 0,
+              "mirrored_native_receipts_excluded": 0,
+              "failure_event_rows_excluded": 0,
+              "unfinished_call_count": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed logical count-service calls only; mapped/Anthropic totals may include retries and backoff. Failure rows have cumulative elapsed times and are excluded. No count-start log establishes a complete denominator."
+            },
+            "inference_provider_completed_roundtrip_seconds": 758.3697804966941,
+            "inference_provider_coverage": {
+              "completed_call_receipts": 35,
+              "timed_completed_calls": 35,
+              "missing_duration_receipts": 0,
+              "unidentifiable_rows_excluded": 0,
+              "failed_response_rows_excluded": 0,
+              "recorded_transmissions_started": 35,
+              "recorded_unsettled_failures": 0,
+              "recorded_open_transmissions": 0,
+              "status": "complete_for_recorded_transmissions",
+              "scope": "Completed provider-request roundtrips, including transport. Anthropic model-usage elapsed_seconds preferred; otherwise provider-responses elapsed_seconds/seconds. Mirrored logs deduplicated by call/id. Failed and unfinished requests are excluded; no pure model compute is inferred."
+            },
+            "partial_service_receipt_files": [],
+            "scope": "Original attempt only; replay and setup excluded. model_roundtrip_seconds is the model wrapper including context counting, inference, and orchestration, including timed wrapper errors. Service-specific totals are components of that wrapper, not additional elapsed time. Operation roundtrips include transport/orchestration, not pure code execution. Missing/unfinished service latency remains unknown."
+          },
+          "operational_timing": {
+            "original_transport": {
+              "setup_seconds": 33.90727710723877,
+              "worker_exec_ready_seconds": 4.8945701122283936,
+              "commit_seconds": 0.6153810024261475,
+              "artifact_readback_seconds": 3.41298508644104,
+              "source": "modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_transport": {
+              "setup_seconds": 519.7356441020966,
+              "worker_exec_ready_seconds": 487.999972820282,
+              "commit_seconds": 1.490854024887085,
+              "artifact_readback_seconds": 4.100211143493652,
+              "source": "verification/modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_execution_seconds": 459.62899916099997,
+            "replay_execution_coverage": {
+              "status": "measured_unverified",
+              "source": "verification.json",
+              "field": "trials[0].replay.elapsed_seconds",
+              "scope": "Trusted replay task elapsed time, including code/container/RPC work; separate from original active score and not model inference or pure code compute."
+            },
+            "end_to_end_seconds": null,
+            "end_to_end_status": "not_recorded",
+            "scope": "Operational stages are separate from original scored active time. No full pipeline completion event is recorded: job.finished_at precedes replay/archive, and archive.verified_at precedes restore-test/receipt publication. No end-to-end estimate is substituted."
+          },
+          "evidence": {
+            "report": true,
+            "verification": true,
+            "replay_valid": false,
+            "files": {
+              "job.json": {
+                "path": "jobs/20261020T114352Z-4cf964bdc4/job.json",
+                "sha256": "75dad90530bbc08e5a5b5e9479cc1ee9c2576f4806d6bc359d3a85ea4a9021a3"
+              },
+              "report.json": {
+                "path": "jobs/20261020T114352Z-4cf964bdc4/report.json",
+                "sha256": "e04fabb99c13b1c91188381c6bdd4fac0b21019423c714fb393af5f1aa562ee1"
+              },
+              "verification.json": {
+                "path": "jobs/20261020T114352Z-4cf964bdc4/verification.json",
+                "sha256": "b998d771d89d29347b424826300078371654071161d048dea9cfc3e6a5bf7162"
+              }
+            }
+          }
+        },
+        {
+          "attempt_number": 3,
+          "job_id": null,
+          "category": "not_started",
+          "official_success": null
+        },
+        {
+          "attempt_number": 4,
+          "job_id": null,
+          "category": "not_started",
+          "official_success": null
+        },
+        {
+          "attempt_number": 5,
+          "job_id": null,
+          "category": "not_started",
+          "official_success": null
+        }
+      ],
+      "success_curve": [
+        false,
+        null,
+        null,
+        null,
+        null
+      ],
+      "category_counts": {
+        "verified_fail": 1,
+        "verification_invalid": 1,
+        "not_started": 3
+      },
+      "descriptive_metrics": {
+        "verified_success_count": 0,
+        "verified_success_fraction_of_planned": 0.0,
+        "eventual_success_fraction_bounds": [
+          0.0,
+          0.8
+        ],
+        "complete_series_success_fraction": null,
+        "terminal_success_streak": null,
+        "adjacent_success_pairs": [],
+        "uncertainty": "Bounds reflect incomplete outcomes, not a confidence interval. Retained trials are dependent; no causal learning estimate or independent-trial binomial interval.",
+        "composite_improvement_score": null
+      }
+    },
+    {
+      "series_id": "20261020T122023Z-6cbecc8d70",
+      "task": "BeverageSorting",
+      "protocol": "adaptive-public-sqlite-v1",
+      "protocol_review": {
+        "primary_leaderboard_eligible": false,
+        "classification": "infrastructure_zero_action_prefix",
+        "reason": "One normal provider response followed by counter rejection of null refusal metadata before any robot action. No completed trial or verification. Original evidence preserved; replacement is an explicitly audited infrastructure recovery.",
+        "mechanical_result_preserved": true,
+        "series_stop": "harness counter validation error",
+        "future_protocol": "Same five-trial settings with corrected null metadata handling; fresh replacement series",
+        "evidence_sha256": "263735ffca1fbc81e819decf47b57e5361806c9a162867bbcdf9a853b6c2a977"
+      },
+      "recorded_status": "infrastructure_error",
+      "liveness_verified": false,
+      "participant": {
+        "provider": "openrouter",
+        "model": "google/gemini-4-argon",
+        "effort": "high",
+        "context_window": 1048576,
+        "max_output_tokens": 32768
+      },
+      "context_policy": {
+        "method": "sqlite-sliding-or-google-count-v2",
+        "context_window": 1048576,
+        "output_reserve": 32768,
+        "eviction_chunk": 200000,
+        "estimator": "conservative-proxy-units-not-native-tokens",
+        "overhead_reserve": 4096,
+        "provider_compaction": false,
+        "cache_discount_guaranteed": false,
+        "history_file": "jobs/20261020T122023Z-6cbecc8d70/history.sqlite"
+      },
+      "context_audit": {
+        "slide_count": 0,
+        "slides": [],
+        "reported_prompt_tokens_range": [
+          10977,
+          10977
+        ],
+        "proxy_to_reported_prompt_ratio_range": [
+          2.0476450760681426,
+          2.0476450760681426
+        ],
+        "scope": "Original provider usage and SQLite slide receipts. Estimated slide units are policy-dependent, not necessarily native tokens. Early sliding can confound comparisons across context policies."
+      },
+      "limits": {
+        "active_seconds": 1800,
+        "control_steps": 6000,
+        "per_script_steps": 50,
+        "per_script_seconds": 90
+      },
+      "execution": {
+        "backend": "modal",
+        "simulator_image": "im-8lYCL2pDzv17fItGdIQ08I",
+        "code_image": "sha256:e5b644a03c4813de83830cb88c0ba44b30d320b474768dad40a455fc6e1da8b9",
+        "modal_environment": "FDR",
+        "artifact_transfer": "remote-video"
+      },
+      "planned_trials": 5,
+      "verified_trials": 0,
+      "incomplete_trials": 5,
+      "complete": false,
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "job_id": "20261020T122023Z-c47fe278d1",
+          "recorded_status": "infrastructure_error",
+          "category": "infrastructure_failure",
+          "failure_review": {},
+          "failure_classification": null,
+          "official_success": null,
+          "observed_success": null,
+          "termination_reason": null,
+          "budget_censored": false,
+          "control_steps": null,
+          "passive_wait_control_steps": null,
+          "code_errors": null,
+          "timing": {
+            "last_model_call_error_type": "ValueError",
+            "active_seconds": null,
+            "wall_seconds": null,
+            "passive_wait_seconds": null,
+            "model_roundtrip_seconds": 25.91572012519464,
+            "operation_roundtrip_seconds": 2.099908999633044,
+            "observation_roundtrip_seconds": 0.726516333874315,
+            "model_compute_seconds": null,
+            "transport_only_seconds": null,
+            "code_only_seconds": null,
+            "count_service_completed_roundtrip_seconds": 0.5111013748683035,
+            "count_service_coverage": {
+              "completed_logical_call_receipts": 1,
+              "timed_completed_logical_calls": 1,
+              "missing_duration_receipts": 0,
+              "mirrored_native_receipts_excluded": 0,
+              "failure_event_rows_excluded": 0,
+              "unfinished_call_count": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed logical count-service calls only; mapped/Anthropic totals may include retries and backoff. Failure rows have cumulative elapsed times and are excluded. No count-start log establishes a complete denominator."
+            },
+            "inference_provider_completed_roundtrip_seconds": 24.57971974974498,
+            "inference_provider_coverage": {
+              "completed_call_receipts": 1,
+              "timed_completed_calls": 1,
+              "missing_duration_receipts": 0,
+              "unidentifiable_rows_excluded": 0,
+              "failed_response_rows_excluded": 0,
+              "recorded_transmissions_started": null,
+              "recorded_unsettled_failures": 0,
+              "recorded_open_transmissions": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed provider-request roundtrips, including transport. Anthropic model-usage elapsed_seconds preferred; otherwise provider-responses elapsed_seconds/seconds. Mirrored logs deduplicated by call/id. Failed and unfinished requests are excluded; no pure model compute is inferred."
+            },
+            "partial_service_receipt_files": [],
+            "scope": "Original attempt only; replay and setup excluded. model_roundtrip_seconds is the model wrapper including context counting, inference, and orchestration, including timed wrapper errors. Service-specific totals are components of that wrapper, not additional elapsed time. Operation roundtrips include transport/orchestration, not pure code execution. Missing/unfinished service latency remains unknown."
+          },
+          "operational_timing": {
+            "original_transport": {
+              "setup_seconds": 51.43682503700256,
+              "worker_exec_ready_seconds": 19.688328981399536,
+              "commit_seconds": 3.0310561656951904,
+              "artifact_readback_seconds": 7.58396577835083,
+              "source": "modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_transport": {
+              "setup_seconds": null,
+              "worker_exec_ready_seconds": null,
+              "commit_seconds": null,
+              "artifact_readback_seconds": null,
+              "source": "verification/modal-transport.log",
+              "source_present": false,
+              "status": "partial_or_unavailable",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "source_missing",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "source_missing",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "commit_seconds": {
+                  "status": "source_missing",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "artifact_readback_seconds": {
+                  "status": "source_missing",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                }
+              },
+              "ignored_non_json_lines": 0,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_execution_seconds": null,
+            "replay_execution_coverage": {
+              "status": "source_missing",
+              "source": "verification.json",
+              "field": "trials[0].replay.elapsed_seconds",
+              "scope": "Trusted replay task elapsed time, including code/container/RPC work; separate from original active score and not model inference or pure code compute."
+            },
+            "end_to_end_seconds": null,
+            "end_to_end_status": "not_recorded",
+            "scope": "Operational stages are separate from original scored active time. No full pipeline completion event is recorded: job.finished_at precedes replay/archive, and archive.verified_at precedes restore-test/receipt publication. No end-to-end estimate is substituted."
+          },
+          "evidence": {
+            "report": false,
+            "verification": false,
+            "replay_valid": false,
+            "files": {
+              "job.json": {
+                "path": "jobs/20261020T122023Z-c47fe278d1/job.json",
+                "sha256": "f8565fc9a5a88e30e6311710605e1131798cbadee13842128edcee72f38f07ab"
+              }
+            }
+          }
+        },
+        {
+          "attempt_number": 2,
+          "job_id": null,
+          "category": "not_started",
+          "official_success": null
+        },
+        {
+          "attempt_number": 3,
+          "job_id": null,
+          "category": "not_started",
+          "official_success": null
+        },
+        {
+          "attempt_number": 4,
+          "job_id": null,
+          "category": "not_started",
+          "official_success": null
+        },
+        {
+          "attempt_number": 5,
+          "job_id": null,
+          "category": "not_started",
+          "official_success": null
+        }
+      ],
+      "success_curve": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "category_counts": {
+        "infrastructure_failure": 1,
+        "not_started": 4
+      },
+      "descriptive_metrics": {
+        "verified_success_count": 0,
+        "verified_success_fraction_of_planned": 0.0,
+        "eventual_success_fraction_bounds": [
+          0.0,
+          1.0
+        ],
+        "complete_series_success_fraction": null,
+        "terminal_success_streak": null,
+        "adjacent_success_pairs": [],
+        "uncertainty": "Bounds reflect incomplete outcomes, not a confidence interval. Retained trials are dependent; no causal learning estimate or independent-trial binomial interval.",
+        "composite_improvement_score": null
+      }
+    },
+    {
+      "series_id": "20261020T123141Z-f2476610f1",
+      "task": "BeverageSorting",
+      "protocol": "adaptive-public-sqlite-v1",
+      "protocol_review": {},
+      "recorded_status": "infrastructure_error",
+      "liveness_verified": false,
+      "participant": {
+        "provider": "openrouter",
+        "model": "google/gemini-4-argon",
+        "effort": "high",
+        "context_window": 1048576,
+        "max_output_tokens": 32768
+      },
+      "context_policy": {
+        "method": "sqlite-sliding-or-google-count-v2",
+        "context_window": 1048576,
+        "output_reserve": 32768,
+        "eviction_chunk": 200000,
+        "estimator": "conservative-proxy-units-not-native-tokens",
+        "overhead_reserve": 4096,
+        "provider_compaction": false,
+        "cache_discount_guaranteed": false,
+        "history_file": "jobs/20261020T123141Z-f2476610f1/history.sqlite"
+      },
+      "context_audit": {
+        "slide_count": 0,
+        "slides": [],
+        "reported_prompt_tokens_range": [
+          10977,
+          669813
+        ],
+        "proxy_to_reported_prompt_ratio_range": [
+          1.1508901005058136,
+          2.0476450760681426
+        ],
+        "scope": "Original provider usage and SQLite slide receipts. Estimated slide units are policy-dependent, not necessarily native tokens. Early sliding can confound comparisons across context policies."
+      },
+      "limits": {
+        "active_seconds": 1800,
+        "control_steps": 6000,
+        "per_script_steps": 50,
+        "per_script_seconds": 90
+      },
+      "execution": {
+        "backend": "modal",
+        "simulator_image": "im-8lYCL2pDzv17fItGdIQ08I",
+        "code_image": "sha256:e5b644a03c4813de83830cb88c0ba44b30d320b474768dad40a455fc6e1da8b9",
+        "modal_environment": "FDR",
+        "artifact_transfer": "remote-video"
+      },
+      "planned_trials": 5,
+      "verified_trials": 3,
+      "incomplete_trials": 2,
+      "complete": false,
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "job_id": "20261020T123142Z-3749649221",
+          "recorded_status": "verified_fail",
+          "category": "verified_fail",
+          "failure_review": {},
+          "failure_classification": null,
+          "official_success": false,
+          "observed_success": false,
+          "termination_reason": "task_deadline",
+          "budget_censored": true,
+          "control_steps": 761,
+          "passive_wait_control_steps": 0,
+          "code_errors": 0,
+          "timing": {
+            "last_model_call_error_type": null,
+            "active_seconds": 1806.692572037,
+            "wall_seconds": null,
+            "passive_wait_seconds": 0,
+            "model_roundtrip_seconds": 1248.8923500413075,
+            "operation_roundtrip_seconds": 552.3988882512785,
+            "observation_roundtrip_seconds": 4.060039664618671,
+            "model_compute_seconds": null,
+            "transport_only_seconds": null,
+            "code_only_seconds": null,
+            "count_service_completed_roundtrip_seconds": 37.563005256000906,
+            "count_service_coverage": {
+              "completed_logical_call_receipts": 48,
+              "timed_completed_logical_calls": 48,
+              "missing_duration_receipts": 0,
+              "mirrored_native_receipts_excluded": 0,
+              "failure_event_rows_excluded": 0,
+              "unfinished_call_count": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed logical count-service calls only; mapped/Anthropic totals may include retries and backoff. Failure rows have cumulative elapsed times and are excluded. No count-start log establishes a complete denominator."
+            },
+            "inference_provider_completed_roundtrip_seconds": 1211.5007820846513,
+            "inference_provider_coverage": {
+              "completed_call_receipts": 24,
+              "timed_completed_calls": 24,
+              "missing_duration_receipts": 0,
+              "unidentifiable_rows_excluded": 0,
+              "failed_response_rows_excluded": 0,
+              "recorded_transmissions_started": null,
+              "recorded_unsettled_failures": 0,
+              "recorded_open_transmissions": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed provider-request roundtrips, including transport. Anthropic model-usage elapsed_seconds preferred; otherwise provider-responses elapsed_seconds/seconds. Mirrored logs deduplicated by call/id. Failed and unfinished requests are excluded; no pure model compute is inferred."
+            },
+            "partial_service_receipt_files": [],
+            "scope": "Original attempt only; replay and setup excluded. model_roundtrip_seconds is the model wrapper including context counting, inference, and orchestration, including timed wrapper errors. Service-specific totals are components of that wrapper, not additional elapsed time. Operation roundtrips include transport/orchestration, not pure code execution. Missing/unfinished service latency remains unknown."
+          },
+          "operational_timing": {
+            "original_transport": {
+              "setup_seconds": 52.14283895492554,
+              "worker_exec_ready_seconds": 17.691925048828125,
+              "commit_seconds": 1.364227056503296,
+              "artifact_readback_seconds": 4.179229974746704,
+              "source": "modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_transport": {
+              "setup_seconds": 90.4489541053772,
+              "worker_exec_ready_seconds": 59.36548399925232,
+              "commit_seconds": 0.8810088634490967,
+              "artifact_readback_seconds": 7.516561985015869,
+              "source": "verification/modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_execution_seconds": 561.791805159,
+            "replay_execution_coverage": {
+              "status": "measured",
+              "source": "verification.json",
+              "field": "trials[0].replay.elapsed_seconds",
+              "scope": "Trusted replay task elapsed time, including code/container/RPC work; separate from original active score and not model inference or pure code compute."
+            },
+            "end_to_end_seconds": null,
+            "end_to_end_status": "not_recorded",
+            "scope": "Operational stages are separate from original scored active time. No full pipeline completion event is recorded: job.finished_at precedes replay/archive, and archive.verified_at precedes restore-test/receipt publication. No end-to-end estimate is substituted."
+          },
+          "evidence": {
+            "report": true,
+            "verification": true,
+            "replay_valid": true,
+            "files": {
+              "job.json": {
+                "path": "jobs/20261020T123142Z-3749649221/job.json",
+                "sha256": "e8a352747ee5db51420efd6d1000542eb4f90f4101013bd007237c54e5aac9c7"
+              },
+              "report.json": {
+                "path": "jobs/20261020T123142Z-3749649221/report.json",
+                "sha256": "1297be50dc728f2f9af59bbc6dbf374fd081e931b87b3a65089a50df17ff8025"
+              },
+              "verification.json": {
+                "path": "jobs/20261020T123142Z-3749649221/verification.json",
+                "sha256": "f390699cb74779ccfc61a7f26a5335055825a04e79b322aa63f7e267e27766ae"
+              }
+            }
+          }
+        },
+        {
+          "attempt_number": 2,
+          "job_id": "20261020T131409Z-24893adde2",
+          "recorded_status": "verified_fail",
+          "category": "verified_fail",
+          "failure_review": {},
+          "failure_classification": null,
+          "official_success": false,
+          "observed_success": false,
+          "termination_reason": "model_deadline",
+          "budget_censored": true,
+          "control_steps": 847,
+          "passive_wait_control_steps": 0,
+          "code_errors": 0,
+          "timing": {
+            "last_model_call_error_type": null,
+            "active_seconds": 1802.1629079049999,
+            "wall_seconds": null,
+            "passive_wait_seconds": 0,
+            "model_roundtrip_seconds": 1178.34474462457,
+            "operation_roundtrip_seconds": 617.3765732487664,
+            "observation_roundtrip_seconds": 3.7101049995981157,
+            "model_compute_seconds": null,
+            "transport_only_seconds": null,
+            "code_only_seconds": null,
+            "count_service_completed_roundtrip_seconds": 76.23109874781221,
+            "count_service_coverage": {
+              "completed_logical_call_receipts": 37,
+              "timed_completed_logical_calls": 37,
+              "missing_duration_receipts": 0,
+              "mirrored_native_receipts_excluded": 0,
+              "failure_event_rows_excluded": 0,
+              "unfinished_call_count": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed logical count-service calls only; mapped/Anthropic totals may include retries and backoff. Failure rows have cumulative elapsed times and are excluded. No count-start log establishes a complete denominator."
+            },
+            "inference_provider_completed_roundtrip_seconds": 1077.2598571656272,
+            "inference_provider_coverage": {
+              "completed_call_receipts": 18,
+              "timed_completed_calls": 18,
+              "missing_duration_receipts": 0,
+              "unidentifiable_rows_excluded": 0,
+              "failed_response_rows_excluded": 0,
+              "recorded_transmissions_started": null,
+              "recorded_unsettled_failures": 0,
+              "recorded_open_transmissions": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed provider-request roundtrips, including transport. Anthropic model-usage elapsed_seconds preferred; otherwise provider-responses elapsed_seconds/seconds. Mirrored logs deduplicated by call/id. Failed and unfinished requests are excluded; no pure model compute is inferred."
+            },
+            "partial_service_receipt_files": [],
+            "scope": "Original attempt only; replay and setup excluded. model_roundtrip_seconds is the model wrapper including context counting, inference, and orchestration, including timed wrapper errors. Service-specific totals are components of that wrapper, not additional elapsed time. Operation roundtrips include transport/orchestration, not pure code execution. Missing/unfinished service latency remains unknown."
+          },
+          "operational_timing": {
+            "original_transport": {
+              "setup_seconds": 32.96252512931824,
+              "worker_exec_ready_seconds": 5.888732194900513,
+              "commit_seconds": 2.4462900161743164,
+              "artifact_readback_seconds": 4.215095043182373,
+              "source": "modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_transport": {
+              "setup_seconds": 44.94203495979309,
+              "worker_exec_ready_seconds": 16.158139944076538,
+              "commit_seconds": 1.2524640560150146,
+              "artifact_readback_seconds": 4.812801122665405,
+              "source": "verification/modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_execution_seconds": 637.682775129,
+            "replay_execution_coverage": {
+              "status": "measured",
+              "source": "verification.json",
+              "field": "trials[0].replay.elapsed_seconds",
+              "scope": "Trusted replay task elapsed time, including code/container/RPC work; separate from original active score and not model inference or pure code compute."
+            },
+            "end_to_end_seconds": null,
+            "end_to_end_status": "not_recorded",
+            "scope": "Operational stages are separate from original scored active time. No full pipeline completion event is recorded: job.finished_at precedes replay/archive, and archive.verified_at precedes restore-test/receipt publication. No end-to-end estimate is substituted."
+          },
+          "evidence": {
+            "report": true,
+            "verification": true,
+            "replay_valid": true,
+            "files": {
+              "job.json": {
+                "path": "jobs/20261020T131409Z-24893adde2/job.json",
+                "sha256": "1b650bd4168f72417ef3c5c9dae679b4edd8ca48d63aabb85dc4bfa8afe129e6"
+              },
+              "report.json": {
+                "path": "jobs/20261020T131409Z-24893adde2/report.json",
+                "sha256": "982dc251bfd27a2d5211d54233e9fd1aa3c5f56f1673058a822e04784c17baf9"
+              },
+              "verification.json": {
+                "path": "jobs/20261020T131409Z-24893adde2/verification.json",
+                "sha256": "99781182204f49fcf3bb6aaceab0c231408c36dbd6623ed13c214432e5a4cabf"
+              }
+            }
+          }
+        },
+        {
+          "attempt_number": 3,
+          "job_id": "20261020T135653Z-abbb79f2ad",
+          "recorded_status": "verified_pass",
+          "category": "verified_pass",
+          "failure_review": {},
+          "failure_classification": null,
+          "official_success": true,
+          "observed_success": true,
+          "termination_reason": "sustained_success",
+          "budget_censored": false,
+          "control_steps": 518,
+          "passive_wait_control_steps": 0,
+          "code_errors": 0,
+          "timing": {
+            "last_model_call_error_type": null,
+            "active_seconds": 1189.700929119,
+            "wall_seconds": null,
+            "passive_wait_seconds": 0,
+            "model_roundtrip_seconds": 701.7314984998666,
+            "operation_roundtrip_seconds": 481.4642417919822,
+            "observation_roundtrip_seconds": 4.582444085739553,
+            "model_compute_seconds": null,
+            "transport_only_seconds": null,
+            "code_only_seconds": null,
+            "count_service_completed_roundtrip_seconds": 67.74021987337619,
+            "count_service_coverage": {
+              "completed_logical_call_receipts": 22,
+              "timed_completed_logical_calls": 22,
+              "missing_duration_receipts": 0,
+              "mirrored_native_receipts_excluded": 0,
+              "failure_event_rows_excluded": 0,
+              "unfinished_call_count": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed logical count-service calls only; mapped/Anthropic totals may include retries and backoff. Failure rows have cumulative elapsed times and are excluded. No count-start log establishes a complete denominator."
+            },
+            "inference_provider_completed_roundtrip_seconds": 632.5761498748325,
+            "inference_provider_coverage": {
+              "completed_call_receipts": 11,
+              "timed_completed_calls": 11,
+              "missing_duration_receipts": 0,
+              "unidentifiable_rows_excluded": 0,
+              "failed_response_rows_excluded": 0,
+              "recorded_transmissions_started": null,
+              "recorded_unsettled_failures": 0,
+              "recorded_open_transmissions": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed provider-request roundtrips, including transport. Anthropic model-usage elapsed_seconds preferred; otherwise provider-responses elapsed_seconds/seconds. Mirrored logs deduplicated by call/id. Failed and unfinished requests are excluded; no pure model compute is inferred."
+            },
+            "partial_service_receipt_files": [],
+            "scope": "Original attempt only; replay and setup excluded. model_roundtrip_seconds is the model wrapper including context counting, inference, and orchestration, including timed wrapper errors. Service-specific totals are components of that wrapper, not additional elapsed time. Operation roundtrips include transport/orchestration, not pure code execution. Missing/unfinished service latency remains unknown."
+          },
+          "operational_timing": {
+            "original_transport": {
+              "setup_seconds": 113.36577486991882,
+              "worker_exec_ready_seconds": 82.81988501548767,
+              "commit_seconds": 0.8346707820892334,
+              "artifact_readback_seconds": 2.6453309059143066,
+              "source": "modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_transport": {
+              "setup_seconds": 148.9977948665619,
+              "worker_exec_ready_seconds": 117.44083499908447,
+              "commit_seconds": 1.2089052200317383,
+              "artifact_readback_seconds": 4.527191162109375,
+              "source": "verification/modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_execution_seconds": 389.91433367499997,
+            "replay_execution_coverage": {
+              "status": "measured",
+              "source": "verification.json",
+              "field": "trials[0].replay.elapsed_seconds",
+              "scope": "Trusted replay task elapsed time, including code/container/RPC work; separate from original active score and not model inference or pure code compute."
+            },
+            "end_to_end_seconds": null,
+            "end_to_end_status": "not_recorded",
+            "scope": "Operational stages are separate from original scored active time. No full pipeline completion event is recorded: job.finished_at precedes replay/archive, and archive.verified_at precedes restore-test/receipt publication. No end-to-end estimate is substituted."
+          },
+          "evidence": {
+            "report": true,
+            "verification": true,
+            "replay_valid": true,
+            "files": {
+              "job.json": {
+                "path": "jobs/20261020T135653Z-abbb79f2ad/job.json",
+                "sha256": "a14797bf8408bc30c4cc28720b91bafd134dbafe0ea846bea139125a0868ba95"
+              },
+              "report.json": {
+                "path": "jobs/20261020T135653Z-abbb79f2ad/report.json",
+                "sha256": "9cd4dec14d39686478b8c20a4c3005af30e230b5dc5890d68a6ede94cb56b00e"
+              },
+              "verification.json": {
+                "path": "jobs/20261020T135653Z-abbb79f2ad/verification.json",
+                "sha256": "bf063be59342c4ddf7327110aa8f14cf9dc81074ed08f87c332fbe6ac04e307c"
+              }
+            }
+          }
+        },
+        {
+          "attempt_number": 4,
+          "job_id": "20261020T144138Z-60a3211c90",
+          "recorded_status": "infrastructure_error",
+          "category": "infrastructure_failure",
+          "failure_review": {},
+          "failure_classification": null,
+          "official_success": null,
+          "observed_success": null,
+          "termination_reason": null,
+          "budget_censored": false,
+          "control_steps": null,
+          "passive_wait_control_steps": null,
+          "code_errors": null,
+          "timing": {
+            "last_model_call_error_type": "RuntimeError",
+            "active_seconds": null,
+            "wall_seconds": null,
+            "passive_wait_seconds": null,
+            "model_roundtrip_seconds": 197.7202000846155,
+            "operation_roundtrip_seconds": 113.70707241725177,
+            "observation_roundtrip_seconds": 0.6305200830101967,
+            "model_compute_seconds": null,
+            "transport_only_seconds": null,
+            "code_only_seconds": null,
+            "count_service_completed_roundtrip_seconds": 30.418249874841422,
+            "count_service_coverage": {
+              "completed_logical_call_receipts": 7,
+              "timed_completed_logical_calls": 7,
+              "missing_duration_receipts": 0,
+              "mirrored_native_receipts_excluded": 0,
+              "failure_event_rows_excluded": 0,
+              "unfinished_call_count": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed logical count-service calls only; mapped/Anthropic totals may include retries and backoff. Failure rows have cumulative elapsed times and are excluded. No count-start log establishes a complete denominator."
+            },
+            "inference_provider_completed_roundtrip_seconds": 160.3912079585716,
+            "inference_provider_coverage": {
+              "completed_call_receipts": 3,
+              "timed_completed_calls": 3,
+              "missing_duration_receipts": 0,
+              "unidentifiable_rows_excluded": 0,
+              "failed_response_rows_excluded": 0,
+              "recorded_transmissions_started": null,
+              "recorded_unsettled_failures": 0,
+              "recorded_open_transmissions": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed provider-request roundtrips, including transport. Anthropic model-usage elapsed_seconds preferred; otherwise provider-responses elapsed_seconds/seconds. Mirrored logs deduplicated by call/id. Failed and unfinished requests are excluded; no pure model compute is inferred."
+            },
+            "partial_service_receipt_files": [],
+            "scope": "Original attempt only; replay and setup excluded. model_roundtrip_seconds is the model wrapper including context counting, inference, and orchestration, including timed wrapper errors. Service-specific totals are components of that wrapper, not additional elapsed time. Operation roundtrips include transport/orchestration, not pure code execution. Missing/unfinished service latency remains unknown."
+          },
+          "operational_timing": {
+            "original_transport": {
+              "setup_seconds": 39.44179391860962,
+              "worker_exec_ready_seconds": 6.143296003341675,
+              "commit_seconds": 0.778052806854248,
+              "artifact_readback_seconds": 3.213762044906616,
+              "source": "modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_transport": {
+              "setup_seconds": null,
+              "worker_exec_ready_seconds": null,
+              "commit_seconds": null,
+              "artifact_readback_seconds": null,
+              "source": "verification/modal-transport.log",
+              "source_present": false,
+              "status": "partial_or_unavailable",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "source_missing",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "source_missing",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "commit_seconds": {
+                  "status": "source_missing",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "artifact_readback_seconds": {
+                  "status": "source_missing",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                }
+              },
+              "ignored_non_json_lines": 0,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_execution_seconds": null,
+            "replay_execution_coverage": {
+              "status": "source_missing",
+              "source": "verification.json",
+              "field": "trials[0].replay.elapsed_seconds",
+              "scope": "Trusted replay task elapsed time, including code/container/RPC work; separate from original active score and not model inference or pure code compute."
+            },
+            "end_to_end_seconds": null,
+            "end_to_end_status": "not_recorded",
+            "scope": "Operational stages are separate from original scored active time. No full pipeline completion event is recorded: job.finished_at precedes replay/archive, and archive.verified_at precedes restore-test/receipt publication. No end-to-end estimate is substituted."
+          },
+          "evidence": {
+            "report": false,
+            "verification": false,
+            "replay_valid": false,
+            "files": {
+              "job.json": {
+                "path": "jobs/20261020T144138Z-60a3211c90/job.json",
+                "sha256": "cbe85a3b238320eb29d5bb76271ab9db84200ab23463fc2d1553e89c7e3c0b56"
+              }
+            }
+          }
+        },
+        {
+          "attempt_number": 5,
+          "job_id": null,
+          "category": "not_started",
+          "official_success": null
+        }
+      ],
+      "success_curve": [
+        false,
+        false,
+        true,
+        null,
+        null
+      ],
+      "category_counts": {
+        "verified_fail": 2,
+        "verified_pass": 1,
+        "infrastructure_failure": 1,
+        "not_started": 1
+      },
+      "descriptive_metrics": {
+        "verified_success_count": 1,
+        "verified_success_fraction_of_planned": 0.2,
+        "eventual_success_fraction_bounds": [
+          0.2,
+          0.6
+        ],
+        "complete_series_success_fraction": null,
+        "terminal_success_streak": null,
+        "adjacent_success_pairs": [],
+        "uncertainty": "Bounds reflect incomplete outcomes, not a confidence interval. Retained trials are dependent; no causal learning estimate or independent-trial binomial interval.",
+        "composite_improvement_score": null
+      }
+    },
+    {
+      "series_id": "20261020T130317Z-20ccc4226b",
+      "task": "BeverageSorting",
+      "protocol": "adaptive-public-sqlite-v1",
+      "protocol_review": {},
+      "recorded_status": "running",
+      "liveness_verified": false,
+      "participant": {
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "context_window": 1000000,
+        "max_output_tokens": 32768
+      },
+      "context_policy": {
+        "method": "sqlite-sliding-v1",
+        "context_window": 1000000,
+        "output_reserve": 32768,
+        "eviction_chunk": 200000,
+        "estimator": "required-model-aware-token-counter",
+        "overhead_reserve": 4096,
+        "provider_compaction": false,
+        "cache_discount_guaranteed": false,
+        "history_file": "jobs/20261020T130317Z-20ccc4226b/history.sqlite"
+      },
+      "context_audit": {
+        "slide_count": 0,
+        "slides": [],
+        "reported_prompt_tokens_range": [
+          9342,
+          663677
+        ],
+        "proxy_to_reported_prompt_ratio_range": null,
+        "scope": "Original provider usage and SQLite slide receipts. Estimated slide units are policy-dependent, not necessarily native tokens. Early sliding can confound comparisons across context policies."
+      },
+      "limits": {
+        "active_seconds": 1800,
+        "control_steps": 6000,
+        "per_script_steps": 50,
+        "per_script_seconds": 90
+      },
+      "execution": {
+        "backend": "modal",
+        "simulator_image": "im-8lYCL2pDzv17fItGdIQ08I",
+        "code_image": "sha256:e5b644a03c4813de83830cb88c0ba44b30d320b474768dad40a455fc6e1da8b9",
+        "modal_environment": "FDR",
+        "artifact_transfer": "remote-video"
+      },
+      "planned_trials": 5,
+      "verified_trials": 3,
+      "incomplete_trials": 2,
+      "complete": false,
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "job_id": "20261020T130317Z-d06e1d70d3",
+          "recorded_status": "verified_fail",
+          "category": "verified_fail",
+          "failure_review": {},
+          "failure_classification": null,
+          "official_success": false,
+          "observed_success": false,
+          "termination_reason": "agent_finish",
+          "budget_censored": false,
+          "control_steps": 1279,
+          "passive_wait_control_steps": 0,
+          "code_errors": 4,
+          "timing": {
+            "last_model_call_error_type": null,
+            "active_seconds": 1724.956876713,
+            "wall_seconds": null,
+            "passive_wait_seconds": 0,
+            "model_roundtrip_seconds": 564.1702667027712,
+            "operation_roundtrip_seconds": 1146.4737294544466,
+            "observation_roundtrip_seconds": 12.54727062722668,
+            "model_compute_seconds": null,
+            "transport_only_seconds": null,
+            "code_only_seconds": null,
+            "count_service_completed_roundtrip_seconds": 43.60187562648207,
+            "count_service_coverage": {
+              "completed_logical_call_receipts": 44,
+              "timed_completed_logical_calls": 44,
+              "missing_duration_receipts": 0,
+              "mirrored_native_receipts_excluded": 0,
+              "failure_event_rows_excluded": 0,
+              "unfinished_call_count": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed logical count-service calls only; mapped/Anthropic totals may include retries and backoff. Failure rows have cumulative elapsed times and are excluded. No count-start log establishes a complete denominator."
+            },
+            "inference_provider_completed_roundtrip_seconds": 518.4413480400108,
+            "inference_provider_coverage": {
+              "completed_call_receipts": 44,
+              "timed_completed_calls": 44,
+              "missing_duration_receipts": 0,
+              "unidentifiable_rows_excluded": 0,
+              "failed_response_rows_excluded": 0,
+              "recorded_transmissions_started": 44,
+              "recorded_unsettled_failures": 0,
+              "recorded_open_transmissions": 0,
+              "status": "complete_for_recorded_transmissions",
+              "scope": "Completed provider-request roundtrips, including transport. Anthropic model-usage elapsed_seconds preferred; otherwise provider-responses elapsed_seconds/seconds. Mirrored logs deduplicated by call/id. Failed and unfinished requests are excluded; no pure model compute is inferred."
+            },
+            "partial_service_receipt_files": [],
+            "scope": "Original attempt only; replay and setup excluded. model_roundtrip_seconds is the model wrapper including context counting, inference, and orchestration, including timed wrapper errors. Service-specific totals are components of that wrapper, not additional elapsed time. Operation roundtrips include transport/orchestration, not pure code execution. Missing/unfinished service latency remains unknown."
+          },
+          "operational_timing": {
+            "original_transport": {
+              "setup_seconds": 92.44306182861328,
+              "worker_exec_ready_seconds": 61.70343995094299,
+              "commit_seconds": 3.0950732231140137,
+              "artifact_readback_seconds": 4.599769115447998,
+              "source": "modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_transport": {
+              "setup_seconds": 435.28037691116333,
+              "worker_exec_ready_seconds": 404.4715898036957,
+              "commit_seconds": 0.719426155090332,
+              "artifact_readback_seconds": 4.801616907119751,
+              "source": "verification/modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_execution_seconds": 960.6966936910001,
+            "replay_execution_coverage": {
+              "status": "measured",
+              "source": "verification.json",
+              "field": "trials[0].replay.elapsed_seconds",
+              "scope": "Trusted replay task elapsed time, including code/container/RPC work; separate from original active score and not model inference or pure code compute."
+            },
+            "end_to_end_seconds": null,
+            "end_to_end_status": "not_recorded",
+            "scope": "Operational stages are separate from original scored active time. No full pipeline completion event is recorded: job.finished_at precedes replay/archive, and archive.verified_at precedes restore-test/receipt publication. No end-to-end estimate is substituted."
+          },
+          "evidence": {
+            "report": true,
+            "verification": true,
+            "replay_valid": true,
+            "files": {
+              "job.json": {
+                "path": "jobs/20261020T130317Z-d06e1d70d3/job.json",
+                "sha256": "4d7427a615516b4ca2dc1e03aa499d618cbb69c6ea6920bd1bc5063504ce3c3b"
+              },
+              "report.json": {
+                "path": "jobs/20261020T130317Z-d06e1d70d3/report.json",
+                "sha256": "ec358e635b3bb4cae58e9d4ee661e0185ddd8b93454711a01526dd2693ab7084"
+              },
+              "verification.json": {
+                "path": "jobs/20261020T130317Z-d06e1d70d3/verification.json",
+                "sha256": "03cf480eebe658f2a39d66ac69dcadffb57321dcba272ff980c82efdc41f3f24"
+              }
+            }
+          }
+        },
+        {
+          "attempt_number": 2,
+          "job_id": "20261020T135735Z-7882496ac8",
+          "recorded_status": "verified_fail",
+          "category": "verified_fail",
+          "failure_review": {},
+          "failure_classification": null,
+          "official_success": false,
+          "observed_success": false,
+          "termination_reason": "agent_finish",
+          "budget_censored": false,
+          "control_steps": 912,
+          "passive_wait_control_steps": 0,
+          "code_errors": 0,
+          "timing": {
+            "last_model_call_error_type": null,
+            "active_seconds": 1572.765700959,
+            "wall_seconds": null,
+            "passive_wait_seconds": 0,
+            "model_roundtrip_seconds": 409.83168287947774,
+            "operation_roundtrip_seconds": 1146.7711107507348,
+            "observation_roundtrip_seconds": 13.557737541384995,
+            "model_compute_seconds": null,
+            "transport_only_seconds": null,
+            "code_only_seconds": null,
+            "count_service_completed_roundtrip_seconds": 74.14037449797615,
+            "count_service_coverage": {
+              "completed_logical_call_receipts": 27,
+              "timed_completed_logical_calls": 27,
+              "missing_duration_receipts": 0,
+              "mirrored_native_receipts_excluded": 0,
+              "failure_event_rows_excluded": 0,
+              "unfinished_call_count": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed logical count-service calls only; mapped/Anthropic totals may include retries and backoff. Failure rows have cumulative elapsed times and are excluded. No count-start log establishes a complete denominator."
+            },
+            "inference_provider_completed_roundtrip_seconds": 332.5583712491207,
+            "inference_provider_coverage": {
+              "completed_call_receipts": 27,
+              "timed_completed_calls": 27,
+              "missing_duration_receipts": 0,
+              "unidentifiable_rows_excluded": 0,
+              "failed_response_rows_excluded": 0,
+              "recorded_transmissions_started": 27,
+              "recorded_unsettled_failures": 0,
+              "recorded_open_transmissions": 0,
+              "status": "complete_for_recorded_transmissions",
+              "scope": "Completed provider-request roundtrips, including transport. Anthropic model-usage elapsed_seconds preferred; otherwise provider-responses elapsed_seconds/seconds. Mirrored logs deduplicated by call/id. Failed and unfinished requests are excluded; no pure model compute is inferred."
+            },
+            "partial_service_receipt_files": [],
+            "scope": "Original attempt only; replay and setup excluded. model_roundtrip_seconds is the model wrapper including context counting, inference, and orchestration, including timed wrapper errors. Service-specific totals are components of that wrapper, not additional elapsed time. Operation roundtrips include transport/orchestration, not pure code execution. Missing/unfinished service latency remains unknown."
+          },
+          "operational_timing": {
+            "original_transport": {
+              "setup_seconds": 313.83519196510315,
+              "worker_exec_ready_seconds": 283.6400570869446,
+              "commit_seconds": 1.988398790359497,
+              "artifact_readback_seconds": 5.911570072174072,
+              "source": "modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_transport": {
+              "setup_seconds": 983.9157979488373,
+              "worker_exec_ready_seconds": 952.6644999980927,
+              "commit_seconds": 4.741836071014404,
+              "artifact_readback_seconds": 5.470654010772705,
+              "source": "verification/modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_execution_seconds": 857.928930825,
+            "replay_execution_coverage": {
+              "status": "measured",
+              "source": "verification.json",
+              "field": "trials[0].replay.elapsed_seconds",
+              "scope": "Trusted replay task elapsed time, including code/container/RPC work; separate from original active score and not model inference or pure code compute."
+            },
+            "end_to_end_seconds": null,
+            "end_to_end_status": "not_recorded",
+            "scope": "Operational stages are separate from original scored active time. No full pipeline completion event is recorded: job.finished_at precedes replay/archive, and archive.verified_at precedes restore-test/receipt publication. No end-to-end estimate is substituted."
+          },
+          "evidence": {
+            "report": true,
+            "verification": true,
+            "replay_valid": true,
+            "files": {
+              "job.json": {
+                "path": "jobs/20261020T135735Z-7882496ac8/job.json",
+                "sha256": "ae162d16a7e5d73e2357801ee10cb2127c55619879060769f7c399e35bb3b11a"
+              },
+              "report.json": {
+                "path": "jobs/20261020T135735Z-7882496ac8/report.json",
+                "sha256": "7a726ca10985f4ba11bc1400b261925a880fb908b812dd41b4a9956a8eb61824"
+              },
+              "verification.json": {
+                "path": "jobs/20261020T135735Z-7882496ac8/verification.json",
+                "sha256": "bb9de140cf9ecf173c33898af7ab7548b73350978409f11fdf2fd15dd11410ff"
+              }
+            }
+          }
+        },
+        {
+          "attempt_number": 3,
+          "job_id": "20261020T150039Z-2411916e03",
+          "recorded_status": "verified_fail",
+          "category": "verified_fail",
+          "failure_review": {},
+          "failure_classification": null,
+          "official_success": false,
+          "observed_success": false,
+          "termination_reason": "agent_finish",
+          "budget_censored": false,
+          "control_steps": 560,
+          "passive_wait_control_steps": 0,
+          "code_errors": 0,
+          "timing": {
+            "last_model_call_error_type": null,
+            "active_seconds": 745.909330328,
+            "wall_seconds": null,
+            "passive_wait_seconds": 0,
+            "model_roundtrip_seconds": 320.18252399843186,
+            "operation_roundtrip_seconds": 421.7398205040954,
+            "observation_roundtrip_seconds": 2.961465584114194,
+            "model_compute_seconds": null,
+            "transport_only_seconds": null,
+            "code_only_seconds": null,
+            "count_service_completed_roundtrip_seconds": 52.341347998939455,
+            "count_service_coverage": {
+              "completed_logical_call_receipts": 18,
+              "timed_completed_logical_calls": 18,
+              "missing_duration_receipts": 0,
+              "mirrored_native_receipts_excluded": 0,
+              "failure_event_rows_excluded": 0,
+              "unfinished_call_count": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed logical count-service calls only; mapped/Anthropic totals may include retries and backoff. Failure rows have cumulative elapsed times and are excluded. No count-start log establishes a complete denominator."
+            },
+            "inference_provider_completed_roundtrip_seconds": 265.06942983483896,
+            "inference_provider_coverage": {
+              "completed_call_receipts": 18,
+              "timed_completed_calls": 18,
+              "missing_duration_receipts": 0,
+              "unidentifiable_rows_excluded": 0,
+              "failed_response_rows_excluded": 0,
+              "recorded_transmissions_started": 18,
+              "recorded_unsettled_failures": 0,
+              "recorded_open_transmissions": 0,
+              "status": "complete_for_recorded_transmissions",
+              "scope": "Completed provider-request roundtrips, including transport. Anthropic model-usage elapsed_seconds preferred; otherwise provider-responses elapsed_seconds/seconds. Mirrored logs deduplicated by call/id. Failed and unfinished requests are excluded; no pure model compute is inferred."
+            },
+            "partial_service_receipt_files": [],
+            "scope": "Original attempt only; replay and setup excluded. model_roundtrip_seconds is the model wrapper including context counting, inference, and orchestration, including timed wrapper errors. Service-specific totals are components of that wrapper, not additional elapsed time. Operation roundtrips include transport/orchestration, not pure code execution. Missing/unfinished service latency remains unknown."
+          },
+          "operational_timing": {
+            "original_transport": {
+              "setup_seconds": 113.55083107948303,
+              "worker_exec_ready_seconds": 83.4168541431427,
+              "commit_seconds": 2.0214548110961914,
+              "artifact_readback_seconds": 5.519939184188843,
+              "source": "modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_transport": {
+              "setup_seconds": 607.484622001648,
+              "worker_exec_ready_seconds": 576.4991018772125,
+              "commit_seconds": 3.9128189086914062,
+              "artifact_readback_seconds": 3.751224994659424,
+              "source": "verification/modal-transport.log",
+              "source_present": true,
+              "status": "measured",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "measured",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "artifact_readback_seconds": {
+                  "status": "measured",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_execution_seconds": 511.919137823,
+            "replay_execution_coverage": {
+              "status": "measured",
+              "source": "verification.json",
+              "field": "trials[0].replay.elapsed_seconds",
+              "scope": "Trusted replay task elapsed time, including code/container/RPC work; separate from original active score and not model inference or pure code compute."
+            },
+            "end_to_end_seconds": null,
+            "end_to_end_status": "not_recorded",
+            "scope": "Operational stages are separate from original scored active time. No full pipeline completion event is recorded: job.finished_at precedes replay/archive, and archive.verified_at precedes restore-test/receipt publication. No end-to-end estimate is substituted."
+          },
+          "evidence": {
+            "report": true,
+            "verification": true,
+            "replay_valid": true,
+            "files": {
+              "job.json": {
+                "path": "jobs/20261020T150039Z-2411916e03/job.json",
+                "sha256": "0e0537238cf4665329b240b4be75834c6e58bcf41ba3b945e1e91ca6f6b0a264"
+              },
+              "report.json": {
+                "path": "jobs/20261020T150039Z-2411916e03/report.json",
+                "sha256": "682634f2fe444fdcd7c9f2bebbdb84b5fcfec472708efa9f52186dde583f9612"
+              },
+              "verification.json": {
+                "path": "jobs/20261020T150039Z-2411916e03/verification.json",
+                "sha256": "566a2e34c26f8663b723d7ecf099f469f807efe7f5ce1a2b77bcce2bf831939d"
+              }
+            }
+          }
+        },
+        {
+          "attempt_number": 4,
+          "job_id": "20261020T153422Z-360afcffad",
+          "recorded_status": "running",
+          "category": "incomplete",
+          "failure_review": {},
+          "failure_classification": null,
+          "official_success": null,
+          "observed_success": null,
+          "termination_reason": null,
+          "budget_censored": false,
+          "control_steps": null,
+          "passive_wait_control_steps": null,
+          "code_errors": null,
+          "timing": {
+            "last_model_call_error_type": null,
+            "active_seconds": null,
+            "wall_seconds": null,
+            "passive_wait_seconds": null,
+            "model_roundtrip_seconds": 66.02343624923378,
+            "operation_roundtrip_seconds": 171.89301983406767,
+            "observation_roundtrip_seconds": 0.9467907906509936,
+            "model_compute_seconds": null,
+            "transport_only_seconds": null,
+            "code_only_seconds": null,
+            "count_service_completed_roundtrip_seconds": 17.95211991900578,
+            "count_service_coverage": {
+              "completed_logical_call_receipts": 6,
+              "timed_completed_logical_calls": 6,
+              "missing_duration_receipts": 0,
+              "mirrored_native_receipts_excluded": 0,
+              "failure_event_rows_excluded": 0,
+              "unfinished_call_count": null,
+              "status": "partial_or_unknown",
+              "scope": "Completed logical count-service calls only; mapped/Anthropic totals may include retries and backoff. Failure rows have cumulative elapsed times and are excluded. No count-start log establishes a complete denominator."
+            },
+            "inference_provider_completed_roundtrip_seconds": 50.129012998659164,
+            "inference_provider_coverage": {
+              "completed_call_receipts": 5,
+              "timed_completed_calls": 5,
+              "missing_duration_receipts": 0,
+              "unidentifiable_rows_excluded": 0,
+              "failed_response_rows_excluded": 0,
+              "recorded_transmissions_started": 6,
+              "recorded_unsettled_failures": 0,
+              "recorded_open_transmissions": 1,
+              "status": "partial_or_unknown",
+              "scope": "Completed provider-request roundtrips, including transport. Anthropic model-usage elapsed_seconds preferred; otherwise provider-responses elapsed_seconds/seconds. Mirrored logs deduplicated by call/id. Failed and unfinished requests are excluded; no pure model compute is inferred."
+            },
+            "partial_service_receipt_files": [],
+            "scope": "Original attempt only; replay and setup excluded. model_roundtrip_seconds is the model wrapper including context counting, inference, and orchestration, including timed wrapper errors. Service-specific totals are components of that wrapper, not additional elapsed time. Operation roundtrips include transport/orchestration, not pure code execution. Missing/unfinished service latency remains unknown."
+          },
+          "operational_timing": {
+            "original_transport": {
+              "setup_seconds": 286.52872824668884,
+              "worker_exec_ready_seconds": 254.92912316322327,
+              "commit_seconds": null,
+              "artifact_readback_seconds": null,
+              "source": "modal-transport.log",
+              "source_present": true,
+              "status": "partial_or_unavailable",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "measured",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "measured",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 1,
+                  "end_event_count": 1
+                },
+                "commit_seconds": {
+                  "status": "missing_event",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "artifact_readback_seconds": {
+                  "status": "missing_event",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                }
+              },
+              "ignored_non_json_lines": 10,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_transport": {
+              "setup_seconds": null,
+              "worker_exec_ready_seconds": null,
+              "commit_seconds": null,
+              "artifact_readback_seconds": null,
+              "source": "verification/modal-transport.log",
+              "source_present": false,
+              "status": "partial_or_unavailable",
+              "coverage": {
+                "setup_seconds": {
+                  "status": "source_missing",
+                  "start_event": "create_start",
+                  "end_event": "worker_initial_response",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "worker_exec_ready_seconds": {
+                  "status": "source_missing",
+                  "start_event": "worker_exec_start",
+                  "end_event": "worker_exec_ready",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "commit_seconds": {
+                  "status": "source_missing",
+                  "start_event": "sandbox_commit_start",
+                  "end_event": "sandbox_commit_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                },
+                "artifact_readback_seconds": {
+                  "status": "source_missing",
+                  "start_event": "artifact_readback_start",
+                  "end_event": "artifact_readback_complete",
+                  "start_event_count": 0,
+                  "end_event_count": 0
+                }
+              },
+              "ignored_non_json_lines": 0,
+              "ignored_non_event_json_lines": 0,
+              "scope": "Differences between unique host epoch events. Setup includes provisioning, exec readiness and simulator initialization; these are not transport-only, pure compute or billed time."
+            },
+            "replay_execution_seconds": null,
+            "replay_execution_coverage": {
+              "status": "source_missing",
+              "source": "verification.json",
+              "field": "trials[0].replay.elapsed_seconds",
+              "scope": "Trusted replay task elapsed time, including code/container/RPC work; separate from original active score and not model inference or pure code compute."
+            },
+            "end_to_end_seconds": null,
+            "end_to_end_status": "not_recorded",
+            "scope": "Operational stages are separate from original scored active time. No full pipeline completion event is recorded: job.finished_at precedes replay/archive, and archive.verified_at precedes restore-test/receipt publication. No end-to-end estimate is substituted."
+          },
+          "evidence": {
+            "report": false,
+            "verification": false,
+            "replay_valid": false,
+            "files": {
+              "job.json": {
+                "path": "jobs/20261020T153422Z-360afcffad/job.json",
+                "sha256": "cdab158787d653e1af2ee204a7ed79ddf553c2372e1d4ce487864989f7d1e4ea"
+              }
+            }
+          }
+        },
+        {
+          "attempt_number": 5,
+          "job_id": null,
+          "category": "not_started",
+          "official_success": null
+        }
+      ],
+      "success_curve": [
+        false,
+        false,
+        false,
+        null,
+        null
+      ],
+      "category_counts": {
+        "verified_fail": 3,
+        "incomplete": 1,
+        "not_started": 1
+      },
+      "descriptive_metrics": {
+        "verified_success_count": 0,
+        "verified_success_fraction_of_planned": 0.0,
+        "eventual_success_fraction_bounds": [
+          0.0,
+          0.4
+        ],
+        "complete_series_success_fraction": null,
+        "terminal_success_streak": null,
+        "adjacent_success_pairs": [],
+        "uncertainty": "Bounds reflect incomplete outcomes, not a confidence interval. Retained trials are dependent; no causal learning estimate or independent-trial binomial interval.",
+        "composite_improvement_score": null
+      }
+    }
+  ],
+  "scope": "Only discovered public five-trial series. Unlaunched dataset tasks are not represented; this is not a full-dataset denominator or ranked leaderboard."
+}

@@ -1,0 +1,614 @@
+{
+  "schema_version": 1,
+  "origin": "https://roboswe.com",
+  "generated_at": "2026-10-20T15:48:36.020176+00:00",
+  "scope": "Already-public curated media and episode exports only; no raw private job directory",
+  "assets": [
+    {
+      "path": "assets/blender-camera-1.mp4",
+      "url": "https://roboswe.com/assets/blender-camera-1.mp4",
+      "bytes": 12754722,
+      "sha256": "07e3df23665e66d8c3d54bd2c267c79d937aece5c578daa7d64943a1e580bee4"
+    },
+    {
+      "path": "assets/blender-overview.mp4",
+      "url": "https://roboswe.com/assets/blender-overview.mp4",
+      "bytes": 2907014,
+      "sha256": "33453af09546df8f94da3ccecb9165b35030df4be246e6af5c07178e5e142d2b"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-01/episode-overlay.js",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-01/episode-overlay.js",
+      "bytes": 2307,
+      "sha256": "a483b86cf779251670ad63b201bf0cace82c4d6f100b05782a97bc9c19ec0b5a"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-01/index.html",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-01/",
+      "bytes": 7635,
+      "sha256": "9f193a88d9ce721aa64ba9246feb72792e34e72c022f17fbb4079ec761af6b09"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-01/jobs/20261020T123142Z-3749649221/atif.json",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-01/jobs/20261020T123142Z-3749649221/atif.json",
+      "bytes": 679917,
+      "sha256": "a40a9d1f68d849d0ef201be5cea7c50c665cfb3d76c56f9204788806de8763d9"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-01/jobs/20261020T123142Z-3749649221/episode.json",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-01/jobs/20261020T123142Z-3749649221/episode.json",
+      "bytes": 1484470,
+      "sha256": "ca8ff5cd01e261d75242110cae1ac0e1b14321f800bd3e57ba03dc18c0448a08"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-01/jobs/20261020T123142Z-3749649221/video-camera-0-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-01/jobs/20261020T123142Z-3749649221/video-camera-0-simulation.mp4",
+      "bytes": 6222043,
+      "sha256": "2e1cf6ef9c53fc64b6ac128ee24b75ca8d629bd7d4b0bb673d578f1abbd9c84b"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-01/jobs/20261020T123142Z-3749649221/video-camera-1-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-01/jobs/20261020T123142Z-3749649221/video-camera-1-simulation.mp4",
+      "bytes": 7759414,
+      "sha256": "a0eeae9787a40958ba898adcd5fb17e589deb0764ecb9a8afb85fa2a23df34c5"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-01/jobs/20261020T123142Z-3749649221/video-camera-2-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-01/jobs/20261020T123142Z-3749649221/video-camera-2-simulation.mp4",
+      "bytes": 8117786,
+      "sha256": "0ff1013245ca68c8c67ae534a4f0400aca925535793660c211850d655af841f2"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-01/jobs/20261020T123142Z-3749649221/video-overview-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-01/jobs/20261020T123142Z-3749649221/video-overview-simulation.mp4",
+      "bytes": 1645353,
+      "sha256": "2f582cfcf6b2b10845312dcb31c1c9bf79530ccdaccf85a93408e20531605a8c"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-01/manifest.json",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-01/manifest.json",
+      "bytes": 4354,
+      "sha256": "4641defcdc3775470a5b247412077a6f388894baedee7b001176f5811d641c12"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-01/review-jobs.json",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-01/review-jobs.json",
+      "bytes": 219,
+      "sha256": "bf6212a27fb0c0d2193ffc6718610914847370e3be0e4234ef7dff9f895d37c5"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-01/review.js",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-01/review.js",
+      "bytes": 9877,
+      "sha256": "cb80d51fb687d2ddce5d272f66301fe66c01443e743c24f283d58d9b036a6d01"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-02/episode-overlay.js",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-02/episode-overlay.js",
+      "bytes": 2307,
+      "sha256": "a483b86cf779251670ad63b201bf0cace82c4d6f100b05782a97bc9c19ec0b5a"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-02/index.html",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-02/",
+      "bytes": 7635,
+      "sha256": "9f193a88d9ce721aa64ba9246feb72792e34e72c022f17fbb4079ec761af6b09"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-02/jobs/20261020T131409Z-24893adde2/atif.json",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-02/jobs/20261020T131409Z-24893adde2/atif.json",
+      "bytes": 616225,
+      "sha256": "3bcb15b1e0129acd70e2e0cb0009b14d8ae832dc8244482ba09688162e51f6cd"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-02/jobs/20261020T131409Z-24893adde2/episode.json",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-02/jobs/20261020T131409Z-24893adde2/episode.json",
+      "bytes": 1340826,
+      "sha256": "ddc1f356c4b5650d6e2708d5c6053a837088196ea0c43a08dac5126e9a099ac2"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-02/jobs/20261020T131409Z-24893adde2/video-camera-0-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-02/jobs/20261020T131409Z-24893adde2/video-camera-0-simulation.mp4",
+      "bytes": 7010868,
+      "sha256": "19f6b7744d1a0429173c1b162fea61e8988ffea47634eb9a52110e2bd0943760"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-02/jobs/20261020T131409Z-24893adde2/video-camera-1-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-02/jobs/20261020T131409Z-24893adde2/video-camera-1-simulation.mp4",
+      "bytes": 9213415,
+      "sha256": "dc75b82f8bdeb20ec348efe47798f98eab9732be1d092f1bf666574f2f2b7b32"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-02/jobs/20261020T131409Z-24893adde2/video-camera-2-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-02/jobs/20261020T131409Z-24893adde2/video-camera-2-simulation.mp4",
+      "bytes": 9841028,
+      "sha256": "c150cedfac2264f8228092289f3cc9f5fe4f4e796271dc22e1e6c5876ca25392"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-02/jobs/20261020T131409Z-24893adde2/video-overview-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-02/jobs/20261020T131409Z-24893adde2/video-overview-simulation.mp4",
+      "bytes": 2161607,
+      "sha256": "966b205c0bb7b0b75d0a720f83f6e9103074495e36fa554f53ef567c12224025"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-02/manifest.json",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-02/manifest.json",
+      "bytes": 4354,
+      "sha256": "b1cb28abca50288c17f6ed07092cc96b7fa4b83e40fd5e040210db9d9946972c"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-02/review-jobs.json",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-02/review-jobs.json",
+      "bytes": 219,
+      "sha256": "7cf135d8a13d6e810f4cce41630a45d49b1a976955500d5e4673e317561a04bc"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-02/review.js",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-02/review.js",
+      "bytes": 9877,
+      "sha256": "cb80d51fb687d2ddce5d272f66301fe66c01443e743c24f283d58d9b036a6d01"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-03/episode-overlay.js",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-03/episode-overlay.js",
+      "bytes": 2307,
+      "sha256": "a483b86cf779251670ad63b201bf0cace82c4d6f100b05782a97bc9c19ec0b5a"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-03/index.html",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-03/",
+      "bytes": 7635,
+      "sha256": "9f193a88d9ce721aa64ba9246feb72792e34e72c022f17fbb4079ec761af6b09"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-03/jobs/20261020T135653Z-abbb79f2ad/atif.json",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-03/jobs/20261020T135653Z-abbb79f2ad/atif.json",
+      "bytes": 353692,
+      "sha256": "01b4b84bbf6a7a7276b1c9fd4bb8918233f0f6a575371eea19359232327dd51f"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-03/jobs/20261020T135653Z-abbb79f2ad/episode.json",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-03/jobs/20261020T135653Z-abbb79f2ad/episode.json",
+      "bytes": 778661,
+      "sha256": "e2901f6e47e0679a121000dca18e604e6457e77761eaec5e5065590636130d08"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-03/jobs/20261020T135653Z-abbb79f2ad/video-camera-0-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-03/jobs/20261020T135653Z-abbb79f2ad/video-camera-0-simulation.mp4",
+      "bytes": 4087176,
+      "sha256": "5de59dfc0a58bbdb3d52281d357166146bc7dbf6ccec2fb3f0f62bb768d75960"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-03/jobs/20261020T135653Z-abbb79f2ad/video-camera-1-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-03/jobs/20261020T135653Z-abbb79f2ad/video-camera-1-simulation.mp4",
+      "bytes": 5514622,
+      "sha256": "d71b874c92897e29a024508ab546fbe981e636d3bece71ebdda064316302be7c"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-03/jobs/20261020T135653Z-abbb79f2ad/video-camera-2-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-03/jobs/20261020T135653Z-abbb79f2ad/video-camera-2-simulation.mp4",
+      "bytes": 5759432,
+      "sha256": "fd6e2529572044df837ac2f6984e9cf4f08cba32e9ec5028ee68595a001d6ee2"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-03/jobs/20261020T135653Z-abbb79f2ad/video-overview-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-03/jobs/20261020T135653Z-abbb79f2ad/video-overview-simulation.mp4",
+      "bytes": 1280830,
+      "sha256": "b7ceda82af561273b2b0ad33bd7542a88c37512fe22475ebec98e0feeb42d403"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-03/manifest.json",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-03/manifest.json",
+      "bytes": 4353,
+      "sha256": "6625c11e29933b06dae74747de2d02cf3a9ce5e18cb59e49550829b2e8745e74"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-03/review-jobs.json",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-03/review-jobs.json",
+      "bytes": 219,
+      "sha256": "c5b685312a90796f7474dcfc1b0c26b39f0834d053072f29847c2f8e82ca43a5"
+    },
+    {
+      "path": "episodes/beverage-argon-trial-03/review.js",
+      "url": "https://roboswe.com/episodes/beverage-argon-trial-03/review.js",
+      "bytes": 9877,
+      "sha256": "cb80d51fb687d2ddce5d272f66301fe66c01443e743c24f283d58d9b036a6d01"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-01/episode-overlay.js",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-01/episode-overlay.js",
+      "bytes": 2307,
+      "sha256": "a483b86cf779251670ad63b201bf0cace82c4d6f100b05782a97bc9c19ec0b5a"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-01/index.html",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-01/",
+      "bytes": 7635,
+      "sha256": "9f193a88d9ce721aa64ba9246feb72792e34e72c022f17fbb4079ec761af6b09"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-01/jobs/20261020T130317Z-d06e1d70d3/atif.json",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-01/jobs/20261020T130317Z-d06e1d70d3/atif.json",
+      "bytes": 958096,
+      "sha256": "ddd3cc8a62f695a2050db312f8af6048582c75c2f4f79b28fda05efaec964632"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-01/jobs/20261020T130317Z-d06e1d70d3/episode.json",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-01/jobs/20261020T130317Z-d06e1d70d3/episode.json",
+      "bytes": 2051276,
+      "sha256": "eb4490e6c6a757a764d72b916d970cd252af8850be8236c16672da096f75a8a1"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-01/jobs/20261020T130317Z-d06e1d70d3/video-camera-0-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-01/jobs/20261020T130317Z-d06e1d70d3/video-camera-0-simulation.mp4",
+      "bytes": 7954471,
+      "sha256": "ba33efdc445dfb0e3ff043f24e4e048cb0305ceec047c7bacb04935fd705860c"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-01/jobs/20261020T130317Z-d06e1d70d3/video-camera-1-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-01/jobs/20261020T130317Z-d06e1d70d3/video-camera-1-simulation.mp4",
+      "bytes": 13546322,
+      "sha256": "424381078e0816467eecb19643517bcf3b90197d59d3e8bd5d5574671e01ba47"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-01/jobs/20261020T130317Z-d06e1d70d3/video-camera-2-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-01/jobs/20261020T130317Z-d06e1d70d3/video-camera-2-simulation.mp4",
+      "bytes": 13883151,
+      "sha256": "546cf05ca57947e2c4d5f034025f2cc22cbe4770cd5e3e7a8247f7a5aef6a19a"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-01/jobs/20261020T130317Z-d06e1d70d3/video-overview-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-01/jobs/20261020T130317Z-d06e1d70d3/video-overview-simulation.mp4",
+      "bytes": 3005336,
+      "sha256": "b6ed369e716c8877f4ec34837d6d9ccb459943de20a96ca7216cd84eeca9128a"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-01/manifest.json",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-01/manifest.json",
+      "bytes": 4356,
+      "sha256": "14a70ed5b802332f6cc4227af1a5d07c368b12e5820344cba9828226e0fbc02a"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-01/review-jobs.json",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-01/review-jobs.json",
+      "bytes": 213,
+      "sha256": "a727df53b50a7dec44c327a47756542ffd3f5132b7cf9e88ef8fdf008b250da4"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-01/review.js",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-01/review.js",
+      "bytes": 9877,
+      "sha256": "cb80d51fb687d2ddce5d272f66301fe66c01443e743c24f283d58d9b036a6d01"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-02/episode-overlay.js",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-02/episode-overlay.js",
+      "bytes": 2307,
+      "sha256": "a483b86cf779251670ad63b201bf0cace82c4d6f100b05782a97bc9c19ec0b5a"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-02/index.html",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-02/",
+      "bytes": 7635,
+      "sha256": "9f193a88d9ce721aa64ba9246feb72792e34e72c022f17fbb4079ec761af6b09"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-02/jobs/20261020T135735Z-7882496ac8/atif.json",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-02/jobs/20261020T135735Z-7882496ac8/atif.json",
+      "bytes": 650058,
+      "sha256": "7db4e2fb00e4c670b87ab02e5d3b743a6dd7e624b7d3b55248b59e898616010b"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-02/jobs/20261020T135735Z-7882496ac8/episode.json",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-02/jobs/20261020T135735Z-7882496ac8/episode.json",
+      "bytes": 1389625,
+      "sha256": "cfd5dce19bad3574217effdc186db0ed6eb49ce3811be3ae876b1581fec3391b"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-02/jobs/20261020T135735Z-7882496ac8/video-camera-0-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-02/jobs/20261020T135735Z-7882496ac8/video-camera-0-simulation.mp4",
+      "bytes": 5790297,
+      "sha256": "445c9f9c8d9883dc1bbb0c7f3d561a27c512b855f7e8a5caf39e8b8539674a75"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-02/jobs/20261020T135735Z-7882496ac8/video-camera-1-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-02/jobs/20261020T135735Z-7882496ac8/video-camera-1-simulation.mp4",
+      "bytes": 9981318,
+      "sha256": "d01bf0b8d899cbb6168b4e299a986f36ad62b12e65326c540a1bc303d084288c"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-02/jobs/20261020T135735Z-7882496ac8/video-camera-2-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-02/jobs/20261020T135735Z-7882496ac8/video-camera-2-simulation.mp4",
+      "bytes": 10864004,
+      "sha256": "7a2a6ab886cc52ee2a3f7c9a5c1cbd01dbc2494b6401f2aa30d196d5f1865c15"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-02/jobs/20261020T135735Z-7882496ac8/video-overview-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-02/jobs/20261020T135735Z-7882496ac8/video-overview-simulation.mp4",
+      "bytes": 2242944,
+      "sha256": "6f60ceb9d049e5b830de95abc372fcf1e851d9de24cd16abb0bca7c28be0ab47"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-02/manifest.json",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-02/manifest.json",
+      "bytes": 4355,
+      "sha256": "c8baa2e2a352fe63f4c8df465610f4d1468aa6dab48916ccdd476565a7ade26a"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-02/review-jobs.json",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-02/review-jobs.json",
+      "bytes": 213,
+      "sha256": "e4d977638203efa4be33e261975817a3602cdbe70d026f5ae3260ea46203db1c"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-02/review.js",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-02/review.js",
+      "bytes": 9877,
+      "sha256": "cb80d51fb687d2ddce5d272f66301fe66c01443e743c24f283d58d9b036a6d01"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-03/episode-overlay.js",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-03/episode-overlay.js",
+      "bytes": 2307,
+      "sha256": "a483b86cf779251670ad63b201bf0cace82c4d6f100b05782a97bc9c19ec0b5a"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-03/index.html",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-03/",
+      "bytes": 7635,
+      "sha256": "9f193a88d9ce721aa64ba9246feb72792e34e72c022f17fbb4079ec761af6b09"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-03/jobs/20261020T150039Z-2411916e03/atif.json",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-03/jobs/20261020T150039Z-2411916e03/atif.json",
+      "bytes": 423866,
+      "sha256": "92e0e16e45edb4dc98bfca91e9ed517a578109e87aaea265b0045455495dda01"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-03/jobs/20261020T150039Z-2411916e03/episode.json",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-03/jobs/20261020T150039Z-2411916e03/episode.json",
+      "bytes": 920347,
+      "sha256": "3c6f9130898086aec96e9cf9514c198dc86252c64808234e1b255dac7595ed43"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-03/jobs/20261020T150039Z-2411916e03/video-camera-0-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-03/jobs/20261020T150039Z-2411916e03/video-camera-0-simulation.mp4",
+      "bytes": 4347406,
+      "sha256": "625d43a20c74b3243032c7f986c1b7f03b86bb8b2ea08e1aabad3fec90f07136"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-03/jobs/20261020T150039Z-2411916e03/video-camera-1-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-03/jobs/20261020T150039Z-2411916e03/video-camera-1-simulation.mp4",
+      "bytes": 7851861,
+      "sha256": "0540993641f8eeb955c1cdd2f3283d1c5728f4637b6a869d459d4e5bde49396b"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-03/jobs/20261020T150039Z-2411916e03/video-camera-2-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-03/jobs/20261020T150039Z-2411916e03/video-camera-2-simulation.mp4",
+      "bytes": 8442331,
+      "sha256": "7fbd7c08e307a9d773358609d6102e37ea530d0da1bcddfa1bb784f07f16efa6"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-03/jobs/20261020T150039Z-2411916e03/video-overview-simulation.mp4",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-03/jobs/20261020T150039Z-2411916e03/video-overview-simulation.mp4",
+      "bytes": 1641877,
+      "sha256": "53b9c62371ae926391d5130de85f10912791beb585c294df7e96dd82a57a05f7"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-03/manifest.json",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-03/manifest.json",
+      "bytes": 4353,
+      "sha256": "961c293f993b2001132640333d770a56944cf457aa154c31fa0f559a2a0715cf"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-03/review-jobs.json",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-03/review-jobs.json",
+      "bytes": 213,
+      "sha256": "1ecb5ab454bac258e6e380c82c925c4421d87069c5808de541e6a51bac737d10"
+    },
+    {
+      "path": "episodes/beverage-opus-trial-03/review.js",
+      "url": "https://roboswe.com/episodes/beverage-opus-trial-03/review.js",
+      "bytes": 9877,
+      "sha256": "cb80d51fb687d2ddce5d272f66301fe66c01443e743c24f283d58d9b036a6d01"
+    },
+    {
+      "path": "episodes/development-argon-01/index.html",
+      "url": "https://roboswe.com/episodes/development-argon-01/",
+      "bytes": 7153,
+      "sha256": "1f5aca5c4eee373e961fa2c22634ec39b085ed9fbdfd64f20f993008457617d6"
+    },
+    {
+      "path": "episodes/development-argon-01/jobs/20261020T083619Z-460161983a/atif.json",
+      "url": "https://roboswe.com/episodes/development-argon-01/jobs/20261020T083619Z-460161983a/atif.json",
+      "bytes": 729791,
+      "sha256": "d3ca8c1d2184244cd380e3a466cee394e7e739dec32df07d91fb7e95160b46f5"
+    },
+    {
+      "path": "episodes/development-argon-01/jobs/20261020T083619Z-460161983a/episode.json",
+      "url": "https://roboswe.com/episodes/development-argon-01/jobs/20261020T083619Z-460161983a/episode.json",
+      "bytes": 1603070,
+      "sha256": "b28fcdd0fdcc499b089977cd8742cd4be2eb7af8fd9e168b5a0f8e76296f6566"
+    },
+    {
+      "path": "episodes/development-argon-01/jobs/20261020T083619Z-460161983a/video-camera-0-simulation.mp4",
+      "url": "https://roboswe.com/episodes/development-argon-01/jobs/20261020T083619Z-460161983a/video-camera-0-simulation.mp4",
+      "bytes": 7177885,
+      "sha256": "576a630da4a4fb88e7247777f568631eddf84a6ab900eeed1194ed56e9fc729e"
+    },
+    {
+      "path": "episodes/development-argon-01/jobs/20261020T083619Z-460161983a/video-camera-1-simulation.mp4",
+      "url": "https://roboswe.com/episodes/development-argon-01/jobs/20261020T083619Z-460161983a/video-camera-1-simulation.mp4",
+      "bytes": 8563630,
+      "sha256": "9876ee0aea069a6eee1804043ffef11f3327db927be9435d1f4497a84bf04abd"
+    },
+    {
+      "path": "episodes/development-argon-01/jobs/20261020T083619Z-460161983a/video-camera-2-simulation.mp4",
+      "url": "https://roboswe.com/episodes/development-argon-01/jobs/20261020T083619Z-460161983a/video-camera-2-simulation.mp4",
+      "bytes": 8305406,
+      "sha256": "9b86bb4ffcab71161109b0d5c804da67950c53338d556eb1715be10fd0cfa3b1"
+    },
+    {
+      "path": "episodes/development-argon-01/jobs/20261020T083619Z-460161983a/video-overview-simulation.mp4",
+      "url": "https://roboswe.com/episodes/development-argon-01/jobs/20261020T083619Z-460161983a/video-overview-simulation.mp4",
+      "bytes": 1776942,
+      "sha256": "b28b7ad0f54046ad257e5d548ce8d5b3cc84cfe87eca140a1bdf78f81b7aec99"
+    },
+    {
+      "path": "episodes/development-argon-01/manifest.json",
+      "url": "https://roboswe.com/episodes/development-argon-01/manifest.json",
+      "bytes": 3740,
+      "sha256": "73e08e37e7d8f462cebdfda74e660edaf69a66317b69997b03bb4ee3fda93735"
+    },
+    {
+      "path": "episodes/development-argon-01/review-jobs.json",
+      "url": "https://roboswe.com/episodes/development-argon-01/review-jobs.json",
+      "bytes": 220,
+      "sha256": "421c433e22e8dfd93e64f7d8859520feda4cef50598de7cef23e73f9551b7a59"
+    },
+    {
+      "path": "episodes/development-argon-01/review.js",
+      "url": "https://roboswe.com/episodes/development-argon-01/review.js",
+      "bytes": 9865,
+      "sha256": "6b66628dfec5e06892c7ffbcf12be185f3736938458783425a85f7b3f30132c3"
+    },
+    {
+      "path": "episodes/development-argon-01/snapshot.js",
+      "url": "https://roboswe.com/episodes/development-argon-01/snapshot.js",
+      "bytes": 1603375,
+      "sha256": "c3b520cd319027436e1631016b1a0df693a7e7eb6e66ebfa0dc43851e58f2db1"
+    },
+    {
+      "path": "episodes/toast-argon-trial-01/episode-overlay.js",
+      "url": "https://roboswe.com/episodes/toast-argon-trial-01/episode-overlay.js",
+      "bytes": 2307,
+      "sha256": "a483b86cf779251670ad63b201bf0cace82c4d6f100b05782a97bc9c19ec0b5a"
+    },
+    {
+      "path": "episodes/toast-argon-trial-01/index.html",
+      "url": "https://roboswe.com/episodes/toast-argon-trial-01/",
+      "bytes": 7635,
+      "sha256": "9f193a88d9ce721aa64ba9246feb72792e34e72c022f17fbb4079ec761af6b09"
+    },
+    {
+      "path": "episodes/toast-argon-trial-01/jobs/20261020T105702Z-ba1714496d/atif.json",
+      "url": "https://roboswe.com/episodes/toast-argon-trial-01/jobs/20261020T105702Z-ba1714496d/atif.json",
+      "bytes": 606639,
+      "sha256": "bc7c70406829d3b19c50fab280bbba73ca47903ca0d2e31212f81ea5dd9a9a02"
+    },
+    {
+      "path": "episodes/toast-argon-trial-01/jobs/20261020T105702Z-ba1714496d/episode.json",
+      "url": "https://roboswe.com/episodes/toast-argon-trial-01/jobs/20261020T105702Z-ba1714496d/episode.json",
+      "bytes": 1383051,
+      "sha256": "147fe4430ba5757d8ae0387a8b9baed49934c942c9f2d89aacac5713c3f69b9e"
+    },
+    {
+      "path": "episodes/toast-argon-trial-01/jobs/20261020T105702Z-ba1714496d/video-camera-0-simulation.mp4",
+      "url": "https://roboswe.com/episodes/toast-argon-trial-01/jobs/20261020T105702Z-ba1714496d/video-camera-0-simulation.mp4",
+      "bytes": 8264313,
+      "sha256": "344ad4867038e6cad58251b2b6dbae84b9427a37ea737b855025a1f5f77aac19"
+    },
+    {
+      "path": "episodes/toast-argon-trial-01/jobs/20261020T105702Z-ba1714496d/video-camera-1-simulation.mp4",
+      "url": "https://roboswe.com/episodes/toast-argon-trial-01/jobs/20261020T105702Z-ba1714496d/video-camera-1-simulation.mp4",
+      "bytes": 6506357,
+      "sha256": "78d4dc6ffa04b9ba6a9d9daafe9e44ad3d6bb144e607c9d7f38d319a83c64d4c"
+    },
+    {
+      "path": "episodes/toast-argon-trial-01/jobs/20261020T105702Z-ba1714496d/video-camera-2-simulation.mp4",
+      "url": "https://roboswe.com/episodes/toast-argon-trial-01/jobs/20261020T105702Z-ba1714496d/video-camera-2-simulation.mp4",
+      "bytes": 6189553,
+      "sha256": "0a23804cc6a8ea85d071724b3bbf67de93ee25fc7e57e8e23216b0dff4bebbb2"
+    },
+    {
+      "path": "episodes/toast-argon-trial-01/jobs/20261020T105702Z-ba1714496d/video-overview-simulation.mp4",
+      "url": "https://roboswe.com/episodes/toast-argon-trial-01/jobs/20261020T105702Z-ba1714496d/video-overview-simulation.mp4",
+      "bytes": 1069162,
+      "sha256": "0e661140d5022d5aa7d4c71b7bc4e068c0033e0a0b4f623b894382899035b8d6"
+    },
+    {
+      "path": "episodes/toast-argon-trial-01/manifest.json",
+      "url": "https://roboswe.com/episodes/toast-argon-trial-01/manifest.json",
+      "bytes": 4354,
+      "sha256": "572b727877c585fb130614ebc1eb11916d21da66e9a7c9ee7c1f9c14714845b5"
+    },
+    {
+      "path": "episodes/toast-argon-trial-01/review-jobs.json",
+      "url": "https://roboswe.com/episodes/toast-argon-trial-01/review-jobs.json",
+      "bytes": 214,
+      "sha256": "8e51cb83d405568b31f8a1a5c03ca6de73811ca8a21942f978d1507ab74c1f84"
+    },
+    {
+      "path": "episodes/toast-argon-trial-01/review.js",
+      "url": "https://roboswe.com/episodes/toast-argon-trial-01/review.js",
+      "bytes": 9877,
+      "sha256": "cb80d51fb687d2ddce5d272f66301fe66c01443e743c24f283d58d9b036a6d01"
+    },
+    {
+      "path": "episodes/toast-opus-trial-01/episode-overlay.js",
+      "url": "https://roboswe.com/episodes/toast-opus-trial-01/episode-overlay.js",
+      "bytes": 2307,
+      "sha256": "a483b86cf779251670ad63b201bf0cace82c4d6f100b05782a97bc9c19ec0b5a"
+    },
+    {
+      "path": "episodes/toast-opus-trial-01/index.html",
+      "url": "https://roboswe.com/episodes/toast-opus-trial-01/",
+      "bytes": 7635,
+      "sha256": "9f193a88d9ce721aa64ba9246feb72792e34e72c022f17fbb4079ec761af6b09"
+    },
+    {
+      "path": "episodes/toast-opus-trial-01/jobs/20261020T105702Z-a9081835ff/atif.json",
+      "url": "https://roboswe.com/episodes/toast-opus-trial-01/jobs/20261020T105702Z-a9081835ff/atif.json",
+      "bytes": 863091,
+      "sha256": "1c2bbeb7fc08266afc834eadadba677d0cf04e384ec2d4f7a32bff291f676e0e"
+    },
+    {
+      "path": "episodes/toast-opus-trial-01/jobs/20261020T105702Z-a9081835ff/episode.json",
+      "url": "https://roboswe.com/episodes/toast-opus-trial-01/jobs/20261020T105702Z-a9081835ff/episode.json",
+      "bytes": 1912804,
+      "sha256": "a9f1919827edbee60dcacd48dc7d0ced4a84ed1155dfe5e7517ab47d20112801"
+    },
+    {
+      "path": "episodes/toast-opus-trial-01/jobs/20261020T105702Z-a9081835ff/video-camera-0-simulation.mp4",
+      "url": "https://roboswe.com/episodes/toast-opus-trial-01/jobs/20261020T105702Z-a9081835ff/video-camera-0-simulation.mp4",
+      "bytes": 12527241,
+      "sha256": "44923c964ca095a5f22f292739142476f4469901814b614a40db7835ed3592d1"
+    },
+    {
+      "path": "episodes/toast-opus-trial-01/jobs/20261020T105702Z-a9081835ff/video-camera-1-simulation.mp4",
+      "url": "https://roboswe.com/episodes/toast-opus-trial-01/jobs/20261020T105702Z-a9081835ff/video-camera-1-simulation.mp4",
+      "bytes": 9833866,
+      "sha256": "3c533b2678d67639fe0da8499955c69700c5050be39ace308ba52396892933bd"
+    },
+    {
+      "path": "episodes/toast-opus-trial-01/jobs/20261020T105702Z-a9081835ff/video-camera-2-simulation.mp4",
+      "url": "https://roboswe.com/episodes/toast-opus-trial-01/jobs/20261020T105702Z-a9081835ff/video-camera-2-simulation.mp4",
+      "bytes": 8928215,
+      "sha256": "4283fdd5471ae76e9457801cf4e7a5178af50b08fc8f16c60e618f218389b1c3"
+    },
+    {
+      "path": "episodes/toast-opus-trial-01/jobs/20261020T105702Z-a9081835ff/video-overview-simulation.mp4",
+      "url": "https://roboswe.com/episodes/toast-opus-trial-01/jobs/20261020T105702Z-a9081835ff/video-overview-simulation.mp4",
+      "bytes": 1600078,
+      "sha256": "a2ef06722cfea9d56e4f9026f52781c46999919ac1115ae5d87721212c0888a0"
+    },
+    {
+      "path": "episodes/toast-opus-trial-01/manifest.json",
+      "url": "https://roboswe.com/episodes/toast-opus-trial-01/manifest.json",
+      "bytes": 4355,
+      "sha256": "890db42a7a91bab848f346d4161311ed9cb0c9089fde72de494da25e74c47b48"
+    },
+    {
+      "path": "episodes/toast-opus-trial-01/review-jobs.json",
+      "url": "https://roboswe.com/episodes/toast-opus-trial-01/review-jobs.json",
+      "bytes": 208,
+      "sha256": "29782d71d689c8472abe8861279f179509bf5e39d9f93de6982b3fa5751a8ff5"
+    },
+    {
+      "path": "episodes/toast-opus-trial-01/review.js",
+      "url": "https://roboswe.com/episodes/toast-opus-trial-01/review.js",
+      "bytes": 9877,
+      "sha256": "cb80d51fb687d2ddce5d272f66301fe66c01443e743c24f283d58d9b036a6d01"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "source": "paper/main.tex",
+  "source_sha256": "774c50452ad93c32a2307b50254ebcd7b80742d300eb0cc1bc99a27603f7237a",
+  "format": "HTML rendering of the methods draft; no added results",
+  "references": 9,
+  "converter": "pandoc"
+}

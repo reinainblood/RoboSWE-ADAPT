@@ -1,0 +1,480 @@
+{
+  "job_id": "20261009T221300Z-0daa0ac68c",
+  "model": "Opus 5.5",
+  "task": "BlendIngredients",
+  "attempt": 2,
+  "protocol": "Historical two-attempt pilot",
+  "instruction": "Open the blender lid, put the apple in the blender, close the lid, and start the blender.",
+  "steps": 1526,
+  "sustained_steps": 21,
+  "observed_success": true,
+  "duration": 76.35,
+  "events": [
+    {
+      "turn": 0,
+      "step": 0,
+      "seconds": 0.0,
+      "operation": "write_execute",
+      "path": "r_A.py",
+      "rationale": "Phase A: raise/back off to (3.86,-0.72,1.45), then align straight-down above the lid knob at z 1.42, as verified in attempt 1.",
+      "code": "from plan2 import *\nA_to_knob()\n"
+    },
+    {
+      "turn": 1,
+      "step": 42,
+      "seconds": 2.1,
+      "operation": "write_execute",
+      "path": "r_B.py",
+      "rationale": "Phase B: descend onto the knob, close the gripper, and lift slowly to eef z 1.40 only (below the cabinet). Expect finger qpos ~0.03 and a heavier downward force if the lid is held.",
+      "code": "from plan2 import *\nB_grasp_knob()\n"
+    },
+    {
+      "turn": 2,
+      "step": 84,
+      "seconds": 4.2,
+      "operation": "write_execute",
+      "path": "r_C1.py",
+      "rationale": "Lift the held lid a bit more to z 1.405 so its skirt clears the jar mouth, then slide it straight toward the robot (y -0.66) at that height, away from the cabinet.",
+      "code": "from plan2 import *\no=move_to([KNOB[0],KNOB[1],1.405],1,10,rot=RD,tol=0.004,gain=0.6)\nrep('lift',o)\no=move_to([3.855,-0.66,1.405],1,25,rot=RD,tol=0.01,gain=0.6)\nrep('C1',o)\n"
+    },
+    {
+      "turn": 3,
+      "step": 119,
+      "seconds": 5.95,
+      "operation": "write_execute",
+      "path": "r_C2.py",
+      "rationale": "Carry the lid sideways at y -0.64 to x 4.26 (clear of the jar and apple), then forward/down to above the planned counter spot (4.26,-0.50) at z 1.08.",
+      "code": "from plan2 import *\no=move_to([LIDSPOT[0],-0.64,1.25],1,25,rot=RD,tol=0.01,gain=0.7)\nrep('C2',o)\no=move_to([LIDSPOT[0],LIDSPOT[1],1.08],1,20,rot=RD,tol=0.008,gain=0.7)\nrep('D1',o)\n"
+    },
+    {
+      "turn": 4,
+      "step": 161,
+      "seconds": 8.05,
+      "operation": "write_execute",
+      "path": "r_D.py",
+      "rationale": "Lower the lid onto the counter until the descent stalls (contact), open the gripper to release it, and rise to z 1.12.",
+      "code": "from plan2 import *\no=lower_until_contact(LIDSPOT,1.08,0.93,1,maxsteps=25,dz=0.006)\nrep('D2 contact',o)\nfor i in range(8): o=act(np.zeros(6),-1)\np=o['sensors']['robot0_eef_pos']\no=move_to([p[0],p[1],1.12],-1,10,rot=RD,tol=0.01)\nrep('D3',o)\n"
+    },
+    {
+      "turn": 5,
+      "step": 197,
+      "seconds": 9.85,
+      "operation": "write_execute",
+      "path": "r_E.py",
+      "rationale": "Phase E: move above the apple, segment it with a tight radius (to exclude the nearby red lid), descend and close the gripper on it.",
+      "code": "from plan2 import *\no=move_to([4.116,-0.56,1.15],-1,18,rot=RD,tol=0.008,gain=0.8)\ncam='robot0_eye_in_hand_image'\nim=rgb(o,cam).astype(int);P=cloud(o,cam)\nm=(im[...,0]>80)&(im[...,1]<110)&(im[...,2]<80)&(P[...,2]>0.925)&(P[...,2]<1.05)&(np.hypot(P[...,0]-4.116,P[...,1]+0.535)<0.05)\nQ=P[m];c=Q.mean(0);zt=Q[:,2].max();print('apple',m.sum(),np.round(c,3),round(float(zt),3))\no=move_to([c[0],c[1],zt+0.05],-1,8,rot=RD,tol=0.005,gain=0.7)\no=move_to([c[0],c[1],zt-0.035],-1,12,rot=RD,tol=0.004,gain=0.5)\nfor i in range(10): o=act(np.zeros(6),1)\nrep('E',o)\n"
+    },
+    {
+      "turn": 6,
+      "step": 245,
+      "seconds": 12.25,
+      "operation": "write_execute",
+      "path": "r_F.py",
+      "rationale": "Phase F: lift the apple, carry it at z 1.39 to above the open jar mouth (3.855,-0.475), and release it into the jar.",
+      "code": "from plan2 import *\no=move_to([4.08,-0.58,1.15],1,12,rot=RD,tol=0.01,gain=0.8)\nrep('F0',o)\nF_apple_to_jar()\n"
+    },
+    {
+      "turn": 7,
+      "step": 295,
+      "seconds": 14.75,
+      "operation": "write_execute",
+      "path": "r_F3.py",
+      "rationale": "Open the gripper to drop the apple into the jar, back away, and check where apple-colored points are (inside the jar should give z well below the 1.33 rim).",
+      "code": "from plan2 import *\nfor i in range(10): o=act(np.zeros(6),-1)\nrep('rel',o)\no=move_to([3.86,-0.62,1.40],-1,12,rot=RD,tol=0.01)\nrep('back',o)\nfor cam in ['robot0_agentview_left_image','robot0_agentview_right_image']:\n    im=rgb(o,cam).astype(int);P=cloud(o,cam)\n    m=(im[...,0]>80)&(im[...,1]<120)&(im[...,1]>40)&(im[...,2]<70)&(P[...,2]>1.08)&(P[...,0]>3.75)&(P[...,0]<3.95)&(P[...,1]<-0.35)&(P[...,1]>-0.6)\n    Q=P[m];print(cam[17:22],m.sum())\n    if m.sum(): print(np.round(np.percentile(Q,[5,50,95],axis=0),3))\n"
+    },
+    {
+      "turn": 8,
+      "step": 317,
+      "seconds": 15.85,
+      "operation": "write_execute",
+      "path": "r_G.py",
+      "rationale": "Phase G: move above the lid on the counter and locate its gray knob (center and top height) from wrist depth; save the estimate for the grasp step.",
+      "code": "from plan2 import *\nc,zt=G_to_lid()\nprint(c,zt)\nimport json;open('knob.json','w').write(json.dumps([None if c is None else list(map(float,c)),None if zt is None else float(zt)]))\n"
+    },
+    {
+      "turn": 9,
+      "step": 354,
+      "seconds": 17.7,
+      "operation": "write_execute",
+      "path": "r_H.py",
+      "rationale": "Phase H: descend onto the lid knob on the counter (target just below knob top), close the gripper, and lift ~8 cm; expect qpos ~0.03 and extra downward force if the lid is held.",
+      "code": "from plan2 import *\nimport json\nc,zt=json.load(open('knob.json'));c=np.array(c)\nH_grasp_lid(c,zt)\n"
+    },
+    {
+      "turn": 10,
+      "step": 403,
+      "seconds": 20.15,
+      "operation": "write_execute",
+      "path": "r_I.py",
+      "rationale": "Phase I: carry the lid at z 1.40 (below the cabinet) via the front (y -0.64) to directly above the jar mouth at the original knob position (3.854,-0.459).",
+      "code": "from plan2 import *\nI_lid_to_jar()\n"
+    },
+    {
+      "turn": 11,
+      "step": 447,
+      "seconds": 22.35,
+      "operation": "write_execute",
+      "path": "findlid.py",
+      "rationale": "The lid slipped out of the gripper during transport. Locate any red lid points outside the blender region in all cameras to find where it fell.",
+      "code": "from plan2 import *\no=obs()\nfor cam in ['robot0_agentview_left_image','robot0_agentview_right_image','robot0_eye_in_hand_image']:\n    im=rgb(o,cam).astype(int);P=cloud(o,cam)\n    red=(im[...,0]>70)&(im[...,0]>2*im[...,1])&(im[...,0]>2*im[...,2])\n    # exclude blender base region\n    nb=~((np.abs(P[...,0]-3.85)<0.1)&(P[...,1]>-0.6)&(P[...,1]<-0.4)&(P[...,2]>0.9))\n    m=red&nb&(P[...,2]<2)\n    Q=P[m];print(cam[:22],m.sum())\n    if m.sum()>10: print(np.round(np.percentile(Q,[5,50,95],axis=0),3))\n"
+    },
+    {
+      "turn": 12,
+      "step": 447,
+      "seconds": 22.35,
+      "operation": "write_execute",
+      "path": "look_lid.py",
+      "rationale": "Move the open gripper to a viewpoint above the front counter edge and measure the fallen lid's pose (red rim and gray knob) with the wrist depth camera.",
+      "code": "from plan2 import *\no=move_to([3.95,-0.62,1.30],-1,25,rot=RD,tol=0.01,gain=0.7)\nrep('pos',o)\ncam='robot0_eye_in_hand_image'\nim=rgb(o,cam).astype(int);P=cloud(o,cam)\nred=(im[...,0]>70)&(im[...,0]>2*im[...,1])&(im[...,0]>2*im[...,2])&(P[...,1]<-0.62)\nQ=P[red];print('red',red.sum())\nif red.sum()>10: print(np.round(np.percentile(Q,[2,25,50,75,98],axis=0),3))\ng=(np.abs(im[...,0]-im[...,1])<12)&(im[...,0]>100)&(im[...,0]<200)&(P[...,1]<-0.62)&(P[...,2]>0.8)\nQ=P[g];print('gray',g.sum())\nif g.sum()>10: print(np.round(np.percentile(Q,[2,50,98],axis=0),3))\n"
+    },
+    {
+      "turn": 13,
+      "step": 472,
+      "seconds": 23.6,
+      "operation": "write_execute",
+      "path": "lidpca.py",
+      "rationale": "Fit a plane to the fallen lid's red points (wrist depth) to get its center, surface normal, and top-rim location for planning a regrasp.",
+      "code": "from plan2 import *\no=obs();cam='robot0_eye_in_hand_image'\nim=rgb(o,cam).astype(int);P=cloud(o,cam)\nred=(im[...,0]>70)&(im[...,0]>2*im[...,1])&(im[...,0]>2*im[...,2])&(P[...,1]<-0.62)\nQ=P[red];c=Q.mean(0);U,S,Vt=np.linalg.svd(Q-c);n=Vt[2]\nif n[2]<0:n=-n\nprint('center',np.round(c,3),'normal',np.round(n,3),'sv',np.round(S/np.sqrt(len(Q)),3))\n# top point of rim\ni=np.argmax(Q[:,2]);print('top',np.round(Q[i],3))\nfor zz in [1.0,1.01,1.015]:\n    m=Q[:,2]>zz;print(zz,m.sum(),np.round(Q[m].min(0),3),np.round(Q[m].max(0),3))\n"
+    },
+    {
+      "turn": 14,
+      "step": 472,
+      "seconds": 23.6,
+      "operation": "write_execute",
+      "path": "rim_g1.py",
+      "rationale": "The lid rests tilted ~45 deg on the robot's shoulder with its upper rim running along y at x~3.955, z~1.02. Approach that rim from above with the standard downward gripper (fingers close along x to straddle the rim).",
+      "code": "from plan2 import *\no=move_to([3.952,-0.725,1.10],-1,25,rot=RD,tol=0.006,gain=0.6)\nrep('above',o)\no=move_to([3.952,-0.725,1.05],-1,12,rot=RD,tol=0.004,gain=0.5)\nrep('near',o)\n"
+    },
+    {
+      "turn": 15,
+      "step": 509,
+      "seconds": 25.45,
+      "operation": "write_execute",
+      "path": "knobtilt.py",
+      "rationale": "Plan a knob grasp aligned with the tilted lid's normal: compute a gripper orientation whose approach axis is -normal, and move to a pre-grasp point 10 cm out along the normal.",
+      "code": "from plan2 import *\nfrom scipy.spatial.transform import Rotation as R\nc=np.array([3.913,-0.708,0.979]);n=np.array([-0.674,0.238,0.699]);n/=np.linalg.norm(n)\na=np.array([0,0,-1.]);b=-n\nax=np.cross(a,b);ang=np.arcsin(np.linalg.norm(ax));Ra=R.from_rotvec(ax/np.linalg.norm(ax)*ang).as_matrix()\nRt=Ra@RD\nprint('Rt z',np.round(Rt[:,2],3))\nnp.save('Rt.npy',Rt)\npre=c+n*0.10\no=move_to(pre,-1,40,rot=Rt,tol=0.006,gain=0.6)\nrep('pre',o)\n"
+    },
+    {
+      "turn": 16,
+      "step": 528,
+      "seconds": 26.4,
+      "operation": "write_execute",
+      "path": "knobtilt2.py",
+      "rationale": "Advance the tilted, open gripper along the lid normal toward the knob until motion stalls (fingertips meet the lid face), holding lateral alignment with the knob axis.",
+      "code": "from plan2 import *\nfrom scipy.spatial.transform import Rotation as R\nc=np.array([3.913,-0.708,0.979]);n=np.array([-0.674,0.238,0.699]);n/=np.linalg.norm(n)\nRt=np.load('Rt.npy')\no=obs();ts=[]\nfor i in range(30):\n    s=o['sensors'];p=np.asarray(s['robot0_eef_pos'])\n    t=float((p-c)@n);ts.append(t)\n    if len(ts)>=7 and ts[-4]-ts[-1]<0.002: break\n    if t<-0.01: break\n    lat=(c+n*t)-p\n    e=lat-n*0.03\n    Rb=base_R(o);arm=np.zeros(6);arm[:3]=np.clip(Rb.T@e/0.05,-1,1)\n    Rc=R.from_quat(np.asarray(s['robot0_eef_quat_site'])).as_matrix()\n    arm[3:]=np.clip(Rb.T@R.from_matrix(Rt@Rc.T).as_rotvec()/0.5,-1,1)\n    o=act(arm,-1)\nprint('t',np.round(ts,3))\nrep('contact',o)\n"
+    },
+    {
+      "turn": 17,
+      "step": 547,
+      "seconds": 27.35,
+      "operation": "write_execute",
+      "path": "knobtilt3.py",
+      "rationale": "Close the gripper on the knob and lift 5 cm while keeping the tilted orientation; finger qpos ~0.03 plus increased downward force would confirm the lid is held.",
+      "code": "from plan2 import *\nfor i in range(15): o=act(np.zeros(6),1)\nrep('closed',o)\np=np.asarray(o['sensors']['robot0_eef_pos'])\nRt=np.load('Rt.npy')\no=move_to(p+np.array([0,0,0.05]),1,10,rot=Rt,tol=0.006,gain=0.5)\nrep('lift',o)\n"
+    },
+    {
+      "turn": 18,
+      "step": 572,
+      "seconds": 28.6,
+      "operation": "write_execute",
+      "path": "knob3d.py",
+      "rationale": "The fingers closed beside the knob (missed). Re-measure the knob's 3D position and the lid plane from the current wrist view to correct the approach line.",
+      "code": "from plan2 import *\no=obs();cam='robot0_eye_in_hand_image'\nim=rgb(o,cam).astype(int);P=cloud(o,cam)\ng=(np.abs(im[...,0]-im[...,1])<10)&(np.abs(im[...,1]-im[...,2])<10)&(im[...,0]>95)&(im[...,0]<170)\ng[:200,:]=False;g[:, :150]=False;g[:, 380:]=False;g[370:,:]=False\nQ=P[g];print(g.sum())\nif g.sum(): print(np.round(np.percentile(Q,[5,50,95],axis=0),3))\nys,xs=np.nonzero(g);print(xs.mean(),ys.mean())\nred=(im[...,0]>70)&(im[...,0]>2*im[...,1])&(im[...,0]>2*im[...,2]);red[370:,:]=False;red[:150,:]=False\nR_=P[red];c=R_.mean(0);U,S,Vt=np.linalg.svd(R_-c);n=Vt[2]\nif n[2]<0:n=-n\nprint('lid c',np.round(c,3),'n',np.round(n,3))\nprint('eef',np.round(o['sensors']['robot0_eef_pos'],3))\n"
+    },
+    {
+      "turn": 19,
+      "step": 572,
+      "seconds": 28.6,
+      "operation": "write_execute",
+      "path": "knobtilt4.py",
+      "rationale": "Re-approach along the lid normal through the measured knob top (3.894,-0.704,0.970), stopping at contact or when the grip site reaches the knob top, so the open fingers straddle the knob.",
+      "code": "from plan2 import *\nfrom scipy.spatial.transform import Rotation as R\nK=np.array([3.894,-0.704,0.970]);n=np.array([-0.674,0.238,0.699]);n/=np.linalg.norm(n)\nRt=np.load('Rt.npy')\no=move_to(K+n*0.08,-1,18,rot=Rt,tol=0.004,gain=0.6)\nrep('pre',o)\nts=[]\nfor i in range(25):\n    s=o['sensors'];p=np.asarray(s['robot0_eef_pos'])\n    t=float((p-K)@n);ts.append(t)\n    if t<0.0: break\n    if len(ts)>=6 and ts[-4]-ts[-1]<0.002: break\n    e=(K+n*t)-p-n*0.025\n    Rb=base_R(o);arm=np.zeros(6);arm[:3]=np.clip(Rb.T@e/0.05,-1,1)\n    Rc=R.from_quat(np.asarray(s['robot0_eef_quat_site'])).as_matrix()\n    arm[3:]=np.clip(Rb.T@R.from_matrix(Rt@Rc.T).as_rotvec()/0.5,-1,1)\n    o=act(arm,-1)\nprint('t',np.round(ts,3))\nrep('contact',o)\n"
+    },
+    {
+      "turn": 20,
+      "step": 607,
+      "seconds": 30.35,
+      "operation": "write_execute",
+      "path": "knobtilt5.py",
+      "rationale": "Knob now appears centered between the fingers; close and lift 6 cm slowly while keeping the tilted orientation. Expect qpos ~0.03 and ~-15 N force if the lid is held.",
+      "code": "from plan2 import *\nfor i in range(15): o=act(np.zeros(6),1)\nrep('closed',o)\np=np.asarray(o['sensors']['robot0_eef_pos'])\nRt=np.load('Rt.npy')\no=move_to(p+np.array([0,0,0.06]),1,12,rot=Rt,tol=0.006,gain=0.4)\nrep('lift',o)\n"
+    },
+    {
+      "turn": 21,
+      "step": 634,
+      "seconds": 31.7,
+      "operation": "write_execute",
+      "path": "carry1.py",
+      "rationale": "Slowly lift the knob-held lid while rotating the gripper back to straight-down (lid flat), using low gain to avoid slipping. Gripper qpos staying ~0.02/0.04 and ~-15 N load indicate the lid is still held.",
+      "code": "from plan2 import *\no=move_to([3.88,-0.68,1.12],1,45,rot=RD,tol=0.006,gain=0.35)\nrep('c1',o)\n"
+    },
+    {
+      "turn": 22,
+      "step": 679,
+      "seconds": 33.95,
+      "operation": "write_execute",
+      "path": "carry2.py",
+      "rationale": "Slowly raise the held lid to z 1.40 in front of the jar (y -0.66), clear of the jar flare and below the cabinet.",
+      "code": "from plan2 import *\no=move_to([3.86,-0.66,1.40],1,45,rot=RD,tol=0.008,gain=0.35)\nrep('c2',o)\n"
+    },
+    {
+      "turn": 23,
+      "step": 724,
+      "seconds": 36.2,
+      "operation": "write_execute",
+      "path": "carry3.py",
+      "rationale": "Slowly carry the lid horizontally from the front to directly above the jar mouth, offset +1 cm in x to compensate for the knob being held off-center between the fingers.",
+      "code": "from plan2 import *\no=move_to([3.864,-0.459,1.395],1,45,rot=RD,tol=0.004,gain=0.35)\nrep('c3',o)\n"
+    },
+    {
+      "turn": 24,
+      "step": 769,
+      "seconds": 38.45,
+      "operation": "write_execute",
+      "path": "place_lid.py",
+      "rationale": "Lower the lid slowly onto the jar until contact, release the knob, and lift the gripper away. Afterwards the lid should sit on the jar near its original height (top ~1.347).",
+      "code": "from plan2 import *\no=lower_until_contact([3.864,-0.459],1.384,1.33,1,maxsteps=25,dz=0.004)\nrep('contact',o)\nfor i in range(10): o=act(np.zeros(6),-1)\nrep('open',o)\np=o['sensors']['robot0_eef_pos']\no=move_to([p[0],p[1],1.40],-1,10,rot=RD,tol=0.006,gain=0.5)\nrep('up',o)\n"
+    },
+    {
+      "turn": 25,
+      "step": 795,
+      "seconds": 39.75,
+      "operation": "write_execute",
+      "path": "chklid.py",
+      "rationale": "Back the gripper off and measure the lid's red surface and knob heights on the jar to verify it is seated (original lid top ~1.347, knob top ~1.359).",
+      "code": "from plan2 import *\no=move_to([3.86,-0.60,1.42],-1,15,rot=RD,tol=0.01)\nfor cam in ['robot0_eye_in_hand_image','robot0_agentview_left_image','robot0_agentview_right_image']:\n    im=rgb(o,cam).astype(int);P=cloud(o,cam)\n    red=(im[...,0]>70)&(im[...,0]>2*im[...,1])&(P[...,2]>1.25)&(P[...,1]>-0.6)\n    Q=P[red];print(cam[:22],red.sum())\n    if red.sum()>10: print(np.round(np.percentile(Q,[2,50,98],axis=0),3))\n    g=(np.abs(im[...,0]-im[...,1])<12)&(im[...,0]>100)&(im[...,0]<200)&(P[...,2]>1.3)&(P[...,2]<1.45)&(P[...,1]>-0.6)&(P[...,1]<-0.35)&(np.abs(P[...,0]-3.855)<0.1)\n    Q=P[g];print(' gray',g.sum())\n    if g.sum()>10: print(np.round(np.percentile(Q,[2,50,98],axis=0),3))\n"
+    },
+    {
+      "turn": 26,
+      "step": 808,
+      "seconds": 40.4,
+      "operation": "write_execute",
+      "path": "press_lid.py",
+      "rationale": "The lid sits ~1.5-3 cm high and slightly tilted on the jar (not seated). Press straight down on the knob with the closed gripper to seat it, then re-measure the lid surface height.",
+      "code": "from plan2 import *\no=move_to([3.854,-0.462,1.42],1,15,rot=RD,tol=0.005,gain=0.6)\nrep('above',o)\no=lower_until_contact([3.854,-0.462],1.42,1.34,1,maxsteps=20,dz=0.006)\nrep('contact',o)\nfor i in range(6): o=act([0,0,-0.6,0,0,0],1)\nrep('push',o)\no=move_to([3.854,-0.55,1.42],1,10,rot=RD,tol=0.01)\nim=rgb(o,'robot0_eye_in_hand_image').astype(int);P=cloud(o,'robot0_eye_in_hand_image')\nred=(im[...,0]>70)&(im[...,0]>2*im[...,1])&(P[...,2]>1.25)&(P[...,1]>-0.6)\nprint('red',np.round(np.percentile(P[red],[2,50,98],axis=0),3))\n"
+    },
+    {
+      "turn": 27,
+      "step": 843,
+      "seconds": 42.15,
+      "operation": "write_execute",
+      "path": "knobnow.py",
+      "rationale": "Measure the knob's current 3D position/height on the tilted lid from the wrist depth image to plan a downward press that seats the lid.",
+      "code": "from plan2 import *\no=obs();cam='robot0_eye_in_hand_image'\nim=rgb(o,cam).astype(int);P=cloud(o,cam)\ng=(np.abs(im[...,0]-im[...,1])<10)&(np.abs(im[...,1]-im[...,2])<10)&(im[...,0]>100)&(im[...,0]<190)&(P[...,2]>1.33)&(P[...,2]<1.48)&(np.abs(P[...,0]-3.855)<0.08)&(P[...,1]>-0.56)\nQ=P[g];print(g.sum())\nif g.sum(): print(np.round(np.percentile(Q,[2,25,50,75,98],axis=0),3))\nys,xs=np.nonzero(g);print(xs.mean(),ys.mean())\n"
+    },
+    {
+      "turn": 28,
+      "step": 843,
+      "seconds": 42.15,
+      "operation": "write_execute",
+      "path": "knobnow2.py",
+      "rationale": "Re-run knob segmentation excluding the image rows occupied by the gripper fingers.",
+      "code": "from plan2 import *\no=obs();cam='robot0_eye_in_hand_image'\nim=rgb(o,cam).astype(int);P=cloud(o,cam)\ng=(np.abs(im[...,0]-im[...,1])<10)&(np.abs(im[...,1]-im[...,2])<10)&(im[...,0]>100)&(im[...,0]<190)&(P[...,2]>1.33)&(P[...,2]<1.45)\ng[300:,:]=False\nQ=P[g];print(g.sum())\nif g.sum(): print(np.round(np.percentile(Q,[2,25,50,75,98],axis=0),3))\nys,xs=np.nonzero(g);print(xs.mean(),ys.mean(),xs.min(),xs.max(),ys.min(),ys.max())\n"
+    },
+    {
+      "turn": 29,
+      "step": 843,
+      "seconds": 42.15,
+      "operation": "write_execute",
+      "path": "press2.py",
+      "rationale": "Approach just above the knob's raised back half at z 1.41 (below the cabinet), then press down to rotate the tilted lid flat and seat it on the jar.",
+      "code": "from plan2 import *\no=move_to([3.853,-0.56,1.41],1,12,rot=RD,tol=0.006,gain=0.6)\no=move_to([3.853,-0.44,1.41],1,15,rot=RD,tol=0.004,gain=0.5)\nrep('over',o)\no=lower_until_contact([3.853,-0.44],1.41,1.35,1,maxsteps=15,dz=0.005)\nrep('contact',o)\nfor i in range(8): o=act([0,0,-0.5,0,0,0],1)\nrep('push',o)\n"
+    },
+    {
+      "turn": 30,
+      "step": 875,
+      "seconds": 43.75,
+      "operation": "write_execute",
+      "path": "nudge.py",
+      "rationale": "Hypothesis: the lid sits ~2.5 cm too far forward, so its back skirt rests on the rim and it tilts. Nudge the knob toward +y with closed fingertips at z ~1.37 by ~3-4 cm, then re-measure the lid surface height.",
+      "code": "from plan2 import *\no=move_to([3.853,-0.60,1.40],1,12,rot=RD,tol=0.006,gain=0.6)\no=move_to([3.853,-0.53,1.38],1,12,rot=RD,tol=0.004,gain=0.5)\nrep('start',o)\nfor y in [-0.51,-0.495,-0.48,-0.468]:\n    o=move_to([3.853,y,1.38],1,5,rot=RD,tol=0.002,gain=0.5)\n    rep('y%.3f'%y,o)\no=move_to([3.853,-0.60,1.40],1,8,rot=RD,tol=0.01)\nim=rgb(o,'robot0_eye_in_hand_image').astype(int);P=cloud(o,'robot0_eye_in_hand_image')\nred=(im[...,0]>70)&(im[...,0]>2*im[...,1])&(P[...,2]>1.25)&(P[...,1]>-0.6)\nprint('red',np.round(np.percentile(P[red],[2,50,98],axis=0),3))\n"
+    },
+    {
+      "turn": 31,
+      "step": 925,
+      "seconds": 46.25,
+      "operation": "write_execute",
+      "path": "lidpca2.py",
+      "rationale": "Measure the re-tilted lid's plane (center and normal) and the knob location from the wrist camera to plan a normal-aligned regrasp.",
+      "code": "from plan2 import *\no=obs();cam='robot0_eye_in_hand_image'\nim=rgb(o,cam).astype(int);P=cloud(o,cam)\nred=(im[...,0]>70)&(im[...,0]>2*im[...,1])&(im[...,0]>2*im[...,2])&(P[...,2]>1.25)\nred[300:,:]=False\nQ=P[red];c=Q.mean(0);U,S,Vt=np.linalg.svd(Q-c);n=Vt[2]\nif n[2]<0:n=-n\nprint('red',red.sum(),'c',np.round(c,3),'n',np.round(n,3),'sv',np.round(S/np.sqrt(len(Q)),3))\ng=(np.abs(im[...,0]-im[...,1])<10)&(np.abs(im[...,1]-im[...,2])<10)&(im[...,0]>130)&(im[...,0]<200)&(P[...,2]>1.25)\ng[300:,:]=False\nG=P[g];print('light gray',g.sum())\nif g.sum(): \n    d=(G-c)@n;print('gray n-offset pct',np.round(np.percentile(d,[5,50,95]),3));print(np.round(np.percentile(G,[5,50,95],axis=0),3))\n    ys,xs=np.nonzero(g);print(xs.mean(),ys.mean())\n"
+    },
+    {
+      "turn": 32,
+      "step": 925,
+      "seconds": 46.25,
+      "operation": "write_execute",
+      "path": "lidpca2.py",
+      "rationale": "Retry the lid plane fit using a reduced SVD (the previous run was killed by memory use).",
+      "code": "from plan2 import *\no=obs();cam='robot0_eye_in_hand_image'\nim=rgb(o,cam).astype(int);P=cloud(o,cam)\nred=(im[...,0]>70)&(im[...,0]>2*im[...,1])&(im[...,0]>2*im[...,2])&(P[...,2]>1.25)\nred[300:,:]=False\nQ=P[red];c=Q.mean(0);U,S,Vt=np.linalg.svd(Q-c,full_matrices=False);n=Vt[2]\nif n[2]<0:n=-n\nprint('red',red.sum(),'c',np.round(c,3),'n',np.round(n,3),'sv',np.round(S/np.sqrt(len(Q)),3))\nprint('red pct',np.round(np.percentile(Q,[2,50,98],axis=0),3))\ng=(np.abs(im[...,0]-im[...,1])<10)&(np.abs(im[...,1]-im[...,2])<10)&(im[...,0]>130)&(im[...,0]<200)&(P[...,2]>1.25)\ng[300:,:]=False\nG=P[g];print('light gray',g.sum())\nif g.sum(): \n    d=(G-c)@n;print('gray n-offset pct',np.round(np.percentile(d,[5,50,95]),3));print(np.round(np.percentile(G,[5,50,95],axis=0),3))\n    ys,xs=np.nonzero(g);print(xs.mean(),ys.mean())\n"
+    },
+    {
+      "turn": 33,
+      "step": 925,
+      "seconds": 46.25,
+      "operation": "write_execute",
+      "path": "r_K.py",
+      "rationale": "Prepare for the power-button press as verified in attempt 1: back the base off ~0.15 m and lower the torso, keeping the gripper closed and clear of the blender.",
+      "code": "from plan2 import *\no=move_to([3.86,-0.70,1.30],1,15,rot=RD,tol=0.01)\nfor i in range(12): o=act(np.zeros(6),1,base=(-0.5,0,0))\nfor i in range(4): o=act(np.zeros(6),1,torso=-1)\nfor i in range(6): o=act(np.zeros(6),1)\nrep('K',o)\n"
+    },
+    {
+      "turn": 34,
+      "step": 962,
+      "seconds": 48.1,
+      "operation": "write_execute",
+      "path": "r_L.py",
+      "rationale": "Press the power button with the verified 45-degree approach and compare the button's pixel color in both fixed cameras before and after, to detect any on-state indicator.",
+      "code": "from plan2 import *\ndef btn_color(o,B=POWER):\n    out=[]\n    for cam in ['robot0_agentview_left_image','robot0_agentview_right_image']:\n        c=o['camera_calibration'][cam];K=np.asarray(c['intrinsic_matrix']);T=np.asarray(c['camera_to_world'])\n        p=np.linalg.inv(T)@np.array([*B,1]);u=int(K[0,0]*p[0]/p[2]+K[0,2]);v=int(K[1,1]*p[1]/p[2]+K[1,2])\n        im=rgb(o,cam).astype(int);out.append((u,v,im[v-2:v+3,u-2:u+3].reshape(-1,3).mean(0).round(1).tolist()))\n    return out\no=obs();print('before',btn_color(o))\nL_press()\no=obs();print('after',btn_color(o),o.get('task_success'))\n"
+    },
+    {
+      "turn": 35,
+      "step": 1010,
+      "seconds": 50.5,
+      "operation": "write_execute",
+      "path": "look_lid2.py",
+      "rationale": "Return the base to its original distance and raise the wrist camera in front of the jar to inspect how the flipped/tilted lid sits before deciding how to regrasp it.",
+      "code": "from plan2 import *\no=move_to([3.86,-0.75,1.25],-1,15,rot=RD,tol=0.01)\nfor i in range(12): o=act(np.zeros(6),-1,base=(0.5,0,0))\nfor i in range(5): o=act(np.zeros(6),-1)\nrep('base',o)\no=move_to([3.86,-0.64,1.45],-1,15,rot=RD,tol=0.01)\nrep('view',o)\n"
+    },
+    {
+      "turn": 36,
+      "step": 1057,
+      "seconds": 52.85,
+      "operation": "write_execute",
+      "path": "lidstate.py",
+      "rationale": "Raise the wrist camera and measure the lid's red surface in all cameras, fitting a plane to estimate its height and tilt on the jar.",
+      "code": "from plan2 import *\no=move_to([3.86,-0.66,1.42],-1,20,rot=RD,tol=0.01)\nfor cam in ['robot0_eye_in_hand_image','robot0_agentview_left_image','robot0_agentview_right_image']:\n    im=rgb(o,cam).astype(int);P=cloud(o,cam)\n    red=(im[...,0]>70)&(im[...,0]>2*im[...,1])&(P[...,2]>1.28)&(P[...,1]>-0.6)&(np.abs(P[...,0]-3.855)<0.12)\n    Q=P[red];print(cam[:22],red.sum())\n    if red.sum()>10:\n        print(np.round(np.percentile(Q,[2,50,98],axis=0),3))\n        c=Q.mean(0);U,S,Vt=np.linalg.svd(Q-c,full_matrices=False);n=Vt[2];n=n if n[2]>0 else -n;print(' n',np.round(n,3),'tilt deg',round(float(np.degrees(np.arccos(n[2]))),1))\n"
+    },
+    {
+      "turn": 37,
+      "step": 1066,
+      "seconds": 53.3,
+      "operation": "write_execute",
+      "path": "lidview45.py",
+      "rationale": "Pitch the wrist camera 45 degrees to look forward-down at the lid from in front of the jar, then fit the lid plane and locate the knob.",
+      "code": "from plan2 import *\no=move_to([3.86,-0.68,1.40],-1,25,rot=R45,tol=0.01,gain=0.6)\nrep('v',o)\ncam='robot0_eye_in_hand_image'\nim=rgb(o,cam).astype(int);P=cloud(o,cam)\nred=(im[...,0]>70)&(im[...,0]>2*im[...,1])&(P[...,2]>1.3)&(P[...,1]>-0.6)&(np.abs(P[...,0]-3.855)<0.12)\nQ=P[red];print('red',red.sum())\nif red.sum()>10:\n    print(np.round(np.percentile(Q,[2,50,98],axis=0),3))\n    c=Q.mean(0);U,S,Vt=np.linalg.svd(Q-c,full_matrices=False);n=Vt[2];n=n if n[2]>0 else -n;print(' c',np.round(c,3),'n',np.round(n,3),'tilt',round(float(np.degrees(np.arccos(n[2]))),1),'sv',np.round(S/np.sqrt(len(Q)),3))\ng=(np.abs(im[...,0]-im[...,1])<10)&(np.abs(im[...,1]-im[...,2])<10)&(im[...,0]>100)&(im[...,0]<190)&(P[...,2]>1.33)&(P[...,1]>-0.6)&(np.abs(P[...,0]-3.855)<0.1)\nprint('gray',g.sum())\nif g.sum()>10: print(np.round(np.percentile(P[g],[2,50,98],axis=0),3))\n"
+    },
+    {
+      "turn": 38,
+      "step": 1084,
+      "seconds": 54.2,
+      "operation": "write_execute",
+      "path": "pressfront.py",
+      "rationale": "The lid's front edge is raised (~26 deg tilt, back edge low). Press straight down on the raised front rim at y -0.545 with the closed gripper so the lid rotates flat onto the jar.",
+      "code": "from plan2 import *\no=move_to([3.853,-0.62,1.45],1,15,rot=RD,tol=0.006,gain=0.6)\no=move_to([3.853,-0.545,1.45],1,12,rot=RD,tol=0.004,gain=0.5)\nrep('over',o)\no=lower_until_contact([3.853,-0.545],1.45,1.36,1,maxsteps=18,dz=0.005)\nrep('contact',o)\nfor i in range(6): o=act([0,0,-0.6,0,0,0],1)\nrep('push',o)\n"
+    },
+    {
+      "turn": 39,
+      "step": 1134,
+      "seconds": 56.7,
+      "operation": "write_execute",
+      "path": "chk2.py",
+      "rationale": "Back away and re-measure the lid plane from the forward-looking view to see whether the press seated it flat.",
+      "code": "from plan2 import *\no=move_to([3.855,-0.62,1.40],1,12,rot=RD,tol=0.01)\no=move_to([3.86,-0.68,1.40],-1,15,rot=R45,tol=0.01,gain=0.6)\ncam='robot0_eye_in_hand_image'\nim=rgb(o,cam).astype(int);P=cloud(o,cam)\nred=(im[...,0]>70)&(im[...,0]>2*im[...,1])&(P[...,2]>1.3)&(P[...,1]>-0.6)&(np.abs(P[...,0]-3.855)<0.12)\nQ=P[red];print('red',red.sum())\nif red.sum()>10:\n    print(np.round(np.percentile(Q,[2,50,98],axis=0),3))\n    c=Q.mean(0);U,S,Vt=np.linalg.svd(Q-c,full_matrices=False);n=Vt[2];n=n if n[2]>0 else -n;print(' c',np.round(c,3),'n',np.round(n,3),'tilt',round(float(np.degrees(np.arccos(n[2]))),1))\nprint('succ',o.get('task_success'))\n"
+    },
+    {
+      "turn": 40,
+      "step": 1159,
+      "seconds": 57.95,
+      "operation": "write_execute",
+      "path": "knob3.py",
+      "rationale": "Locate the knob on the forward-shifted, tilted lid from the current forward-looking wrist image.",
+      "code": "from plan2 import *\no=obs();cam='robot0_eye_in_hand_image'\nim=rgb(o,cam).astype(int);P=cloud(o,cam)\ng=(np.abs(im[...,0]-im[...,1])<8)&(np.abs(im[...,1]-im[...,2])<8)&(im[...,0]>105)&(im[...,0]<175)&(P[...,2]>1.36)&(np.abs(P[...,0]-3.855)<0.06)&(P[...,1]>-0.6)&(P[...,1]<-0.4)\nQ=P[g];print(g.sum())\nif g.sum(): print(np.round(np.percentile(Q,[2,25,50,75,98],axis=0),3))\nys,xs=np.nonzero(g);print(xs.min(),xs.max(),ys.min(),ys.max())\n"
+    },
+    {
+      "turn": 41,
+      "step": 1159,
+      "seconds": 57.95,
+      "operation": "write_execute",
+      "path": "regrasp1.py",
+      "rationale": "Regrasp plan: position the open gripper over the tilted lid's knob at (3.851,-0.48) and lower until the fingertips touch the lid face, so the fingers straddle the knob along x.",
+      "code": "from plan2 import *\no=move_to([3.851,-0.60,1.43],-1,12,rot=RD,tol=0.006,gain=0.6)\no=move_to([3.851,-0.48,1.43],-1,15,rot=RD,tol=0.004,gain=0.5)\nrep('over',o)\no=lower_until_contact([3.851,-0.48],1.43,1.355,-1,maxsteps=18,dz=0.004)\nrep('contact',o)\n"
+    },
+    {
+      "turn": 42,
+      "step": 1204,
+      "seconds": 60.2,
+      "operation": "write_execute",
+      "path": "regrasp2.py",
+      "rationale": "Close on the knob, then lift 1.5 cm while rotating the gripper +21 deg about world x to bring the tilted lid level.",
+      "code": "from plan2 import *\nfor i in range(15): o=act(np.zeros(6),1)\nrep('closed',o)\np=np.asarray(o['sensors']['robot0_eef_pos'])\nfrom scipy.spatial.transform import Rotation as R\nRx=R.from_rotvec([np.radians(21),0,0]).as_matrix()\nRL=Rx@RD\nnp.save('RL.npy',RL)\no=move_to([p[0],p[1],p[2]+0.015],1,25,rot=RL,tol=0.004,gain=0.3)\nrep('levelled',o)\n"
+    },
+    {
+      "turn": 43,
+      "step": 1244,
+      "seconds": 62.2,
+      "operation": "write_execute",
+      "path": "chk3.py",
+      "rationale": "Back off and re-measure the lid plane after the slip, to decide the next correction.",
+      "code": "from plan2 import *\no=move_to([3.857,-0.60,1.42],-1,10,rot=RD,tol=0.01)\no=move_to([3.86,-0.68,1.40],-1,15,rot=R45,tol=0.01,gain=0.6)\ncam='robot0_eye_in_hand_image'\nim=rgb(o,cam).astype(int);P=cloud(o,cam)\nred=(im[...,0]>70)&(im[...,0]>2*im[...,1])&(P[...,2]>1.3)&(P[...,1]>-0.6)&(np.abs(P[...,0]-3.855)<0.12)\nQ=P[red];print('red',red.sum())\nif red.sum()>10:\n    print(np.round(np.percentile(Q,[2,50,98],axis=0),3))\n    c=Q.mean(0);U,S,Vt=np.linalg.svd(Q-c,full_matrices=False);n=Vt[2];n=n if n[2]>0 else -n;print(' c',np.round(c,3),'n',np.round(n,3),'tilt',round(float(np.degrees(np.arccos(n[2]))),1))\nprint('succ',o.get('task_success'))\n"
+    },
+    {
+      "turn": 44,
+      "step": 1269,
+      "seconds": 63.45,
+      "operation": "write_execute",
+      "path": "seat.py",
+      "rationale": "The lid is now level but ~2 cm high. Press straight down on the knob center with the closed gripper to seat the lid skirt into the jar mouth.",
+      "code": "from plan2 import *\no=move_to([3.853,-0.60,1.43],1,10,rot=RD,tol=0.008,gain=0.6)\no=move_to([3.853,-0.468,1.43],1,15,rot=RD,tol=0.004,gain=0.5)\nrep('over',o)\no=lower_until_contact([3.853,-0.468],1.43,1.34,1,maxsteps=18,dz=0.004)\nrep('contact',o)\nfor i in range(5): o=act([0,0,-0.4,0,0,0],1)\nrep('push',o)\n"
+    },
+    {
+      "turn": 45,
+      "step": 1317,
+      "seconds": 65.85,
+      "operation": "write_execute",
+      "path": "notes2.py",
+      "rationale": "Record attempt-2 progress and lessons in NOTES.md before continuing.",
+      "code": "s=open('NOTES.md').read()\ns+='''\n## Attempt 2 log\n- A,B (knob grasp) worked; lifted to 1.40 and carried to counter (4.26,-0.50) OK, placed lid (stall eef 0.962).\n- E,F apple grasp & drop into jar WORKED (apple at jar bottom).\n- Regrasp of lid on counter at knob top level -> lid SLIPPED during fast I1 move (went down to z1.24 then up). Use LOW gain (0.35) and grip deeper; carry slowly.\n- Recovered lid from robot shoulder via normal-aligned tilted grasp (knobtilt*.py), carried slowly gain .35 OK.\n- Placing lid: knob held off-center => lid tilted on jar. Fix that worked: open gripper straddling knob, close, then rotate gripper +21deg about x (Rx@RD) while lifting 1.5cm -> knob slipped but lid ended LEVEL (tilt 1.4deg) on jar at z~1.368 (orig 1.347).\n- Pressing knob down from above stalls at eef 1.387 (lid won't go lower).\n- Power button pressed once at step ~1000 (before lid level); task_success still False.\n'''\nopen('NOTES.md','w').write(s);print('ok')\n"
+    },
+    {
+      "turn": 46,
+      "step": 1317,
+      "seconds": 65.85,
+      "operation": "write_execute",
+      "path": "r_KL.py",
+      "rationale": "Back the base off and lower the torso again to set up the power-button press, now that the apple is in and the lid sits level on the jar.",
+      "code": "from plan2 import *\no=move_to([3.86,-0.70,1.30],1,15,rot=RD,tol=0.01)\nfor i in range(12): o=act(np.zeros(6),1,base=(-0.5,0,0))\nfor i in range(4): o=act(np.zeros(6),1,torso=-1)\nfor i in range(4): o=act(np.zeros(6),1)\nrep('K',o)\n"
+    },
+    {
+      "turn": 47,
+      "step": 1352,
+      "seconds": 67.6,
+      "operation": "write_execute",
+      "path": "free.py",
+      "rationale": "The gripper appears snagged at the knob and twisted after the base moved back. Open the fingers, retreat toward the robot without orientation control, then restore the downward orientation at a safe standoff.",
+      "code": "from plan2 import *\nfor i in range(6): o=act(np.zeros(6),-1)\nrep('open',o)\no=move_to([3.857,-0.62,1.40],-1,20,tol=0.01,gain=0.4)\nrep('back',o)\no=move_to([3.857,-0.68,1.35],-1,20,rot=RD,tol=0.01,gain=0.5)\nrep('rd',o)\n"
+    },
+    {
+      "turn": 48,
+      "step": 1394,
+      "seconds": 69.7,
+      "operation": "write_execute",
+      "path": "r_L2.py",
+      "rationale": "Lower the torso and press the power button again with the verified 45-degree approach, then hold briefly and check task success.",
+      "code": "from plan2 import *\nfor i in range(4): o=act(np.zeros(6),-1,torso=-1)\nL_press()\nfor i in range(10): o=act(np.zeros(6),1)\nprint('succ',o.get('task_success'))\n"
+    },
+    {
+      "turn": 49,
+      "step": 1444,
+      "seconds": 72.2,
+      "operation": "write_execute",
+      "path": "press3x.py",
+      "rationale": "Hypothesis: the power button toggles and the second press may have switched it off. Press it a third time and check task success.",
+      "code": "from plan2 import *\nd=np.array([0,0.7071,-0.7071]);B=POWER\no=move_to(B-0.05*d,1,12,rot=R45,tol=0.005,gain=0.7)\nrep('back',o)\nfor k in [0.01,0.0,-0.006]:\n    o=move_to(B-k*d,1,5,rot=R45,tol=0.003,gain=0.5)\n    rep('k%.3f'%k,o)\no=move_to(B-0.05*d,1,8,rot=R45,tol=0.005)\nfor i in range(5): o=act(np.zeros(6),1)\nprint('succ',o.get('task_success'))\n"
+    },
+    {
+      "turn": 50,
+      "step": 1484,
+      "seconds": 74.2,
+      "operation": "write_execute",
+      "path": "press4x.py",
+      "rationale": "The press log showed task_success=True before the third press switched the blender off. Press the power button once more to turn it back on, retreat from the button, and hold still to let the success state sustain.",
+      "code": "from plan2 import *\nd=np.array([0,0.7071,-0.7071]);B=POWER\nfor k in [0.02,0.01,0.0,-0.006]:\n    o=move_to(B-k*d,1,5,rot=R45,tol=0.003,gain=0.5)\n    rep('k%.3f'%k,o)\nfor i in range(10):\n    o=move_to(B-0.06*d,1,1,rot=R45,tol=0.0,gain=0.5)\nrep('away',o)\nfor i in range(12): o=act(np.zeros(6),1)\nprint('succ',o.get('task_success'))\n"
+    }
+  ],
+  "alignment": "Each decision is aligned to the control step in its preceding model observation, divided by the recorded 20 Hz video clock. Text is the model\u2019s public action rationale, not hidden reasoning.",
+  "sources": {
+    "report.json": "ef3856de8d178e79e9cf4ac8a0848496d309cc0be9479d2b405651c973d09934",
+    "model-transcript.jsonl": "968eb7d6b7e6393761bb8587e603b91270d8d35eb285ce278b4458583dddbb6c",
+    "video.json": "a564c37a2aac681d8650a4a8e1ef40f2c8e67f305d578cd6f65b903b3127491b",
+    "video-timeline.jsonl": "6cd05b14e53331548427e01358e20ce77537c5f5f05eeeb1391e99d8ae0f71d4"
+  }
+}
