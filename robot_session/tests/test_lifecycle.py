@@ -327,7 +327,13 @@ def test_cameras_are_discovered_and_explicit_invalid_cameras_fail():
         adapter._select_cameras(xml)
 
 
-def test_whole_body_schema_uses_composite_inputs_not_joint_dimensions():
+def test_whole_body_schema_uses_composite_inputs_not_joint_dimensions(monkeypatch):
+    # This tests adapter schema projection, not a real controller or simulator.
+    import sys
+    from types import ModuleType
+    module = ModuleType("robosuite.controllers.composite.composite_controller")
+    module.HybridMobileBase = type("HybridMobileBase", (), {})
+    monkeypatch.setitem(sys.modules, module.__name__, module)
     from robot_session.environment import RobotEnvironment
 
     adapter = object.__new__(RobotEnvironment)

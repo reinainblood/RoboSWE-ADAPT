@@ -1,11 +1,16 @@
 """Behavioural tests for Michael's Body/SimBody on the real MuJoCo model."""
 
+import os
+import pytest
+
+if os.environ.get("ROBOSWE_TEST_MUJOCO") != "1":
+    pytest.skip("Set ROBOSWE_TEST_MUJOCO=1 after preparing the real MuJoCo body environment", allow_module_level=True)
+
 import threading
 import time
 
 import numpy as np
 import pandas as pd
-import pytest
 
 from robot_session.michael.body import (
     Body,

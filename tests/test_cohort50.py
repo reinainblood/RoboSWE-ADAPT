@@ -1,4 +1,5 @@
 import json
+import os
 from types import SimpleNamespace
 
 import pytest
@@ -7,6 +8,8 @@ from pairing import cohort50 as c
 
 
 def test_frozen_cohort_balanced_unique_and_required(tmp_path, monkeypatch):
+    if os.environ.get("ROBOSWE_TEST_UPSTREAM") != "1":
+        pytest.skip("Set ROBOSWE_TEST_UPSTREAM=1 after preparing the pinned RoboCasa registry")
     monkeypatch.setattr(c, 'ROOT', tmp_path)
     result=c.freeze()
     rows=result['tasks']

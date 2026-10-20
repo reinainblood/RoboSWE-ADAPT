@@ -174,3 +174,43 @@ Maintained by [Kirsten Ruge (@reinainblood)](https://github.com/reinainblood).
 Open a [GitHub issue](https://github.com/reinainblood/RoboSWE-ADAPT/issues) for
 questions, bug reports, or contributions. Visit [roboswe.com](https://roboswe.com)
 for demonstrations and the [draft preprint](https://roboswe.com/paper/).
+
+## Development tests
+
+Install the non-simulator test dependencies and run the default suite:
+
+```sh
+pip install -e '.[test]'
+python -m pytest -q
+```
+
+These tests do not require a RoboCasa checkout or a running Docker engine. Node.js
+is optional for the small viewer DOM-contract checks; those checks skip when it
+is unavailable. Real Docker and MuJoCo tests require explicit opt-in.
+
+For Docker isolation and full-workspace checkpoint tests, first build the local
+code image, then opt in:
+
+```sh
+docker build -t roboswe-code:local roboswe/execution
+ROBOSWE_TEST_DOCKER=1 python -m pytest tests/test_execution_sandbox.py tests/test_workspace_checkpoint.py -q
+```
+
+After preparing the pinned upstream checkout using the
+[provisioning guide](docs/provisioning.md), the upstream catalogue checks can run:
+
+```sh
+ROBOSWE_TEST_UPSTREAM=1 python -m pytest tests/test_cohort50.py tests/test_predicate_audit.py -q
+```
+
+The Michael body tests exercise real MuJoCo physics. Follow the
+[body environment setup](robot_session/michael/README.md), install the `michael`
+extra, and run them separately:
+
+```sh
+pip install -e '.[test,michael]'
+ROBOSWE_TEST_MUJOCO=1 python -m pytest tests/test_michael_body.py -q
+```
+
+Opt-in tests retain their assertions and fail if their required environment is
+not prepared; they are not substitutes for model-run or task-admission evidence.
