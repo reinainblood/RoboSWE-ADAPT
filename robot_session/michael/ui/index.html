@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Michael / Robot control</title><link rel="stylesheet" href="/panel.css">
+</head>
+<body>
+  <header><div><p class="eyebrow">ROBOSWE / COMMISSIONING</p><h1>Michael <span>is here.</span></h1></div><div class="identity">OpenArm 2.0 × 2 · Wuji Hand 2 × 2<br><span>58 axes · 10 fingertips · Omron simulation base</span></div><button id="stop" class="stop">Pause physics <kbd>Esc</kbd></button></header>
+  <p id="error" role="alert" hidden></p>
+  <main>
+    <section class="world" aria-label="Live robot and tactile feedback">
+      <div class="toolbar"><label>Scene <select id="scene"><option value="workshop">Commissioning room</option><option value="kitchen">RoboCasa kitchen</option></select></label><span id="status" role="status">Connecting to simulator…</span><span id="simtime">0.00 s</span></div>
+      <div class="viewport"><img id="frame" alt="Live MuJoCo rendering of Michael: bimanual OpenArm arms, Wuji hands, and mobile base"><p id="loading">Loading the robot…</p></div>
+      <div class="camera toolbar"><div class="segmented" aria-label="Camera position"><button data-view="overview" aria-pressed="true">Whole robot</button><button data-view="right" aria-pressed="false">Right hand</button><button data-view="left" aria-pressed="false">Left hand</button></div><div class="camera-tools"><button data-orbit="-20" aria-label="Orbit camera left">↶</button><button data-orbit="20" aria-label="Orbit camera right">↷</button><button data-zoom="0.85" aria-label="Zoom in">＋</button><button data-zoom="1.18" aria-label="Zoom out">−</button></div></div>
+      <div class="sensing-title"><h2>Fingertip contact</h2><span>Normal force · newtons</span></div>
+      <div class="probe-tools"><button data-probe="right">Right index · feel probe</button><button data-probe="left">Left index · feel probe</button><button data-probe="remove">Remove probe</button></div>
+      <div class="hands" id="tactile"></div>
+      <p class="sensor-note">Measured at the Wuji Beta 2 pad geometry. Touch is contact force; the local force and torque channels also include pad dynamics. This model does not reproduce firmware calibration or a tactile pixel array.</p>
+      <details><summary>Force vectors and sensor frames</summary><p class="sensor-note">Each row is in that fingertip pad’s local XYZ frame. Force: N. Torque: N·m.</p><div class="table-scroll"><table><thead><tr><th>Pad</th><th>Force XYZ</th><th>Torque XYZ</th></tr></thead><tbody id="vectors"></tbody></table></div></details>
+    </section>
+    <aside aria-label="Robot controls">
+      <div class="control-heading"><h2>Movement</h2><span>Small steps first.</span></div>
+      <div class="segmented sides" aria-label="Selected side"><button data-side="right" aria-pressed="true">Right side</button><button data-side="left" aria-pressed="false">Left side</button></div>
+      <div class="presets"><button data-preset="wrist">Turn wrist</button><button data-preset="flex">Gentle finger flex</button><button data-preset="open">Open hand</button><button data-preset="home">Home pose</button></div>
+      <div class="joint-heading"><h3>Individual joints</h3><label class="sr-only" for="part">Control group</label><select id="part"><option value="arm">Arm · 7 joints</option><option value="gripper">Hand · 20 joints</option></select></div>
+      <p class="hint">Set targets in degrees, then apply. Measured positions appear on the right.</p>
+      <div id="joints" class="joints"></div>
+      <button id="apply" class="primary" disabled>Apply joint targets · 1 second</button>
+      <section class="base-controls"><h3>Mobile base</h3><p class="hint">Each tap is a brief, gentle velocity command.</p><div class="base-buttons"><button data-base="0,0.07,0">Strafe left</button><button data-base="0.08,0,0">Forward</button><button data-base="0,-0.07,0">Strafe right</button><button data-base="0,0,0.1">Turn left</button><button data-base="-0.08,0,0">Backward</button><button data-base="0,0,-0.1">Turn right</button></div><div class="lift"><label for="lift">Lift height <output id="lift-value">100 mm</output></label><input type="range" id="lift" min="0" max="340" value="100" step="5"><button id="lift-apply">Move lift</button></div></section>
+      <button id="hold">Hold pose · advance 1 second</button><p class="hint">The simulator pauses after each movement. Looking around does not advance physics.</p>
+      <details class="assumptions"><summary>What this first body models</summary><p>Manufacturer arm and hand geometry, joint limits, inertias, and position actuators. The riser and wrist spacers are provisional fixtures. The Omron is a planar base abstraction; wheel slip, balance, and tipping are not modeled. No kitchen task has been started.</p></details>
+    </aside>
+  </main>
+  <footer>LOCAL SIMULATION <span>Joint targets → position actuators → physics → fingertip feedback</span></footer>
+  <script src="/panel.js" defer></script>
+</body>
+</html>

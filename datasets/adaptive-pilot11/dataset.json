@@ -1,0 +1,201 @@
+{
+  "name": "RoboSWE-ADAPT prospective pilot 11",
+  "status": "prospective-community-task-manifest",
+  "scene_policy": "Construct new scenes using the operator-built immutable simulator image. Admit the selected scenes before model runs; keep this scene revision separate from previously recorded matched-scene results.",
+  "sources": {
+    "robocasa": {
+      "url": "https://github.com/robocasa/robocasa.git",
+      "commit": "456174f62b89b8fca99eaaf33949c29fec9cfc2a"
+    },
+    "robosuite": {
+      "url": "https://github.com/ARISE-Initiative/robosuite.git",
+      "commit": "5ce6643f3092639d08f7b0f90ed1c6a84f50552c"
+    }
+  },
+  "tasks": [
+    {
+      "id": "BeverageSorting",
+      "task": "BeverageSorting",
+      "config": {
+        "robot": "PandaOmron",
+        "task": "robocasa/BeverageSorting",
+        "seed": 0,
+        "split": null,
+        "env_kwargs": {
+          "camera_widths": 640,
+          "camera_heights": 480,
+          "camera_depths": true
+        }
+      }
+    },
+    {
+      "id": "DateNight",
+      "task": "DateNight",
+      "config": {
+        "robot": "PandaOmron",
+        "task": "robocasa/DateNight",
+        "seed": 0,
+        "split": null,
+        "env_kwargs": {
+          "camera_widths": 640,
+          "camera_heights": 480,
+          "camera_depths": true
+        }
+      }
+    },
+    {
+      "id": "HotDogSetup",
+      "task": "HotDogSetup",
+      "config": {
+        "robot": "PandaOmron",
+        "task": "robocasa/HotDogSetup",
+        "seed": 0,
+        "split": null,
+        "env_kwargs": {
+          "camera_widths": 640,
+          "camera_heights": 480,
+          "camera_depths": true
+        }
+      }
+    },
+    {
+      "id": "ReturnWashingSupplies",
+      "task": "ReturnWashingSupplies",
+      "config": {
+        "robot": "PandaOmron",
+        "task": "robocasa/ReturnWashingSupplies",
+        "seed": 0,
+        "split": null,
+        "env_kwargs": {
+          "camera_widths": 640,
+          "camera_heights": 480,
+          "camera_depths": true
+        }
+      }
+    },
+    {
+      "id": "PrepareCocktailStation",
+      "task": "PrepareCocktailStation",
+      "config": {
+        "robot": "PandaOmron",
+        "task": "robocasa/PrepareCocktailStation",
+        "seed": 0,
+        "split": null,
+        "env_kwargs": {
+          "camera_widths": 640,
+          "camera_heights": 480,
+          "camera_depths": true
+        }
+      }
+    },
+    {
+      "id": "BlendIngredients",
+      "task": "BlendIngredients",
+      "config": {
+        "robot": "PandaOmron",
+        "task": "robocasa/BlendIngredients",
+        "seed": 0,
+        "split": null,
+        "env_kwargs": {
+          "layout_ids": 3,
+          "style_ids": 3,
+          "camera_widths": 640,
+          "camera_heights": 480,
+          "camera_depths": true
+        }
+      }
+    },
+    {
+      "id": "ToastBagel",
+      "task": "ToastBagel",
+      "config": {
+        "robot": "PandaOmron",
+        "task": "robocasa/ToastBagel",
+        "seed": 0,
+        "split": null,
+        "env_kwargs": {
+          "layout_ids": 6,
+          "style_ids": 3,
+          "camera_widths": 640,
+          "camera_heights": 480,
+          "camera_depths": true
+        }
+      }
+    },
+    {
+      "id": "GetToastedBread",
+      "task": "GetToastedBread",
+      "config": {
+        "robot": "PandaOmron",
+        "task": "robocasa/GetToastedBread",
+        "seed": 0,
+        "split": null,
+        "env_kwargs": {
+          "layout_ids": 4,
+          "style_ids": 3,
+          "camera_widths": 640,
+          "camera_heights": 480,
+          "camera_depths": true
+        }
+      }
+    },
+    {
+      "id": "LoadDishwasher",
+      "task": "LoadDishwasher",
+      "config": {
+        "robot": "PandaOmron",
+        "task": "robocasa/LoadDishwasher",
+        "seed": 0,
+        "split": null,
+        "env_kwargs": {
+          "layout_ids": 5,
+          "style_ids": 3,
+          "camera_widths": 640,
+          "camera_heights": 480,
+          "camera_depths": true
+        }
+      }
+    },
+    {
+      "id": "ToastOneSlotPair",
+      "task": "ToastOneSlotPair",
+      "config": {
+        "robot": "PandaOmron",
+        "task": "robocasa/ToastOneSlotPair",
+        "seed": 0,
+        "split": null,
+        "env_kwargs": {
+          "camera_widths": 640,
+          "camera_heights": 480,
+          "camera_depths": true
+        }
+      }
+    },
+    {
+      "id": "JuiceFruitReamer",
+      "task": "JuiceFruitReamer",
+      "config": {
+        "robot": "PandaOmron",
+        "task": "robocasa/JuiceFruitReamer",
+        "seed": 0,
+        "split": null,
+        "env_kwargs": {
+          "camera_widths": 640,
+          "camera_heights": 480,
+          "camera_depths": true
+        }
+      }
+    }
+  ],
+  "selection": {
+    "parent_catalogue": "../adaptive-release/selection.json",
+    "native_tasks": 11,
+    "trials_per_task": 5,
+    "excluded_from_initial_pilot": {
+      "MultistepSteaming": "Independent reset fingerprints differed.",
+      "PackIdenticalLunches": "Independent reset fingerprints differed.",
+      "RecycleSodaCans": "Independent reset fingerprints differed; native horizon also requires a prospective budget decision.",
+      "StirVegetables": "Verifier review pending despite successful environment admission."
+    }
+  }
+}

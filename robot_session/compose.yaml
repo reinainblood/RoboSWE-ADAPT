@@ -1,0 +1,21 @@
+# Convenience single session. manage.py supports independently owned sessions
+# and fresh verifier containers with receipts and immutable image IDs.
+services:
+  robot-session:
+    image: roboswe-session:local
+    build:
+      context: ..
+      dockerfile: robot_session/Dockerfile
+    environment:
+      ROBOT_SESSION_CONFIG: '{"robot":"PandaOmron"}'
+    init: true
+    cpus: 4
+    mem_limit: 16g
+    # No public port: execute code/inspection clients inside the container.
+    healthcheck:
+      test: ["CMD", "python", "-c", "from robot_session.client import SessionClient; SessionClient().status()"]
+      interval: 15s
+      timeout: 10s
+      start_period: 180s
+      retries: 4
+    stop_grace_period: 30s

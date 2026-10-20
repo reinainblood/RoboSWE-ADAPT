@@ -1,0 +1,9 @@
+include README.md LICENSE THIRD_PARTY_NOTICES.md
+recursive-include docs *.md
+recursive-include examples *.json
+recursive-include datasets *.json *.md
+recursive-include paper *.tex
+recursive-include tests *.py
+recursive-include experiments *.py *.md
+recursive-include website/scripts *.py *.js
+recursive-include robot_session/tests *.py

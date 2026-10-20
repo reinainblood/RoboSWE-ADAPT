@@ -1,0 +1,13 @@
+{
+  "participant": {
+    "provider": "openai",
+    "model": "REPLACE_WITH_VERIFIED_MODEL_ID",
+    "context_window": 1000000,
+    "max_output_tokens": 131000,
+    "effort": "high"
+  },
+  "trials": 5,
+  "limits": {"active_seconds": 1800, "control_steps": 6000, "per_script_steps": 50, "per_script_seconds": 60},
+  "execution": {"backend": "docker", "simulator_image": "REPLACE_FROM_IMAGE_RECEIPT", "code_image": "REPLACE_FROM_IMAGE_RECEIPT"},
+  "video_judge": null
+}

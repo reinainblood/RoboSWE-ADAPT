@@ -1,0 +1,15 @@
+{
+  "tasks": [
+    {
+      "id": "blend-ingredients-example",
+      "task": "BlendIngredients",
+      "config": {
+        "robot": "PandaOmron",
+        "task": "robocasa/BlendIngredients",
+        "split": null,
+        "seed": 0,
+        "env_kwargs": {"layout_ids": 1, "style_ids": 1, "camera_widths": 640, "camera_heights": 480}
+      }
+    }
+  ]
+}

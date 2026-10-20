@@ -1,0 +1,12 @@
+{
+  "robot": "PandaOmron",
+  "task": "robocasa/PickPlaceCounterToCabinet",
+  "split": null,
+  "seed": 0,
+  "env_kwargs": {
+    "layout_ids": 1,
+    "style_ids": 1,
+    "camera_widths": 64,
+    "camera_heights": 64
+  }
+}

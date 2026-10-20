@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>RoboSWE · Jobs</title>
+<style>
+:root{color-scheme:dark;font:15px system-ui;background:#10191f;color:#e6eef0}*{box-sizing:border-box}
+body{margin:0}header.top{padding:24px 32px;border-bottom:1px solid #2b3b45;display:flex;align-items:center;gap:20px}
+h1{font-size:24px;margin:0;letter-spacing:-.6px}h2{font-size:22px;margin:0 0 8px}p{line-height:1.6}.accent{color:#97deba}
+.muted{color:#9bafb9;font-size:13px}.top .muted{flex:1}.layout{display:grid;grid-template-columns:300px minmax(0,1fr);min-height:calc(100vh - 88px)}
+aside{padding:20px;border-right:1px solid #2b3b45}main{padding:24px;min-width:0}.job{display:block;text-align:left;width:100%;margin-bottom:10px;padding:14px;background:#18262f;border:1px solid #2a3b46;border-radius:9px;cursor:pointer;color:inherit}
+.job[aria-current=true]{border-color:#97deba;background:#203b36}.job strong{display:block;margin-bottom:8px;overflow-wrap:anywhere}.job small{display:block;color:#9bafb9;margin-top:5px}
+button,.tab{font:inherit;color:inherit;background:#223540;border:1px solid #3e5561;border-radius:7px;padding:8px 13px;cursor:pointer}button:disabled{opacity:.35;cursor:default}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 12px}.tabs button[aria-selected=true]{background:#28493d;border-color:#97deba}
+.badge{font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:#9de1bc}.badge.failed,.badge.error{color:#ffbc9f}
+.facts{display:flex;flex-wrap:wrap;gap:12px 24px;margin:14px 0}.fact{font-size:13px;color:#a7bec9}.fact b{color:#e6eef0;font-weight:500}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#15232b;border:1px solid #2b3b45;padding:20px;border-radius:9px;max-height:75vh;overflow:auto;font:13px/1.6 ui-monospace,monospace}
+.empty{padding:50px 20px;text-align:center;border:1px dashed #3c515d;border-radius:12px;color:#a7bec9}.warning{background:#483224;color:#ffd2ad;border-radius:8px;padding:12px;margin:12px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+a{color:#9de1bc}#error:empty,#warnings:empty{display:none}#content{min-height:300px}#files{font-size:13px;display:flex;gap:18px;flex-wrap:wrap;margin:20px 0}
+@media(max-width:800px){.layout{grid-template-columns:1fr}aside{border-right:0;border-bottom:1px solid #2b3b45;max-height:240px;overflow:auto}main{padding:16px}.top{flex-wrap:wrap!important}.robot-view .stage{height:430px!important}}
+</style></head><body>
+<header class="top"><h1>RoboSWE <span class="accent">/ Jobs</span></h1><span class="muted">Code, execution output, and the robot’s world.</span><button id="refresh">Refresh jobs</button></header>
+<div class="layout"><aside><div class="muted" id="count"></div><p></p><div id="jobs"></div></aside>
+<main><div id="error" class="warning"></div><div id="detail" hidden><h2 id="name"></h2><span id="status" class="badge"></span><div class="facts" id="facts"></div><div id="warnings"></div>
+<div class="tabs" role="tablist" aria-label="Job output">
+<button role="tab" data-tab="video">Video</button>
+<button role="tab" data-tab="report">Verification report</button>
+<button role="tab" data-tab="after">After · 3D</button><button role="tab" data-tab="before">Before · 3D</button><button role="tab" data-tab="source">Code</button><button role="tab" data-tab="stdout">stdout</button><button role="tab" data-tab="stderr">stderr</button>
+</div><div id="content"></div><div id="files"></div></div>
+<div id="welcome" class="empty"><h2>Your jobs will appear here.</h2><p>Run a Python submission or capture a session snapshot, then refresh this page.</p><p>Viewing saved results never connects to or moves a robot.</p></div></main></div>
+<script type="module" src="/assets/jobs.js"></script></body></html>

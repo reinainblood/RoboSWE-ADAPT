@@ -1,0 +1,1188 @@
+{
+  "status": "user_selected_full_task_list",
+  "selection_rule": "Keep the entire user list, deduplicated; remove AlignDrinkware and FilterMicrowaveItems because they do not match the local checkout. Do not reduce to 50.",
+  "raw_entries": [
+    "BeverageSorting",
+    "CandleCleanup",
+    "BuildAppetizerPlate",
+    "DisplayMeatVariety",
+    "RecycleSodaCans",
+    "PrepareSausageCheese",
+    "HotDogSetup",
+    "DateNight",
+    "ToastOnCorrectRack",
+    "HeatKebabSandwich",
+    "MixCakeFrosting",
+    "MakeBananaMilkshake",
+    "SpicyMarinade",
+    "GatherMarinadeIngredients + BlendMarinade",
+    "MakeLoadedPotato",
+    "CountertopCleanup",
+    "MultistepSteaming",
+    "SteamInMicrowave",
+    "PJSandwichPrep",
+    "ToastBagel",
+    "ToastBaguette",
+    "WashInSaucepan",
+    "ReturnWashingSupplies",
+    "SeparateRawIngredients",
+    "SortBreakfastIngredients",
+    "StoreDumplings",
+    "OrganizeMetallicUtensils",
+    "ArrangeBuffetDessert",
+    "PlaceBeveragesTogether",
+    "DivideBuffetTrays",
+    "PackFoodByTemp",
+    "PackFruitContainer",
+    "PackIdenticalLunches",
+    "PlaceVeggiesInDrawer",
+    "MoveFreezerToFridge",
+    "LoadFridgeFifo",
+    "LoadFridgeByType",
+    "PlaceStraw",
+    "BlendIngredients",
+    "RecycleBottlesBySize",
+    "PortionHotDogs",
+    "PrepareDrinkStation",
+    "CleanBoard",
+    "SeparateRawIngredients",
+    "GetToastedBread",
+    "ServeWarmCroissant",
+    "ToastOneSlotPair",
+    "ReturnWashingSupplies",
+    "StackBowlsInSink",
+    "SoakSponge",
+    "PrewashFoodSorting",
+    "AddtoSoupPot",
+    "CerealAndBowl",
+    "BreadAndCheese",
+    "DessertUpgrade",
+    "PortionYogurt",
+    "StirVegetables",
+    "AdjustHeat",
+    "AddMarshmallow",
+    "ToastHeatableIngredients",
+    "WaffleReheat",
+    "SweetenHotChocolate",
+    "ServeTea",
+    "MicrowaveCorrectMeal",
+    "MicrowaveDefrostMeat",
+    "ReheatMeal + ReturnHeatedFood",
+    "ColorfulSalsa",
+    "Movetofreezerdrawer",
+    "ReorganizeFrozenVegetables",
+    "BreadSelection",
+    "PrepareToast",
+    "SweetSavoryToastSetup",
+    "FreezeBottledWaters",
+    "ChooseRipeFruit",
+    "JuiceFruitReamer",
+    "FillBlenderJug",
+    "PortionOnSize",
+    "DistributeChicken",
+    "PrepareCocktailStation",
+    "AlignSilverware",
+    "AlignDrinkware",
+    "SetBowlsForSoup",
+    "rearrangeFridgeItems",
+    "FilterMicrowaveItems",
+    "PrepareVeggieDip",
+    "LoadDishwasher",
+    "CreateChildFriendlyFridge"
+  ],
+  "normalized_entries": [
+    "BeverageSorting",
+    "CandleCleanup",
+    "BuildAppetizerPlate",
+    "DisplayMeatVariety",
+    "RecycleSodaCans",
+    "PrepareSausageCheese",
+    "HotDogSetup",
+    "DateNight",
+    "ToastOnCorrectRack",
+    "HeatKebabSandwich",
+    "MixCakeFrosting",
+    "MakeBananaMilkshake",
+    "SpicyMarinade",
+    "GatherMarinadeIngredients + BlendMarinade",
+    "MakeLoadedPotato",
+    "CountertopCleanup",
+    "MultistepSteaming",
+    "SteamInMicrowave",
+    "PJSandwichPrep",
+    "ToastBagel",
+    "ToastBaguette",
+    "WashInSaucepan",
+    "ReturnWashingSupplies",
+    "SeparateRawIngredients",
+    "SortBreakfastIngredients",
+    "StoreDumplings",
+    "OrganizeMetallicUtensils",
+    "ArrangeBuffetDessert",
+    "PlaceBeveragesTogether",
+    "DivideBuffetTrays",
+    "PackFoodByTemp",
+    "PackFruitContainer",
+    "PackIdenticalLunches",
+    "PlaceVeggiesInDrawer",
+    "MoveFreezerToFridge",
+    "LoadFridgeFifo",
+    "LoadFridgeByType",
+    "PlaceStraw",
+    "BlendIngredients",
+    "RecycleBottlesBySize",
+    "PortionHotDogs",
+    "PrepareDrinkStation",
+    "CleanBoard",
+    "GetToastedBread",
+    "ServeWarmCroissant",
+    "ToastOneSlotPair",
+    "StackBowlsInSink",
+    "SoakSponge",
+    "PrewashFoodSorting",
+    "AddToSoupPot",
+    "CerealAndBowl",
+    "BreadAndCheese",
+    "DessertUpgrade",
+    "PortionYogurt",
+    "StirVegetables",
+    "AdjustHeat",
+    "AddMarshmallow",
+    "ToastHeatableIngredients",
+    "WaffleReheat",
+    "SweetenHotChocolate",
+    "ServeTea",
+    "MicrowaveCorrectMeal",
+    "MicrowaveDefrostMeat",
+    "ReheatMeal + ReturnHeatedFood",
+    "ColorfulSalsa",
+    "MoveToFreezerDrawer",
+    "ReorganizeFrozenVegetables",
+    "BreadSelection",
+    "PrepareToast",
+    "SweetSavoryToastSetup",
+    "FreezeBottledWaters",
+    "ChooseRipeFruit",
+    "JuiceFruitReamer",
+    "FillBlenderJug",
+    "PortionOnSize",
+    "DistributeChicken",
+    "PrepareCocktailStation",
+    "AlignSilverware",
+    "SetBowlsForSoup",
+    "RearrangeFridgeItems",
+    "PrepareVeggieDip",
+    "LoadDishwasher",
+    "CreateChildFriendlyFridge"
+  ],
+  "counts": {
+    "submitted_entries": 87,
+    "unique_entries_counting_each_requested_merge_as_one": 85,
+    "unique_native_tasks_expanding_merges": 87,
+    "selected_entries_counting_each_requested_merge_as_one": 83,
+    "selected_native_tasks_expanding_merges": 85
+  },
+  "duplicates": {
+    "ReturnWashingSupplies": 2,
+    "SeparateRawIngredients": 2
+  },
+  "unmatched_names": [],
+  "proposed_merges": [
+    [
+      "GatherMarinadeIngredients",
+      "BlendMarinade"
+    ],
+    [
+      "ReheatMeal",
+      "ReturnHeatedFood"
+    ]
+  ],
+  "merge_status": "proposed_not_implemented_or_validated",
+  "tasks": [
+    {
+      "task": "BeverageSorting",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/restocking_supplies/beverage_sorting.py",
+      "source_sha256": "ee2b176b71d45e66cb8d25ed4f3a600fc29e2e9b1272c934abfef3be006c2466",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 9,
+        "median_demonstration_seconds": 102,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "CandleCleanup",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/clearing_table/candle_cleanup.py",
+      "source_sha256": "7982776b0dca414566a60f21a0dd68849d1f033e6e9cbdc4f6f96aedca637c7a",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 8,
+        "median_demonstration_seconds": 100,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "BuildAppetizerPlate",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/filling_serving_dishes/build_appetizer_plate.py",
+      "source_sha256": "bdbc3f7234a917542d8a0503eae2afc3b9a1dd90baa9e5901ae87ea6eaf38da4",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 11,
+        "median_demonstration_seconds": 90,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "DisplayMeatVariety",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/filling_serving_dishes/display_meat_variety.py",
+      "source_sha256": "42e05dd5323953595484ce1ca82f8ac79c2fc9459254a37e60d605628212a7a9",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 11,
+        "median_demonstration_seconds": 90,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "RecycleSodaCans",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/organizing_recycling/recycle_soda_cans.py",
+      "source_sha256": "b4723c06b3dd7c6bf91756e1e2b8a20ccc847edeae3a17c03fbfd7fa6e266a7d",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 9,
+        "median_demonstration_seconds": 146,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "PrepareSausageCheese",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/preparing_sandwiches/prepare_sausage_cheese.py",
+      "source_sha256": "f419d6453c9ba0dd84761331f5afb3508c5eeaa6ef5bcb2290a0bae9a6633779",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 8,
+        "median_demonstration_seconds": 85,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "HotDogSetup",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/preparing_sandwiches/hot_dog_setup.py",
+      "source_sha256": "51e116abf665887efdf5be3654fcfe234c75d33e76cfcb845bee5eacb0809310",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 12,
+        "median_demonstration_seconds": 104,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "DateNight",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/setting_the_table/date_night.py",
+      "source_sha256": "ccd07cd858af38f24142b69ac99dd022711ad4122239f7c5dfd131290bb07fa3",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 8,
+        "median_demonstration_seconds": 110,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "ToastOnCorrectRack",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/toasting_bread/toast_on_correct_rack.py",
+      "source_sha256": "979db6616dcafd7ccff84fb59574bac3e64d11666381171b6cad8384de7124a3",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 7,
+        "median_demonstration_seconds": 82,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "HeatKebabSandwich",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/preparing_sandwiches/heat_kebab_sandwich.py",
+      "source_sha256": "59564f9b37b6d13e2dfb5cc51089c7ba43c699881624d3cbc513a09b9383600c",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 6,
+        "median_demonstration_seconds": 62,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "MixCakeFrosting",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/baking/mix_cake_frosting.py",
+      "source_sha256": "2db5c8988d09b1e3267162b24b3f597e9b9e0d42d9eda3c8ba1f188a754fd025",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 5,
+        "median_demonstration_seconds": 62,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "MakeBananaMilkshake",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/mixing_and_blending/make_banana_milkshake.py",
+      "source_sha256": "af7b561b13036171ecc9c4762b03f309689de75c3c1fc3aea896d2f436f5ca30",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 11,
+        "median_demonstration_seconds": 76,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "SpicyMarinade",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/mixing_and_blending/spicy_marinade.py",
+      "source_sha256": "edecf4dced535ec15ff67750bb60a226776b84234d9be4b581ad99277bd2bb85",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 5,
+        "median_demonstration_seconds": 109,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "GatherMarinadeIngredients",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/preparing_marinade/gather_marinade_ingredients.py",
+      "source_sha256": "ad4e0a5c09efe7817dc638c1a13e08deaf239b16cf89e2aaa6641e3c49a5a903",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 6,
+        "median_demonstration_seconds": 80,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "BlendMarinade",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/preparing_marinade/blend_marinade.py",
+      "source_sha256": "4f6f82aad5d3dc15c04aad5e9fcf6ba4ef900f4f0788977ad808b7d6306350b8",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 9,
+        "median_demonstration_seconds": 73,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "MakeLoadedPotato",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/reheating_food/make_loaded_potato.py",
+      "source_sha256": "c99eb4c2d510e4f3676c5e3affde443a5496786051a17e9998c7fa25f35af2e9",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 6,
+        "median_demonstration_seconds": 70,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "CountertopCleanup",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/sanitizing_surface/countertop_cleanup.py",
+      "source_sha256": "d4735d9eb5de2e68c2cc55b85a780856fefa79bd884a9fad1b580f65a65b0fb5",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 5,
+        "median_demonstration_seconds": 47,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "MultistepSteaming",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/steaming_food/multistep_steaming.py",
+      "source_sha256": "e745045ff2b19773ca6ff33fd3485daad38266bb772d06ea5f112c3ad8eff94d",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 7,
+        "median_demonstration_seconds": 85,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "SteamInMicrowave",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/steaming_food/steam_in_microwave.py",
+      "source_sha256": "6809b6017d0d34b55668a4344c68a19a8b9b09712210ca239503621572a64c31",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 6,
+        "median_demonstration_seconds": 45,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "PJSandwichPrep",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/toasting_bread/pj_sandwich_prep.py",
+      "source_sha256": "120abca28ebe602dc757d5bdf2c61402403af902e232d61e23de5cdb9baea644",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 5,
+        "median_demonstration_seconds": 47,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "ToastBagel",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/toasting_bread/toast_bagel.py",
+      "source_sha256": "c2d343527925c8ccd22f25d982a11fab2b4df874429cea836b3a776311763d08",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 5,
+        "median_demonstration_seconds": 51,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "ToastBaguette",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/toasting_bread/toast_baguette.py",
+      "source_sha256": "519a88f5444cd7284cacc702ae0f18c8f9f0cbbe64ccf17b6e34c6012910abb9",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 5,
+        "median_demonstration_seconds": 78,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "WashInSaucepan",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/washing_fruits_and_vegetables/wash_in_saucepan.py",
+      "source_sha256": "b61cc22ac6f0baa8ca8281ff651a07c366ab07c12bb893e7dabec16b057d76fc",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 7,
+        "median_demonstration_seconds": 41,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "ReturnWashingSupplies",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/washing_dishes/return_washing_supplies.py",
+      "source_sha256": "b2b506bf6a03c31a46a1c7ea0619438ccfd0d201d5aff3052fc6711483147b16",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 8,
+        "median_demonstration_seconds": 119,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "SeparateRawIngredients",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/sorting_ingredients/separate_raw_ingredients.py",
+      "source_sha256": "ff82fb29cc2fa408ccae5b5f6b7a2c03d16972180f9c6898fb62021b58a66edb",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 11,
+        "median_demonstration_seconds": 50,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "SortBreakfastIngredients",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/sorting_ingredients/sort_breakfast_ingredients.py",
+      "source_sha256": "9739da3604bce1f3104cc3dafee91371a227a9d386666c868e5a2a70b5a69b6d",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 7,
+        "median_demonstration_seconds": 46,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "StoreDumplings",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/storing_leftovers/store_dumplings.py",
+      "source_sha256": "666a531feb0a6a250953ccb0eebf32b72d763660aecce198b504dc722593ae77",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 11,
+        "median_demonstration_seconds": 91,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "OrganizeMetallicUtensils",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/organizing_utensils/organize_metalic_utensils.py",
+      "source_sha256": "81756396538732e98e5fa0b916b70fbf54861b938390708691f4c374e7e54c8a",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 7,
+        "median_demonstration_seconds": 67,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "ArrangeBuffetDessert",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/arranging_buffet/arrange_buffet_dessert.py",
+      "source_sha256": "7e32b3ac6887d2bccac34638f88415273b5c77e124a9c042d5da54a080179781",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 8,
+        "median_demonstration_seconds": 91,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "PlaceBeveragesTogether",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/arranging_buffet/place_beverages_together.py",
+      "source_sha256": "a534da65fde1abd2b6dae6221365d55836ea898ea67265516b79ab0fea4a3f81",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 11,
+        "median_demonstration_seconds": 91,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "DivideBuffetTrays",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/arranging_buffet/divide_buffet_trays.py",
+      "source_sha256": "ecd23b0480a93254ea14f70d3141d450479f83df5c093f41a09cdcad90f1b545",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 16,
+        "median_demonstration_seconds": 166,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "PackFoodByTemp",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/packing_lunches/pack_food_by_temp.py",
+      "source_sha256": "b0319b4e1656aea41eeddb4eb52344df4a7e5b6c8a6177ca81bfceab6696e23e",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 15,
+        "median_demonstration_seconds": 123,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "PackFruitContainer",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/packing_lunches/pack_fruit_container.py",
+      "source_sha256": "d50b6ac646392cb32edafa160533b7b72ec17a2ca7556e8e525031ae00390989",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 7,
+        "median_demonstration_seconds": 45,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "PackIdenticalLunches",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/packing_lunches/pack_identical_lunches.py",
+      "source_sha256": "22f96ad3195e29107814ad678600827bd5e95c4cce1fe61fb50058a404948e92",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 15,
+        "median_demonstration_seconds": 87,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "PlaceVeggiesInDrawer",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/loading_fridge/place_veggies_in_drawer.py",
+      "source_sha256": "5d2aa7676cdd23b9ad9eef5b0d1e90c2b7fefdda3b3c2121c7dbf8630d4a037f",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 8,
+        "median_demonstration_seconds": 42,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "MoveFreezerToFridge",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/loading_fridge/move_freezer_to_fridge.py",
+      "source_sha256": "87bb725cd4ef8d68ba3a72cebaf86f17d12b70e296184a8ac11033321b68718c",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 2,
+        "median_demonstration_seconds": 36,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "LoadFridgeFifo",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/loading_fridge/load_fridge_fifo.py",
+      "source_sha256": "585e379347219041b8899e3c75490f0d604a0fdb17451efebb84f87009df4e5d",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 4,
+        "median_demonstration_seconds": 37,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "LoadFridgeByType",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/loading_fridge/load_fridge_by_type.py",
+      "source_sha256": "2229ea4461ce46bcd669bc55fe78c538073260a1950437d1791db9b636fdaea8",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 7,
+        "median_demonstration_seconds": 32,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "PlaceStraw",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/making_smoothies/place_straw.py",
+      "source_sha256": "fb018098e4d95ef420a74ffd9df787bcdb46809cc5c41fa1c3e234f06ea13807",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 2,
+        "median_demonstration_seconds": 28,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "BlendIngredients",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/making_smoothies/blend_ingredients.py",
+      "source_sha256": "5a0961336238a36a234a2546b5491bff10304c71678d120819aa06d5ae7246e9",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 4,
+        "median_demonstration_seconds": 45,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "RecycleBottlesBySize",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/organizing_recycling/recycle_bottles_by_size.py",
+      "source_sha256": "661ae031a7fa6b8b30d4abb7d01bf54153b5654588c5405cc35dca8a11ea0ac7",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 7,
+        "median_demonstration_seconds": 83,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "PortionHotDogs",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/portioning_meals/portion_hot_dogs.py",
+      "source_sha256": "4394e75eba84c53c042b17d53ca6828dfab512192cff085d90de34b842b7e088",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 4,
+        "median_demonstration_seconds": 48,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "PrepareDrinkStation",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/serving_beverages/prepare_drink_station.py",
+      "source_sha256": "3d0e99b64ea0796bb722d9e48235473b2670e3da6a4c4faed5df55c03822c6d1",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 11,
+        "median_demonstration_seconds": 135,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "CleanBoard",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/slicing_meat/clean_board.py",
+      "source_sha256": "b3420a911274f4c757e59ab107464ad87b8f37448401c582e7a02c06b58183d3",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 7,
+        "median_demonstration_seconds": 115,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "GetToastedBread",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/toasting_bread/get_toasted_bread.py",
+      "source_sha256": "d3e6bcfe43a11e77f301057b15f32b9baf3271ff51e9278b0a6560a178360533",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 4,
+        "median_demonstration_seconds": 77,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "ServeWarmCroissant",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/toasting_bread/serve_warm_croissant.py",
+      "source_sha256": "08a99ad89974b94fab333051b9691aa4ccf85b374198d69e0c4a91e8e173ebcc",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 3,
+        "median_demonstration_seconds": 37,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "ToastOneSlotPair",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/toasting_bread/toast_one_slot_pair.py",
+      "source_sha256": "2b0c486563b258461de450f09852803caa6f26aa83a2385d22ae8cf0f8711426",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 2,
+        "median_demonstration_seconds": 24,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "StackBowlsInSink",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/washing_dishes/stack_bowls.py",
+      "source_sha256": "a5658f76e705a2381052a9daf99cbabd4cf94b1ea4e4e741958bb898cfe4f5c3",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 2,
+        "median_demonstration_seconds": 32,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "SoakSponge",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/washing_dishes/soak_sponge.py",
+      "source_sha256": "16cd20e82bdd91ac2178ff090c09a0454be74634c8adc620b472c43ec2a777ca",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 2,
+        "median_demonstration_seconds": 62,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "PrewashFoodSorting",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/washing_fruits_and_vegetables/prewash_food_sorting.py",
+      "source_sha256": "de91d59a8a4c8f946d693b951cda12e4134c1e16b321c8e83d0414a91c3d049f",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 8,
+        "median_demonstration_seconds": 75,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "AddToSoupPot",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/slow_cooking/add_to_soup_pot.py",
+      "source_sha256": "94246c00f688233d30275a5b0327aa1071d47912eb8e92a55bf70d8cfeb92908",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 4,
+        "median_demonstration_seconds": 45,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "CerealAndBowl",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/snack_preparation/cereal_and_bowl.py",
+      "source_sha256": "64b607331c129fd6bab20befc81abf0472e243a297c4085711cb7fc9646d0dc7",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 4,
+        "median_demonstration_seconds": 79,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "BreadAndCheese",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/snack_preparation/bread_and_cheese.py",
+      "source_sha256": "8aec2c3b590b7ba0a42d9adefc98748dd57fc368d37c761da7752788286536e9",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 2,
+        "median_demonstration_seconds": 18,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "DessertUpgrade",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/serving_food/dessert_upgrade.py",
+      "source_sha256": "6df7f42e921a049451796d85919d0ee50115e50508539a48091f7f52b24df75b",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 2,
+        "median_demonstration_seconds": 25,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "PortionYogurt",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/portioning_meals/portion_yogurt.py",
+      "source_sha256": "e3fb815dffea575ddc58330814c109d5a7f54473109ca37cdc1ab12d946ec875",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 4,
+        "median_demonstration_seconds": 46,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "StirVegetables",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/sauteing_vegetables/stir_vegetables.py",
+      "source_sha256": "f0c0bd9699e2de6bc183c69491ea5d519862c6ad43fab8a6c50faddd02cd4e1b",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 4,
+        "median_demonstration_seconds": 52,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "AdjustHeat",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/sauteing_vegetables/adjust_heat.py",
+      "source_sha256": "c9c2ddf0fa46295bfdad9d2032047b98644f3473b02c40c4151c47140245bf96",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 3,
+        "median_demonstration_seconds": 49,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "AddMarshmallow",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/preparing_hot_chocolate/add_marshmallow.py",
+      "source_sha256": "5c961558b7f753f03139bea7bf567041aa0e7bd88004aa9ff74c98bc14065cc1",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 3,
+        "median_demonstration_seconds": 28,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "ToastHeatableIngredients",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/preparing_sandwiches/toast_heatable_ingredients.py",
+      "source_sha256": "977034972d7a87a9d7745e355639fffd91061fe6f743cda49ffd2d1ec4a71ad3",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 4,
+        "median_demonstration_seconds": 35,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "WaffleReheat",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/reheating_food/waffle_reheat.py",
+      "source_sha256": "2d3d593468b97b32133e1b0f2edc7590747d1e2aed4b98afd4c9ac82aae81bfe",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 4,
+        "median_demonstration_seconds": 86,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "SweetenHotChocolate",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/preparing_hot_chocolate/sweeten_hot_chocolate.py",
+      "source_sha256": "e48efc50604b84af31b04205bf8600e25a6acf2c7d624cfcf34072e8be50a7ed",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 2,
+        "median_demonstration_seconds": 26,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "ServeTea",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/making_tea/serve_tea.py",
+      "source_sha256": "05e74d8dc0157ff7b842e62dacc5358dbeb349c37e9615dd96d1122eb5fb7b86",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 3,
+        "median_demonstration_seconds": 33,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "MicrowaveCorrectMeal",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/microwaving_food/microwave_correct_meal.py",
+      "source_sha256": "c053052a1a76ac7d79c0084c28cd1471fd15bc52fc74af37583741983ad78849",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 5,
+        "median_demonstration_seconds": 38,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "MicrowaveDefrostMeat",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/microwaving_food/microwave_defrost_meat.py",
+      "source_sha256": "4d8cdc8e5d1f871227968b35c6e99a856677218ec40b44905f11d9ce14456224",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 5,
+        "median_demonstration_seconds": 39,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "ReheatMeal",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/microwaving_food/reheat_meal.py",
+      "source_sha256": "f0f0d098e886411e7cd36408bf08be6d3f947dcb5e6511b4279975102d4958d7",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 5,
+        "median_demonstration_seconds": 43,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "ReturnHeatedFood",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/microwaving_food/return_heated_food.py",
+      "source_sha256": "0dbf3387481766758ff89adee6faf4ba4022022c35f5c2dbe7e38d8ced5ea217",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 4,
+        "median_demonstration_seconds": 31,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "ColorfulSalsa",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/mixing_and_blending/colorful_salsa.py",
+      "source_sha256": "e23b08379e76f686de8150d9c62c35668a1fadac35a6a62f01f40a4b11719d83",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 4,
+        "median_demonstration_seconds": 52,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "MoveToFreezerDrawer",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/managing_freezer_space/move_to_freezer_drawer.py",
+      "source_sha256": "6fdc327bd770d23bb17e9e0fd8ab5dc7953a79fed0cfc26bcc47010d40848918",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 2,
+        "median_demonstration_seconds": 35,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "ReorganizeFrozenVegetables",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/managing_freezer_space/reorganize_frozen_vegetables.py",
+      "source_sha256": "e643c56fbac236c48c277d1de563d8f605678a591e30d0d29ca20406a762340c",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 3,
+        "median_demonstration_seconds": 62,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "BreadSelection",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/making_toast/bread_selection.py",
+      "source_sha256": "b6fbc972d63c3329249f2806b2352813c7d0c17f578cb3235b4ac54ee674dcb5",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 2,
+        "median_demonstration_seconds": 36,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "PrepareToast",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/making_toast/prepare_toast.py",
+      "source_sha256": "9df4827f8dab5c918d043146cdc8c29977016ccaa80ee8f684fa3a4e64bb89a7",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 3,
+        "median_demonstration_seconds": 88,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "SweetSavoryToastSetup",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/making_toast/sweet_savory_toast_setup.py",
+      "source_sha256": "326063dfe450801a727aeb6cfd4089600586799dae2920e867ea238015e8b0a6",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 4,
+        "median_demonstration_seconds": 74,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "FreezeBottledWaters",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/managing_freezer_space/freeze_bottled_waters.py",
+      "source_sha256": "f983a0da543f27cd7d778adac3a2ad51c0519b97e29e0f10333a5f8caa471334",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 8,
+        "median_demonstration_seconds": 90,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "ChooseRipeFruit",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/making_juice/choose_ripe_fruit.py",
+      "source_sha256": "50e6b3c6fb7f4e0ccab1476e1108878e48bb32a76f851d0552d52b6002d9da37",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 2,
+        "median_demonstration_seconds": 21,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "JuiceFruitReamer",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/making_juice/juice_fruit_reamer.py",
+      "source_sha256": "285ad9bc450ef63c7ab9798b0c620f1b908866c59297377c7d993492664a9dca",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 2,
+        "median_demonstration_seconds": 12,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "FillBlenderJug",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/making_juice/fill_blender_jug.py",
+      "source_sha256": "177e291e2374beec59504154eb61bfdb81142af5dbf7d1650dca1e3d681eba2d",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 2,
+        "median_demonstration_seconds": 33,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "PortionOnSize",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/portioning_meals/portion_on_size.py",
+      "source_sha256": "42ace305a646cbe898aceb8e206602c7919e6a9946d521c9a4531d0a791b9ecc",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 7,
+        "median_demonstration_seconds": 58,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "DistributeChicken",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/portioning_meals/distribute_chicken.py",
+      "source_sha256": "d3ec0450186ffcc675b4d9c977c67bfc99a7084c57f7fcadee84ef7395f3ea3a",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 7,
+        "median_demonstration_seconds": 52,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "PrepareCocktailStation",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/serving_beverages/prepare_cocktail_station.py",
+      "source_sha256": "45bb97a6681583ecfdf1f5f00836f31fbb1c1afecf5b7d4872a4ac64321352d7",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 12,
+        "median_demonstration_seconds": 131,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "AlignSilverware",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/setting_the_table/align_silverware.py",
+      "source_sha256": "0ce50a615bec810f555f6541065dd498c704b78c3712cec45b117ad863fe97c7",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 7,
+        "median_demonstration_seconds": 58,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "SetBowlsForSoup",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/setting_the_table/set_bowls_for_soup.py",
+      "source_sha256": "a4bb8f848ea4975253c7bb5eb881c6778261e75e79c5912c48abc5dfa52ec4e0",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 8,
+        "median_demonstration_seconds": 135,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "RearrangeFridgeItems",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/loading_fridge/rearrange_fridge_items.py",
+      "source_sha256": "cd7586c1803b223f247b678998962163474cebf57e75c4641f0335c156244e42",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 3,
+        "median_demonstration_seconds": 56,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "PrepareVeggieDip",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/mixing_ingredients/prepare_veggie_dip.py",
+      "source_sha256": "7f4d536865a295ef7dc2ad52ec00f17ab8ff6d715368d66c02063fafc9757600",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 9,
+        "median_demonstration_seconds": 69,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "LoadDishwasher",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/loading_dishwasher/load_dishwasher.py",
+      "source_sha256": "d510469eea6a067236087ab774dcf38336af8c6918db8a068358b377734a575f",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 3,
+        "median_demonstration_seconds": 41,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    },
+    {
+      "task": "CreateChildFriendlyFridge",
+      "source": "upstream/robocasa/robocasa/environments/kitchen/composite/loading_fridge/create_child_friendly_fridge.py",
+      "source_sha256": "60eee493ba7b7c6f77eff4a13ae4bf3c38c36add4e210b5edcbf2b33703613be",
+      "runtime_admitted": false,
+      "published_metadata": {
+        "subtasks": 11,
+        "median_demonstration_seconds": 82,
+        "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html"
+      }
+    }
+  ],
+  "removed_entries": [
+    {
+      "task": "AlignDrinkware",
+      "reason": "No matching composite class in local checkout; removal explicitly authorized by Kirsten"
+    },
+    {
+      "task": "FilterMicrowaveItems",
+      "reason": "No matching composite class in local checkout; removal explicitly authorized by Kirsten"
+    }
+  ],
+  "selection_method": {
+    "source_url": "https://robocasa.ai/docs/build/html/tasks/composite_tasks.html",
+    "selected_by": "Kirsten",
+    "reported_on": "2026-10-20",
+    "method": "Human-curated using published task complexity metadata; supplemented with shorter multiskill tasks. Not a random sample.",
+    "hard_task_filters": {
+      "subtasks": "mostly 6 or more",
+      "skill_types": "mostly more than 3 (4+)",
+      "horizon": "prefer longer published horizons; no strict lower cutoff in latest clarification",
+      "application": "selection preferences, not mandatory exclusion rules"
+    },
+    "frontier_emphasis": {
+      "approximately_skill_types": 5,
+      "displayed_horizon_seconds_greater_than": 100,
+      "subtasks": "many; no additional numeric cutoff specified"
+    },
+    "shorter_supplement": {
+      "approximate_task_count": 20,
+      "subtasks_range": [
+        2,
+        5
+      ],
+      "displayed_horizon_seconds_less_than": 60,
+      "preferred_displayed_horizon_seconds_range": [
+        30,
+        50
+      ]
+    },
+    "verification_status": "Official website subtask counts and median demonstration durations reconciled by exact class name. Skill counts remain user-reported selection preferences; runtime admission is separate.",
+    "difficulty_interpretation": "Complexity strata are hypotheses, not measured model difficulty or VLA failure rates.",
+    "budget_interpretation": "Website Horizon is rounded median demonstration duration in seconds (episode_len_medians_train.json), not simulator maximum control steps or agent wall-clock timeout.",
+    "membership_policy": "Preserve all 83 selections; metadata reconciliation does not silently remove tasks.",
+    "outcome_independence": "No new model outcomes used for these reported filters; some tasks were familiar from prior pilots, so selection is not wholly blind to historical outcomes.",
+    "latest_clarification": "Kirsten clarified 2026-10-20: mostly 6+ subtasks, more than 3 skills, longer horizons for harder tasks; about 20 tasks with 2\u20135 subtasks, under 60s, mostly 30\u201350s.",
+    "metadata_source_sha256": {
+      "composite_episode_lengths.js": "79bb2fb8761711b0ac0c5c2adca130098d31abc3adae91aa1a3817c5d123d296",
+      "composite_task_attributes.js": "9cdc3139884e785fb7ec5af45e7bcaace43252dde4fef4f425811e83de8cafff"
+    }
+  },
+  "execution_status": "Selection manifest only; scene admission, merged task implementation and run configurations are separate. Not yet a runnable dataset.json."
+}

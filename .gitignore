@@ -1,0 +1,37 @@
+.venv/
+.pair/
+__marimo__/
+__pycache__/
+*.pyc
+artifacts/*
+!artifacts/.gitkeep
+upstream/
+
+.DS_Store
+.idea/
+jobs/
+# Explicitly curated static episode exports are public website assets.
+!website/episodes/**/jobs/
+!website/episodes/**/jobs/*/
+!website/episodes/**/jobs/*/*.json
+!website/episodes/**/jobs/*/*.mp4
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+
+# AgentSecrets environment files
+.env
+.env.development
+.env.staging
+.env.production
+
+# Local agent credentials, machine configuration, and scratch reviews
+.agentsecrets/
+.agent/
+.tmp/
+.env.*
+!.env.example
+
+# Isolated community provisioning environment
+.roboswe-prepare-venv/

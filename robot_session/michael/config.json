@@ -1,0 +1,13 @@
+{
+  "robot": "MichaelOpenArmWuji",
+  "task": "robocasa/MichaelCommissioningKitchen",
+  "split": null,
+  "seed": 0,
+  "env_kwargs": {
+    "layout_ids": 1,
+    "style_ids": 1,
+    "camera_widths": 128,
+    "camera_heights": 128,
+    "initialization_noise": null
+  }
+}
