@@ -41,13 +41,26 @@ def sanitize(value):
 
 
 def publication_metadata(job, review, label):
-    if label not in {'development','incomplete-series'}:
-        raise ValueError('Explicit development or incomplete-series publication label required')
+    if label not in {'development','incomplete-series','completed-series'}:
+        raise ValueError('Explicit development, incomplete-series or completed-series publication label required')
+    completion=None
+    if label=='completed-series':
+        from pairing.adapt_next_pairs import validate_series
+        parent=ROOT/'jobs'/job['campaign_id']
+        validate_series(parent,ROOT/'jobs')
+        children=[json.loads(p.read_text()) for p in (ROOT/'jobs').glob('*/job.json')]
+        children=sorted((c for c in children if c.get('campaign_id')==job['campaign_id'] and c.get('kind')=='adaptive-direct-attempt'),key=lambda c:c['attempt_number'])
+        if job.get('id') not in {c['id'] for c in children}:raise ValueError('Selected episode does not belong to the completed series')
+        completion={'series_id':job['campaign_id'],'verified_trials':5,'verified_successes':sum(c['status']=='verified_pass' for c in children)}
     if review.get('primary_leaderboard_eligible') is False:
         return {'classification':review.get('classification','development'), 'primary_leaderboard_eligible':False,
                 'reason':review.get('reason','Excluded development series'), 'label':'Development episode — excluded from the primary leaderboard.'}
     if label=='development':
         return {'classification':'development','primary_leaderboard_eligible':False,'reason':'Explicitly published as development evidence.','label':'Development episode — excluded from the primary leaderboard.'}
+    if completion is not None:
+        return {'classification':'verified_individual_trial_in_completed_series','primary_leaderboard_eligible':None,
+                'reason':'All five original trials in this series are independently replay verified. This page preserves the individual trial outcome; no comparative rank is claimed.',
+                'label':'Verified individual trial · completed five-trial series.','series_completion':completion}
     return {'classification':'verified_individual_trial_in_incomplete_series','primary_leaderboard_eligible':None,
             'reason':'This individual trial is replay verified. The five-trial series is incomplete; no complete-series result or rank is claimed.',
             'label':'Verified individual trial · incomplete five-trial series.'}
@@ -61,12 +74,15 @@ def publish(job_id, destination, *, publication_label):
     verification=json.loads((source/'verification.json').read_text())
     if verification.get('reproduced') is not True or verification.get('verified_success') is not (job['status']=='verified_pass'):
         raise ValueError('Finalized status must match independent replay receipt')
+    review_path=ROOT/'jobs'/job['campaign_id']/'protocol-review.json'
+    review=json.loads(review_path.read_text()) if review_path.exists() else {}
+    publication=publication_metadata(job,review,publication_label)
     export(ROOT / 'jobs', destination, [job_id])
     target = destination / 'jobs' / job_id
     data = sanitize(json.loads((target / 'episode.json').read_text()))
     review_path=ROOT/'jobs'/job['campaign_id']/'protocol-review.json'
     review=json.loads(review_path.read_text()) if review_path.exists() else {}
-    data['publication']=publication_metadata(job,review,publication_label)
+    data['publication']=publication
     data['publication']['original_source_hashes_notice']='source_hashes identify original local receipts; exported JSON is a sanitized projection.'
     # The recorder emits fragmented MP4; browser metadata can expose only the
     # first fragment. Remux publication copies losslessly into a fast-start MP4.
@@ -121,5 +137,5 @@ def publish(job_id, destination, *, publication_label):
 
 
 if __name__ == '__main__':
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--job',required=True);p.add_argument('--destination',type=Path,required=True);p.add_argument('--publication-label',choices=['development','incomplete-series'],required=True);a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--job',required=True);p.add_argument('--destination',type=Path,required=True);p.add_argument('--publication-label',choices=['development','incomplete-series','completed-series'],required=True);a=p.parse_args()
     publish(a.job,a.destination,publication_label=a.publication_label)

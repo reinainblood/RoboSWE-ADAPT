@@ -48,3 +48,38 @@ def test_active_trial_refused_before_export(tmp_path,monkeypatch):
     monkeypatch.setattr(module,'export',lambda *a:pytest.fail('No active export'))
     with pytest.raises(ValueError,match='finalized'):
         module.publish('active',tmp_path/'public',publication_label='incomplete-series')
+
+
+def completed_series(tmp_path,monkeypatch):
+    monkeypatch.setattr(module,'ROOT',tmp_path);jobs=tmp_path/'jobs';parent=jobs/'series';parent.mkdir(parents=True)
+    (parent/'job.json').write_text(json.dumps({'id':'series','status':'completed_unscored','finished_at':'now'}))
+    (parent/'report.json').write_text(json.dumps({'trials':[{}]*5}))
+    selected=None
+    for n in range(1,6):
+        child=jobs/f'trial-{n}';child.mkdir()
+        selected={'id':child.name,'campaign_id':'series','kind':'adaptive-direct-attempt','attempt_number':n,'status':'verified_fail','finished_at':'now'}
+        (child/'job.json').write_text(json.dumps(selected))
+        (child/'verification.json').write_text(json.dumps({'kind':'independent_code_replay','reproduced':True,'verified_success':False,'mismatches':[],'trials':[{'reproduced':True,'infrastructure_valid':True,'precondition_valid':True,'verified_success':False,'observed_success':False,'replay':{'precondition_valid':True,'observed_success':False}}]}))
+    return selected
+
+
+def test_completed_label_requires_all_five_independent_replays(tmp_path,monkeypatch):
+    selected=completed_series(tmp_path,monkeypatch)
+    value=module.publication_metadata(selected,{},'completed-series')
+    assert value['series_completion']['verified_trials']==5
+    assert value['series_completion']['verified_successes']==0
+    assert value['primary_leaderboard_eligible'] is None
+    (tmp_path/'jobs/trial-3/verification.json').unlink()
+    with pytest.raises(FileNotFoundError):module.publication_metadata(selected,{},'completed-series')
+
+
+def test_incomplete_parent_cannot_claim_completed_even_with_five_children(tmp_path,monkeypatch):
+    selected=completed_series(tmp_path,monkeypatch)
+    (tmp_path/'jobs/series/job.json').write_text(json.dumps({'id':'series','status':'running'}))
+    with pytest.raises(ValueError):module.publication_metadata(selected,{},'completed-series')
+
+
+def test_completed_excluded_series_remains_excluded(tmp_path,monkeypatch):
+    selected=completed_series(tmp_path,monkeypatch)
+    value=module.publication_metadata(selected,{'primary_leaderboard_eligible':False,'classification':'development','reason':'original exclusion'},'completed-series')
+    assert value['primary_leaderboard_eligible'] is False and 'excluded' in value['label']
