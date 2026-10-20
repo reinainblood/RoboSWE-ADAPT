@@ -292,7 +292,11 @@ class AnthropicLearningModel:
         workspace_name: str | None = "benchmarking",
         context_policy: str = POLICY,
         token_counter=None,
+        thinking_display: str | None = None,
     ):
+        if thinking_display not in (None, "summarized"):
+            raise ValueError("thinking_display supports only None or summarized")
+        self.thinking_display = thinking_display
         if not 1_000 <= compact_at < context_window:
             raise ValueError("Invalid Anthropic context policy")
         if cache_ttl not in {"5m", "1h"}:
@@ -332,6 +336,9 @@ class AnthropicLearningModel:
             "api_url": API_URL,
             "reasoning_effort": effort,
             "adaptive_thinking": "always_on",
+            "thinking_display": {"requested": thinking_display, "effective": thinking_display or "omitted",
+                "representation": "provider_generated_summary" if thinking_display else "provider_default_omitted",
+                "raw_reasoning_available": False},
             "context_window": context_window,
             "compact_at": compact_at,
             "max_output_tokens": max_tokens,
@@ -397,6 +404,8 @@ class AnthropicLearningModel:
                               "format": {"type": "json_schema", "schema": overhead["schema"]}},
             "cache_control": {"type": "ephemeral", "ttl": self.cache_ttl},
         }
+        if self.thinking_display is not None:
+            body["thinking"] = {"type": "adaptive", "display": self.thinking_display}
         started = time.monotonic()
         deadline = getattr(self, "_history_deadline", started + 180)
         if deadline <= started:
@@ -598,6 +607,9 @@ class AnthropicLearningModel:
             "stop_reason": payload.get("stop_reason"),
             "elapsed_seconds": elapsed_seconds,
             "provider_exposed_block_count": len(thinking_blocks),
+            "requested_display": self.thinking_display,
+            "effective_display": self.thinking_display or "omitted",
+            "representation": "provider_generated_summary" if self.thinking_display else "provider_default_omitted",
             "plaintext_thinking_available": any(
                 isinstance(item["block"].get("thinking"), str)
                 and bool(item["block"]["thinking"])
@@ -775,6 +787,8 @@ class AnthropicLearningModel:
             },
             "cache_control": {"type": "ephemeral", "ttl": self.cache_ttl},
         }
+        if self.thinking_display is not None:
+            body["thinking"] = {"type": "adaptive", "display": self.thinking_display}
         payload = self._request(body, timeout=timeout, purpose="decision")
         decision = self._parse_decision(payload, schema)
         self.messages.extend(

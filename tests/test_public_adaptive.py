@@ -165,3 +165,14 @@ def test_modal_volume_default_resolves_in_selected_environment(tmp_path):
     assert adaptive.build_plan(data,config)['execution']['modal_volume']=='custom-evidence'
     value['execution']['modal_volume']='';config.write_text(json.dumps(value))
     with pytest.raises(ValueError,match='modal_volume'):adaptive.build_plan(data,config)
+
+
+def test_native_thinking_display_public_configuration(tmp_path):
+    data,config,value=files(tmp_path)
+    value['participant'].update(provider='anthropic',model='claude-opus-5-5',thinking_display='summarized')
+    config.write_text(json.dumps(value))
+    assert adaptive.build_plan(data,config)['tasks'][0]['participant']['thinking_display']=='summarized'
+    value['participant']['provider']='openrouter';config.write_text(json.dumps(value))
+    with pytest.raises(ValueError,match='Anthropic-only'):adaptive.build_plan(data,config)
+    value['participant'].update(provider='anthropic',thinking_display='updates');config.write_text(json.dumps(value))
+    with pytest.raises(ValueError,match='summarized'):adaptive.build_plan(data,config)

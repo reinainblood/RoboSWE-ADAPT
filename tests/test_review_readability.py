@@ -27,6 +27,17 @@ def nodes(node):
         if isinstance(child,dict):yield from nodes(child)
 
 
+def test_provider_summary_is_explicitly_labeled_and_preserved():
+    turn={'turn':0,'decision':{'operation':'finish','message':'Done'},
+          'reasoning':[{'representation':'provider_generated_summary',
+                        'blocks':[{'block':{'type':'thinking','thinking':'I checked the placement.','signature':'original-signature'}}]}]}
+    result=render(turn)
+    texts=[n.get('textContent','') for n in nodes(result['view'])]
+    assert 'Provider-generated thinking summary' in texts
+    assert 'I checked the placement.' in texts
+    assert result['unchanged']
+
+
 def test_actual_newlines_code_and_stdout_are_not_json_escaped():
     source='import robot\nprint("hello")\n';thought='First observation.\n\nNext hypothesis.'
     value=render({'turn':0,'decision':{'operation':'write_execute','path':'move.py','content':source,'message':'A public rationale.'},'result':{'returncode':0,'output':'hello\nsecond line\n','accepted_control_steps':5},'reasoning':[{'reasoning':thought,'reasoning_details':[{'type':'reasoning.text','text':thought}]}]})

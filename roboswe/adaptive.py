@@ -30,11 +30,15 @@ def build_plan(dataset_path, config_path, *, backend=None, jobs_dir='jobs', imag
         raise ValueError('Unknown run configuration field; credentials belong in environment variables, not config')
     participant = config.get('participant', {})
     allowed = {'provider', 'model', 'context_window', 'max_output_tokens', 'effort', 'reasoning_summary',
-               'workspace_id', 'cache_ttl', 'api_key_env', 'upstream_provider', 'context_policy', 'ledger_path', 'spend_limit_usd', 'input_price_per_million', 'output_price_per_million'}
+               'workspace_id', 'cache_ttl', 'thinking_display', 'api_key_env', 'upstream_provider', 'context_policy', 'ledger_path', 'spend_limit_usd', 'input_price_per_million', 'output_price_per_million'}
     if set(participant) - allowed:
         raise ValueError('Unknown participant configuration field; never put API keys in config')
     if participant.get('provider') not in {'openai', 'anthropic', 'openrouter', 'google'} or not participant.get('model'):
         raise ValueError('Explicit participant provider and model required')
+    if 'thinking_display' in participant and participant.get('provider')!='anthropic':
+        raise ValueError('thinking_display is native Anthropic-only')
+    if participant.get('thinking_display') not in (None,'summarized'):
+        raise ValueError('thinking_display supports only None or summarized')
     context, output = participant.get('context_window'), participant.get('max_output_tokens')
     if type(context) is not int or type(output) is not int or output <= 0 or context <= output + 4096:
         raise ValueError('Explicit valid context_window and max_output_tokens required')

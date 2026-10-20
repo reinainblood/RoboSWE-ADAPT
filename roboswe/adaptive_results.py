@@ -391,7 +391,7 @@ def export_series(directory, children):
         'series_id': job['id'], 'task': job.get('task'), 'protocol': PROTOCOL,
         'protocol_review': public_review,
         'recorded_status': job.get('status'), 'liveness_verified': False,
-        'participant': {k: participant.get(k) for k in ('provider', 'model', 'effort', 'context_window', 'max_output_tokens')},
+        'participant': {k: participant.get(k) for k in ('provider', 'model', 'effort', 'context_window', 'max_output_tokens', 'thinking_display')},
         'context_policy': metadata.get('context_policy', participant.get('context_policy')),
         'context_audit': _context_audit(directory, children),
         'limits': plan.get('limits'), 'execution': plan.get('execution'),

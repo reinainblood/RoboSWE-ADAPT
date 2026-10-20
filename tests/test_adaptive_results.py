@@ -357,3 +357,12 @@ def test_multiple_replay_trials_not_implicitly_summed(tmp_path):
     result=_operational_timing(tmp_path,{'kind':'independent_code_replay','trials':[trial,trial]})
     assert result['replay_execution_seconds'] is None
     assert result['replay_execution_coverage']['status']=='missing_or_ambiguous_trial'
+
+
+def test_thinking_display_exported_only_from_participant_configuration(tmp_path):
+    series(tmp_path)
+    result=export_results(tmp_path)['series'][0]
+    assert result['participant']['thinking_display'] is None
+    path=tmp_path/'series/plan.json';plan=json.loads(path.read_text())
+    plan['participant']['thinking_display']='summarized';put(path,plan)
+    assert export_results(tmp_path)['series'][0]['participant']['thinking_display']=='summarized'

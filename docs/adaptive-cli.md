@@ -157,6 +157,21 @@ adapter rather than treating it as an arbitrary model gateway. An optional
 `workspace_id` selects the Anthropic workspace. Google counting and generation
 use the same request builder; access to counting does not imply generation quota.
 
+For a new native Anthropic series, set `participant.thinking_display` to
+`"summarized"` to request **provider-generated thinking summaries**. The client
+sends the same adaptive/display configuration to counting and generation and
+records the selected representation in model metadata and thinking traces.
+Returned blocks and signatures remain unchanged in history and evidence. This
+is not raw internal reasoning, and readable text is not guaranteed on every turn.
+
+Omitting the field (or using `null`) preserves the legacy request payloads and
+headers; Opus5.5's documented default is omitted readable thinking. Other values
+and use with another provider are rejected. This option changes only requested
+output visibility: it does not enable a thinking-drop policy or change SQLite
+sliding, effort, model or output limits. Keep the display setting fixed across a
+series and disclose it when comparing latency. See the
+[official display documentation](https://platform.claude.com/docs/en/build-with-claude/thinking).
+
 The Anthropic and mapped OpenRouter Gemini counters allow at most two attempts
 for a transient counting-service failure. Each request is capped at 90 seconds
 and by the time remaining in the original episode. Counting generates no model

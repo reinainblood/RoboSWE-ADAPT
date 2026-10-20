@@ -376,3 +376,68 @@ def test_inference_respects_shared_original_deadline(monkeypatch,tmp_path):
     monkeypatch.setattr('pairing.anthropic_model.urllib.request.urlopen',post)
     model._request({'max_tokens':1024},timeout=90,purpose='test')
     assert timeouts==[5]
+
+
+def test_display_none_preserves_legacy_wire_bytes_and_headers(monkeypatch,tmp_path):
+    import io
+    monkeypatch.setattr('pairing.anthropic_model.credential',lambda:'offline-key')
+    captured=[]
+    def send(req,timeout):
+        captured.append((req.full_url,req.data,dict(req.header_items())))
+        return io.BytesIO(json.dumps({'input_tokens':123} if req.full_url.endswith('/count_tokens') else response()).encode())
+    monkeypatch.setattr('pairing.anthropic_model.urllib.request.urlopen',send)
+    model=AnthropicLearningModel('instructions',tmp_path,context_policy='legacy',workspace_id='wrkspc_test',thinking_display=None)
+    model._count_history_tokens(messages=[],pending={'text':'hello','images':[]},overhead={'instructions':'instructions','schema':SCHEMA})
+    model.ask('hello',schema=SCHEMA)
+    system=[{'type':'text','text':'instructions','cache_control':{'type':'ephemeral','ttl':'5m'}}]
+    messages=[{'role':'user','content':[{'type':'text','text':'hello'}]}]
+    output={'effort':'high','format':{'type':'json_schema','schema':SCHEMA}}
+    cache={'type':'ephemeral','ttl':'5m'}
+    expected_count={'model':MODEL,'system':system,'messages':messages,'output_config':output,'cache_control':cache}
+    expected_generation={'model':MODEL,'max_tokens':model.max_tokens,'system':system,'messages':messages,'output_config':output,'cache_control':cache}
+    assert captured[0][1]==json.dumps(expected_count,separators=(',',':')).encode()
+    assert captured[1][1]==json.dumps(expected_generation,separators=(',',':')).encode()
+    assert captured[0][2]==captured[1][2]=={'X-api-key':'offline-key','Anthropic-version':'2023-06-01','Anthropic-workspace-id':'wrkspc_test','Content-type':'application/json'}
+    assert model.metadata['thinking_display']['requested'] is None
+
+
+def test_summarized_count_generation_parity_and_verbatim_archive(monkeypatch,tmp_path):
+    import io,sqlite3
+    monkeypatch.setattr('pairing.anthropic_model.credential',lambda:'offline-key')
+    captured=[];payload=response();payload['content'][0]['thinking']='Provider-generated summary.'
+    def send(req,timeout):
+        captured.append((req.full_url,json.loads(req.data),dict(req.header_items())))
+        return io.BytesIO(json.dumps({'input_tokens':123} if req.full_url.endswith('/count_tokens') else payload).encode())
+    monkeypatch.setattr('pairing.anthropic_model.urllib.request.urlopen',send)
+    model=AnthropicLearningModel('instructions',tmp_path,workspace_id='wrkspc_test',thinking_display='summarized',token_counter=lambda **kwargs:100)
+    model._count_history_tokens(messages=[],pending={'text':'hello','images':[]},overhead={'instructions':model.instructions,'schema':SCHEMA})
+    model.ask('hello',schema=SCHEMA)
+    assert captured[0][1]['thinking']==captured[1][1]['thinking']=={'type':'adaptive','display':'summarized'}
+    assert captured[0][2]==captured[1][2] and 'Anthropic-beta' not in captured[0][2]
+    assert model.messages[-1]['content']==payload['content']
+    trace=json.loads((tmp_path/'provider-thinking.jsonl').read_text())
+    assert trace['representation']=='provider_generated_summary' and trace['effective_display']=='summarized'
+    assert trace['blocks'][0]['block']==payload['content'][0]
+    assert json.loads((tmp_path/'provider-responses.jsonl').read_text())['response']==payload
+    with sqlite3.connect(tmp_path/'history.sqlite') as db:
+        archived=json.loads(db.execute("select body from messages where role='assistant'").fetchone()[0])
+    assert archived['content']==payload['content']
+    assert model.metadata['thinking_display']['raw_reasoning_available'] is False
+
+
+@pytest.mark.parametrize('value',['updates','omitted','raw','',True])
+def test_invalid_display_rejected_before_credentials(monkeypatch,tmp_path,value):
+    monkeypatch.setattr('pairing.anthropic_model.credential',lambda:pytest.fail('must validate first'))
+    with pytest.raises(ValueError,match='thinking_display'):
+        AnthropicLearningModel('i',tmp_path,thinking_display=value)
+
+
+def test_native_factory_wires_display_and_other_providers_reject(monkeypatch,tmp_path):
+    from pairing.direct_models import create_participant
+    monkeypatch.setattr('pairing.anthropic_model.credential',lambda:'offline-key')
+    config={'provider':'anthropic','model':MODEL,'context_window':1000000,'max_output_tokens':32768,'workspace_id':'wrkspc_test','thinking_display':'summarized'}
+    model=create_participant('instructions',tmp_path,config,token_counter=lambda **kwargs:100)
+    assert model.thinking_display=='summarized'
+    for provider in ('openai','openrouter','google'):
+        with pytest.raises(ValueError,match='native Anthropic'):
+            create_participant('i',tmp_path,{**config,'provider':provider})
