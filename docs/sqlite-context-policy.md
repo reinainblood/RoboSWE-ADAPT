@@ -74,6 +74,27 @@ an actual robot-run result. The supported native API adapters
 are separate from Codex managed threads: the app-server integration does not
 support this exact-window policy and rejects it rather than silently compacting.
 
+## Anthropic signed thinking and readable summaries
+
+Opus 5.5 can bind returned thinking blocks to the earlier request prefix.
+Anthropic documents that accounts enforcing this binding can reject a replay
+when that prefix changes. A local window slide changes the prefix, so token-count
+availability alone does not establish generation compatibility after a slide.
+See [Anthropic's preserved-thinking contract](https://platform.claude.com/docs/en/build-with-claude/preserved-thinking).
+
+`sqlite-sliding-v1` preserves returned blocks and signatures unchanged. It does
+not request `drop_block` or silently remove retained thinking to avoid a provider
+error. A rejected request remains an infrastructure interruption with its history
+preserved. The development campaign has recorded a successful post-slide Opus
+response on its configured account; that observation is not a guarantee for every
+account or provider version.
+
+The optional `thinking_display: "summarized"` setting controls readable output,
+not prefix-binding behavior. Anthropic supplies a provider-generated thinking
+summary, which the viewer labels accordingly. It is not a generated replacement
+for the archived conversation. The chosen display mode is recorded and held
+constant across a five-trial series.
+
 ## OpenRouter policy: `sqlite-sliding-or-conservative-v1`
 
 OpenRouter's post-response token usage does not forecast the next multimodal
