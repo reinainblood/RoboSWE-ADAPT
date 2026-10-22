@@ -27,8 +27,8 @@ trajectories and downloads then resolve locally. No provider key or simulator is
 needed. Without the optional download, the text, catalogue, results snapshot and
 preprint are available; video and episode assets have not been materialized.
 
-The reviewed inventory is `public-assets.json`: 156 optional files totaling
-478,298,107 bytes (about 456 MiB). Each file has its public HTTPS URL, exact byte
+The reviewed inventory is `public-assets.json`: 178 optional files totaling
+525,618,394 bytes (about 501 MiB). Each file has its public HTTPS URL, exact byte
 size and SHA-256. The helper permits only `https://roboswe.com`, validates paths,
 rejects symlink destinations and redirects, enforces size bounds, and verifies
 bytes before installing a file. Existing matching files are reused; an existing

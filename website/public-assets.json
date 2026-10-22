@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "origin": "https://roboswe.com",
-  "generated_at": "2026-10-20T19:57:51.341984+00:00",
+  "generated_at": "2026-10-22T11:33:42.856047+00:00",
   "scope": "Already-public curated media and episode exports only; no raw private job directory",
   "assets": [
     {
@@ -213,6 +213,138 @@
       "url": "https://roboswe.com/episodes/beverage-argon-trial-03/review.js",
       "bytes": 9877,
       "sha256": "cb80d51fb687d2ddce5d272f66301fe66c01443e743c24f283d58d9b036a6d01"
+    },
+    {
+      "path": "episodes/beverage-google-trial-01/episode-overlay.js",
+      "sha256": "a483b86cf779251670ad63b201bf0cace82c4d6f100b05782a97bc9c19ec0b5a",
+      "bytes": 2307,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-01/episode-overlay.js"
+    },
+    {
+      "path": "episodes/beverage-google-trial-01/index.html",
+      "sha256": "9f193a88d9ce721aa64ba9246feb72792e34e72c022f17fbb4079ec761af6b09",
+      "bytes": 7635,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-01/index.html"
+    },
+    {
+      "path": "episodes/beverage-google-trial-01/jobs/20261022T073358Z-7a98a7d093/atif.json",
+      "sha256": "f7ae900f1af3bfbf353b438471c691e53a0ac7c45800df1d015d1d50fcc0cb2f",
+      "bytes": 673209,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-01/jobs/20261022T073358Z-7a98a7d093/atif.json"
+    },
+    {
+      "path": "episodes/beverage-google-trial-01/jobs/20261022T073358Z-7a98a7d093/episode.json",
+      "sha256": "5ce707ec2a3342ead46ba4317f504e80fd0fc03f436884592733b56e3730b104",
+      "bytes": 1453697,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-01/jobs/20261022T073358Z-7a98a7d093/episode.json"
+    },
+    {
+      "path": "episodes/beverage-google-trial-01/jobs/20261022T073358Z-7a98a7d093/video-camera-0-simulation.mp4",
+      "sha256": "7627c358f5f224f376a7e467faa40533b8782dc5e31c9dbe3fb221c33921346c",
+      "bytes": 4440255,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-01/jobs/20261022T073358Z-7a98a7d093/video-camera-0-simulation.mp4"
+    },
+    {
+      "path": "episodes/beverage-google-trial-01/jobs/20261022T073358Z-7a98a7d093/video-camera-1-simulation.mp4",
+      "sha256": "2f0b3d1cc25d6a0fa138e695c8834893f17578deb43f0d33384497f35f5059af",
+      "bytes": 5825176,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-01/jobs/20261022T073358Z-7a98a7d093/video-camera-1-simulation.mp4"
+    },
+    {
+      "path": "episodes/beverage-google-trial-01/jobs/20261022T073358Z-7a98a7d093/video-camera-2-simulation.mp4",
+      "sha256": "d0c8aa4fb476ab76c13a23bf87b1cf34727c021c1030564366af4fc1a4b75cee",
+      "bytes": 6523457,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-01/jobs/20261022T073358Z-7a98a7d093/video-camera-2-simulation.mp4"
+    },
+    {
+      "path": "episodes/beverage-google-trial-01/jobs/20261022T073358Z-7a98a7d093/video-overview-simulation.mp4",
+      "sha256": "04c77867e972f340363d93f329ff0c38a241e18497d480631b0e625b3b628fc3",
+      "bytes": 1365028,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-01/jobs/20261022T073358Z-7a98a7d093/video-overview-simulation.mp4"
+    },
+    {
+      "path": "episodes/beverage-google-trial-01/manifest.json",
+      "sha256": "0136f31d581d8c9339bbcf6919f2b91a6ac6fb0de1758de5d1a9fdbf3077b088",
+      "bytes": 4355,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-01/manifest.json"
+    },
+    {
+      "path": "episodes/beverage-google-trial-01/review-jobs.json",
+      "sha256": "bb78fb2d8f49bdfbb244f89ae7fb2abd48793c963cde581d46d0ac1bf2f720e4",
+      "bytes": 212,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-01/review-jobs.json"
+    },
+    {
+      "path": "episodes/beverage-google-trial-01/review.js",
+      "sha256": "27e6323e44c3d4104039fe81469c8fe573b895b138abfb7e854962d6e01e1991",
+      "bytes": 10273,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-01/review.js"
+    },
+    {
+      "path": "episodes/beverage-google-trial-02/episode-overlay.js",
+      "sha256": "a483b86cf779251670ad63b201bf0cace82c4d6f100b05782a97bc9c19ec0b5a",
+      "bytes": 2307,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-02/episode-overlay.js"
+    },
+    {
+      "path": "episodes/beverage-google-trial-02/index.html",
+      "sha256": "9f193a88d9ce721aa64ba9246feb72792e34e72c022f17fbb4079ec761af6b09",
+      "bytes": 7635,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-02/index.html"
+    },
+    {
+      "path": "episodes/beverage-google-trial-02/jobs/20261022T081223Z-625e60d915/atif.json",
+      "sha256": "521aeff1b2424aa993e8a92844fa35c40db93ea61afcb72d35a39d465202e281",
+      "bytes": 635451,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-02/jobs/20261022T081223Z-625e60d915/atif.json"
+    },
+    {
+      "path": "episodes/beverage-google-trial-02/jobs/20261022T081223Z-625e60d915/episode.json",
+      "sha256": "6275a67412fe093b4a49f6131fdbf571ca982e6f4268db839d9700e4a8276baf",
+      "bytes": 1366036,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-02/jobs/20261022T081223Z-625e60d915/episode.json"
+    },
+    {
+      "path": "episodes/beverage-google-trial-02/jobs/20261022T081223Z-625e60d915/video-camera-0-simulation.mp4",
+      "sha256": "3a8c8f8bb003fde9d09009707d3721166ab0bb6354d4e0a0c3f4f3144a4e0b63",
+      "bytes": 5175653,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-02/jobs/20261022T081223Z-625e60d915/video-camera-0-simulation.mp4"
+    },
+    {
+      "path": "episodes/beverage-google-trial-02/jobs/20261022T081223Z-625e60d915/video-camera-1-simulation.mp4",
+      "sha256": "7d7a793c8c8e3312185bbcb24caa468114f57220136c2ce1409be74f7e7788db",
+      "bytes": 8498144,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-02/jobs/20261022T081223Z-625e60d915/video-camera-1-simulation.mp4"
+    },
+    {
+      "path": "episodes/beverage-google-trial-02/jobs/20261022T081223Z-625e60d915/video-camera-2-simulation.mp4",
+      "sha256": "73836e59d9cdf476c5837c7b7a87a40c5ce38894176a7faecd0c4e0141ef6fd3",
+      "bytes": 9282609,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-02/jobs/20261022T081223Z-625e60d915/video-camera-2-simulation.mp4"
+    },
+    {
+      "path": "episodes/beverage-google-trial-02/jobs/20261022T081223Z-625e60d915/video-overview-simulation.mp4",
+      "sha256": "be28b76ca7665f5f9bde72fea7acc1d4c16bf1bf6610f9197d90ee202d6eeb4e",
+      "bytes": 2032008,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-02/jobs/20261022T081223Z-625e60d915/video-overview-simulation.mp4"
+    },
+    {
+      "path": "episodes/beverage-google-trial-02/manifest.json",
+      "sha256": "1d1e7c9b91186f25354ce690962ce628527e8dbb9703074d9768b0dd6dd209c9",
+      "bytes": 4355,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-02/manifest.json"
+    },
+    {
+      "path": "episodes/beverage-google-trial-02/review-jobs.json",
+      "sha256": "f1ee8f1ed672d0422002d3d69b8e4841020e801a1ee08a53eedfc29d171b30a7",
+      "bytes": 212,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-02/review-jobs.json"
+    },
+    {
+      "path": "episodes/beverage-google-trial-02/review.js",
+      "sha256": "27e6323e44c3d4104039fe81469c8fe573b895b138abfb7e854962d6e01e1991",
+      "bytes": 10273,
+      "url": "https://roboswe.com/episodes/beverage-google-trial-02/review.js"
     },
     {
       "path": "episodes/beverage-opus-trial-01/episode-overlay.js",
