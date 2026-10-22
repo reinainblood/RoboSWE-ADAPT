@@ -70,6 +70,24 @@ def test_public_google_plan_accepts_native_provider(tmp_path,monkeypatch):
     assert plan['tasks'][0]['context_policy']=='sqlite-sliding-v1'
 
 
+def test_blocked_prompt_preserves_input_usage_and_reservation(tmp_path,monkeypatch):
+    m=model(tmp_path,monkeypatch)
+    monkeypatch.setattr(m.counter,'count_native_request',lambda *a,**k:100)
+    payload={'promptFeedback':{'blockReason':'OTHER'},
+             'usageMetadata':{'promptTokenCount':100,'totalTokenCount':100}}
+    calls=[]
+    def blocked(*args):
+        calls.append(1)
+        return payload
+    monkeypatch.setattr(m,'_generate',blocked)
+    with pytest.raises(RuntimeError,match='provider blocked response'):m.ask('hello')
+    assert calls==[1]
+    assert m.ledger.snapshot()['reserved_usd']>0
+    assert m.ledger.snapshot()['spent_usd']==0
+    assert json.loads((tmp_path/'provider-responses.jsonl').read_text())['response']==payload
+    assert not m.messages
+
+
 def test_quota_diagnostic_redacts_key_and_preserves_reason():
     from pairing.google_model import sanitize_google_error
     key='private-secret'

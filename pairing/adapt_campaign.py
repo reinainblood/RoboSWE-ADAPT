@@ -33,7 +33,10 @@ def main(argv=None):
         elif provider=='anthropic':
             from pairing.anthropic_model import credential
             key_name='ANTHROPIC_API_KEY'
-        else:raise ValueError('Supervisor supports explicitly authorized OpenRouter/Anthropic lanes only')
+        elif provider=='google':
+            from pairing.google_model import credential
+            key_name='GEMINI_API_KEY'
+        else:raise ValueError('Supervisor supports explicitly authorized OpenRouter/Anthropic/Google lanes only')
         previous_key=os.environ.get(key_name)
         os.environ[key_name]=credential()
         state={'pid':os.getpid(),'started_epoch':time.time(),'status':'running','dataset':str(Path(args.dataset).resolve()),

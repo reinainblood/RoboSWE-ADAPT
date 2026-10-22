@@ -3,17 +3,27 @@ import pytest
 from pairing.adapt_campaign import main
 
 
-def test_supervisor_is_bounded_and_refuses_relaunch(tmp_path,monkeypatch):
-    task={'cohort':{'id':'task'},'participant':{'provider':'openrouter','model':'pinned'},'context_policy':'policy'}
+@pytest.mark.parametrize('provider,module,key_name',[
+    ('openrouter','pairing.muse_model','OPENROUTER_API_KEY'),
+    ('google','pairing.google_model','GEMINI_API_KEY'),
+])
+def test_supervisor_is_bounded_and_refuses_relaunch(tmp_path,monkeypatch,provider,module,key_name):
+    import os
+    monkeypatch.delenv(key_name,raising=False)
+    task={'cohort':{'id':'task'},'participant':{'provider':provider,'model':'pinned'},'context_policy':'policy'}
     monkeypatch.setattr('roboswe.adaptive.build_plan',lambda *a,**kw:{'tasks':[task]})
     finished=tmp_path/'finished';finished.mkdir();(finished/'job.json').write_text(json.dumps({'id':'done','status':'completed_unscored'}))
-    monkeypatch.setattr('roboswe.adaptive.run',lambda plan:[str(finished)])
-    monkeypatch.setattr('pairing.muse_model.credential',lambda:'test-key')
+    def run(plan):
+        assert os.environ[key_name]=='test-key'
+        return [str(finished)]
+    monkeypatch.setattr('roboswe.adaptive.run',run)
+    monkeypatch.setattr(module+'.credential',lambda:'test-key')
     argv=['--dataset','dataset','--config','config','--state-dir',str(tmp_path)]
     main(argv)
     state=json.loads((tmp_path/'active.json').read_text())
     assert state['status']=='completed' and state['completed']==[str(finished)]
     assert 'test-key' not in (tmp_path/'active.json').read_text()
+    assert key_name not in os.environ
     with pytest.raises(RuntimeError,match='implicit restart'):main(argv)
 
 

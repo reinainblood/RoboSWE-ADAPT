@@ -9,6 +9,7 @@ import json
 import math
 import os
 import re
+import subprocess
 import time
 import urllib.error
 import urllib.request
@@ -18,6 +19,19 @@ from pairing.context_history import POLICY,initialize,sliding_ask
 from pairing.gemini_token_count import GeminiNativeCounter,BASE_URL
 from pairing.openai_model import OpenAILearningModel
 from pairing.anthropic_model import SpendLedger
+
+
+def credential() -> str:
+    """Resolve the native Google key in the trusted coordinator only."""
+    if os.environ.get('GEMINI_API_KEY'):
+        return os.environ['GEMINI_API_KEY']
+    result = subprocess.run(
+        ['/usr/bin/security', 'find-generic-password', '-s', 'zsh_secrets',
+         '-a', 'GEMINI_API_KEY', '-w'], capture_output=True, timeout=20)
+    value = result.stdout.decode().strip() if result.returncode == 0 else ''
+    if not value:
+        raise RuntimeError('GEMINI_API_KEY is unavailable in macOS Keychain; value suppressed')
+    return value
 
 
 class GoogleLearningModel(OpenAILearningModel):
@@ -101,6 +115,8 @@ class GoogleLearningModel(OpenAILearningModel):
         with (self.directory/'provider-responses.jsonl').open('a') as stream:stream.write(json.dumps({'call':self.calls,'response':payload})+'\n')
         usage=payload.get('usageMetadata') or {};self.usage.append(usage)
         with (self.directory/'model-usage.jsonl').open('a') as stream:stream.write(json.dumps({'call':self.calls,'usage':usage,'model_version':payload.get('modelVersion')})+'\n')
+        if (payload.get('promptFeedback') or {}).get('blockReason'):
+            raise RuntimeError('Google provider blocked response; raw promptFeedback preserved; reservation retained; no action executed')
         inp=usage.get('promptTokenCount');out=usage.get('candidatesTokenCount');thought=usage.get('thoughtsTokenCount',0)
         if any(type(n) is not int or n<0 for n in (inp,out,thought)):
             raise RuntimeError('Google usage missing; reservation retained; no action executed')
